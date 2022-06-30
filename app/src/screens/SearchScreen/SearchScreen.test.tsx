@@ -1,0 +1,1 @@
+import SearchScreen from './index';
