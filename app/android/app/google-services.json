@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "689817067732",
+    "project_id": "elera-service",
+    "storage_bucket": "elera-service.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:689817067732:android:7021feaabc8035a6601b41",
+        "android_client_info": {
+          "package_name": "com.elera"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "689817067732-ejdh9q37lmgdlivrskv6mpr3p7l3p7kc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.elera",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "689817067732-tva4vg3hejpcd09v296b35nr8ufb6ija.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdbmfLIqsLNc6jso8sdfJmOaFl3mErGMI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "689817067732-tva4vg3hejpcd09v296b35nr8ufb6ija.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
