@@ -1,33 +1,18 @@
 import React from 'react';
-import styles from './styles';
-import CompleteCourse from '../CompleteCourse';
-import OngoingCourse from '../OngoingCourseScreen';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import {colors, fonts_Family, fonts_Size, Icons} from '../../theme';
-import {Image, Text, View} from 'react-native';
+import {colors, fonts_Family, fonts_Size} from '../../theme';
+
+import LogoHeader from '../../components/LogoHeader';
+import OngoingCourse from '../OngoingCourseScreen';
+import CompleteCourse from '../CompleteCourse';
 
 const Tab = createMaterialTopTabNavigator();
 
 const MyCourseScreen = () => {
   return (
     <>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          paddingTop: 12,
-          backgroundColor: '#fff',
-        }}>
-        <View style={styles.row}>
-          <Image source={Icons.logoWhite} style={styles.logo} />
-          <Text style={styles.title}>My Courses</Text>
-        </View>
-        <View style={styles.row}>
-          <Image source={Icons.Search} style={styles.icon} />
-          <Image source={Icons.More} style={styles.icon} />
-        </View>
-      </View>
+      <LogoHeader title="My Courses" />
+
       <Tab.Navigator
         screenOptions={{
           tabBarStyle: {

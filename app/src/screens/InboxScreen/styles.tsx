@@ -1,12 +1,21 @@
 import {StyleSheet} from 'react-native';
-import {colors} from '../../theme';
+import {colors, fonts_Family, fonts_Size} from '../../theme';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.light.green,
+    backgroundColor: colors.light.white,
     flex: 1,
-    justifyContent: 'center',
+  },
+  add: {
+    backgroundColor: colors.light.primary,
+    width: 60,
+    height: 60,
+    borderRadius: 55,
     alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    right: 12,
+    bottom: 20,
   },
 });
 
