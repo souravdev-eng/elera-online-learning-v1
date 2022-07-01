@@ -34,4 +34,8 @@ export const Icons = {
   ChevronDown: require('../assets/images/chevron-down.png'),
   PlayCircle: require('../assets/images/play-circle.png'),
   FileText: require('../assets/images/file-text.png'),
+
+  // Banners
+
+  Banner1: require('../assets/images/banner/40%OFF.png'),
 };

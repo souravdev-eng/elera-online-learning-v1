@@ -2,11 +2,16 @@ export const colors = {
   light: {
     primary: '#335EF7',
     PrimaryLight: '#5076FC',
-    white: '#FFFFFF',
     blueLight: '#EFF3FF',
+
+    white: '#FFFFFF',
+
     grey: '#616161',
     grey1: '#919191',
+
     lightGrey: '#F5F5F5',
+    lightGrey2: '#EEEEEE',
+
     darkGrey: '#212121',
     black: '#212121',
 

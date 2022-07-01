@@ -16,11 +16,12 @@ import LoginWithPassword from '../screens/Auth/LogInWithPassword';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const AppStackNavigation = () => {
-  const token = null;
+  const token = 'null';
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={Type.CourseDetails}>
+      // initialRouteName={Type.CourseDetails}
+    >
       {!token ? (
         <>
           <Stack.Screen name={Type.Login} component={LoginScreen} />

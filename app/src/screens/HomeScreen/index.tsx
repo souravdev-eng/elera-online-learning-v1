@@ -6,6 +6,7 @@ import {
   TextInput,
   ScrollView,
   TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
 import React from 'react';
 import {Icons} from '../../theme';

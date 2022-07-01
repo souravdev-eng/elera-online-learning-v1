@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 22,
     marginBottom: 12,
+    overflow: 'hidden',
   },
   textBold: {
     fontFamily: fonts_Family.UrbanistBold,
