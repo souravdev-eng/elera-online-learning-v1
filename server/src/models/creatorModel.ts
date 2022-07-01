@@ -24,6 +24,7 @@ interface CreatorDoc extends mongoose.Document {
   totalReviews: number;
   website: string;
   role: 'creator';
+  correctPassword(candidatePassword: string, userPassword: string): Promise<boolean>;
 }
 
 interface CreatorModel extends mongoose.Model<CreatorDoc> {
@@ -112,6 +113,10 @@ creatorSchema.pre('save', async function (next) {
   }
   next();
 });
+
+creatorSchema.methods.correctPassword = async function (candidatePassword: string, userPassword: string) {
+  return await bcrypt.compare(candidatePassword, userPassword);
+};
 
 creatorSchema.statics.build = function (attars: CreatorAttars) {
   return new Creator(attars);

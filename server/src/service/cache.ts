@@ -46,7 +46,7 @@ mongoose.Query.prototype.exec = async function () {
 
   // 3 Otherwise, issue the query and store the result in redis
 
-  await client.setEx(key, 60, JSON.stringify(result));
+  await client.setEx(key, 10, JSON.stringify(result));
   console.log('@@@@@@@@Serving from mongo@@@@@@@@@@');
   return result;
 };

@@ -3,12 +3,13 @@ import { NotFoundError } from '../../errors/notFoundError';
 import { User } from '../../models/userModel';
 
 export const userProfileUpdate = async (req: Request, res: Response, next: NextFunction) => {
-  const { id } = req.params;
-  const existingUser = await User.findById(id);
+  const id = req.user!.id;
 
-  if (!existingUser) {
-    return next(new NotFoundError('User not found'));
-  }
+  // const existingUser = await User.findById(id);
+
+  // if (!existingUser) {
+  //   return next(new NotFoundError('User not found'));
+  // }
 
   const { fullName, nickName, dateOfBirth, phoneNumber, dialCode, gender, profileImage } = req.body;
 
@@ -26,5 +27,5 @@ export const userProfileUpdate = async (req: Request, res: Response, next: NextF
     { new: true, runValidators: true }
   );
 
-  res.status(200).json({ message: 'User profile updated', data: { user } });
+  res.status(200).json({ user });
 };
