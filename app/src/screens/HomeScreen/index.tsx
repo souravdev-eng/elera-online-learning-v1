@@ -6,22 +6,25 @@ import {
   TextInput,
   ScrollView,
   TouchableOpacity,
-  ImageBackground,
 } from 'react-native';
 import React from 'react';
 import {Icons} from '../../theme';
 import styles from './styles';
 
+import {useAppNavigation} from '../../hooks/useAppNavigation';
+import {useAppSelector} from '../../hooks/useRedux';
+
 import ViewAll from '../../components/ViewAll';
 import CourseCard from '../../components/CourseCard';
 import FilterCard from '../../components/FilterCard';
-import {useAppNavigation} from '../../hooks/useAppNavigation';
+
 import {CourseListData} from '../../assets/data/courseList.data';
 import {MentorsListData} from '../../assets/data/mentorsList.data';
 import {Tags} from '../../assets/data/tagdata';
 
 const HomeScreen: React.FC = () => {
   const {navigation} = useAppNavigation();
+  const {data} = useAppSelector(state => state.user);
 
   return (
     <ScrollView
@@ -35,7 +38,7 @@ const HomeScreen: React.FC = () => {
             <Image source={Icons.User1} style={styles.userImage} />
             <View>
               <Text style={styles.gridText}>Good Morning 👋</Text>
-              <Text style={styles.userName}>Sourav Majumdar</Text>
+              <Text style={styles.userName}>{data?.user?.fullName}</Text>
             </View>
           </View>
           <View style={styles.iconWrapper}>

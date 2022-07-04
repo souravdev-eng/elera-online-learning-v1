@@ -9,11 +9,7 @@ import React, {useEffect} from 'react';
 import styles from './styles';
 import {Icons} from '../../../theme';
 import {useAppNavigation} from '../../../hooks/useAppNavigation';
-import {
-  GoogleSignin,
-  GoogleSigninButton,
-  statusCodes,
-} from '@react-native-google-signin/google-signin';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 const LoginScreen = () => {
   const {navigation} = useAppNavigation();

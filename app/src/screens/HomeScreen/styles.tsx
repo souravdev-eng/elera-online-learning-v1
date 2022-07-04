@@ -38,13 +38,13 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   gridText: {
-    fontSize: fonts_Size.body,
+    fontSize: fonts_Size.h4,
     fontFamily: fonts_Family.UrbanistRegular,
     color: colors.light.grey,
     marginBottom: 4,
   },
   userName: {
-    fontSize: fonts_Size.h2,
+    fontSize: fonts_Size.h3,
     fontFamily: fonts_Family.UrbanistBold,
     color: colors.light.black,
   },
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   searchBar: {
     fontFamily: fonts_Family.UrbanistSemiBold,
-    fontSize: fonts_Size.body,
+    fontSize: fonts_Size.medium,
     paddingLeft: 12,
     width: '84%',
     color: colors.light.grey,
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
   textBold: {
     fontFamily: fonts_Family.UrbanistBold,
-    fontSize: fonts_Size.body,
+    fontSize: fonts_Size.medium,
     color: colors.light.black,
   },
   userCard: {
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   tagText: {
     fontFamily: fonts_Family.UrbanistSemiBold,
     color: colors.light.PrimaryLight,
-    fontSize: fonts_Size.body,
+    fontSize: fonts_Size.medium,
     // textAlign: 'center',
   },
 });

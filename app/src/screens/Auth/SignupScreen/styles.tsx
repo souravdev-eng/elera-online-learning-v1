@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts_Family.UrbanistMedium,
     color: light.darkGrey,
     width: '100%',
-    fontSize: fonts_Size.medium,
+    fontSize: fonts_Size.body,
   },
   text: {
     fontFamily: fonts_Family.UrbanistSemiBold,

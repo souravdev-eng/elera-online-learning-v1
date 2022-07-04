@@ -12,14 +12,20 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
 import {colors, Icons} from '../../../theme';
 import {useAppNavigation} from '../../../hooks/useAppNavigation';
+import {useAppDispatch} from '../../../hooks/useRedux';
+import {userLoginAction} from '../../../store/actions/user.action';
 
 const LoginWithPassword = () => {
   const {handelGoBack, navigation} = useAppNavigation();
-
+  let dispatch = useAppDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isEmailActive, setIsEmailActive] = useState(false);
   const [isPasswordActive, setIsPasswordActive] = useState(false);
+
+  const handelLogin = () => {
+    dispatch(userLoginAction({email, password}));
+  };
 
   return (
     <View style={styles.container}>
@@ -65,7 +71,7 @@ const LoginWithPassword = () => {
           onBlur={() => setIsPasswordActive(false)}
         />
       </View>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={handelLogin}>
         <Text style={styles.signupButtonText}>Sign in</Text>
       </TouchableOpacity>
       <View

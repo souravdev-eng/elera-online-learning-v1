@@ -13,16 +13,18 @@ import CourseDetailScreen from '../screens/CourseDetailScreen';
 import SignupScreen from '../screens/Auth/SignupScreen';
 import LoginWithPassword from '../screens/Auth/LogInWithPassword';
 import ChatScreen from '../screens/ChatScreen';
+import {useAppSelector} from '../hooks/useRedux';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const AppStackNavigation = () => {
-  const token = null;
+  const {data} = useAppSelector(state => state.user);
+
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
       initialRouteName={Type.Main}>
-      {!token ? (
+      {!data ? (
         <>
           <Stack.Screen name={Type.Login} component={LoginScreen} />
           <Stack.Screen name={Type.Signup} component={SignupScreen} />
@@ -33,10 +35,10 @@ export const AppStackNavigation = () => {
         </>
       ) : (
         <>
-          {/* <Stack.Screen
+          <Stack.Screen
             name={Type.ProfileUpdate}
             component={ProfileUpdateScreen}
-          /> */}
+          />
           <Stack.Screen name={Type.Main} component={BottomTabNavigation} />
           <Stack.Screen name={Type.Chat} component={ChatScreen} />
           <Stack.Screen name={Type.TopMentors} component={TopMentorsScreen} />

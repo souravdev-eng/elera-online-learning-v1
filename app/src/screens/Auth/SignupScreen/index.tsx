@@ -1,25 +1,36 @@
 import {
   View,
   Text,
+  Image,
   TextInput,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  Image,
 } from 'react-native';
 import React, {useState} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
 import {colors, Icons} from '../../../theme';
+
+import {useAppDispatch} from '../../../hooks/useRedux';
 import {useAppNavigation} from '../../../hooks/useAppNavigation';
+
+import {userSignupAction} from '../../../store/actions/user.action';
 
 const SignupScreen = () => {
   const {handelGoBack, navigation} = useAppNavigation();
+  const dispatch = useAppDispatch();
 
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isNameActive, setIsNameActive] = useState(false);
   const [isEmailActive, setIsEmailActive] = useState(false);
   const [isPasswordActive, setIsPasswordActive] = useState(false);
+
+  const handelSignup = () => {
+    dispatch(userSignupAction({email, password, fullName: name}));
+  };
 
   return (
     <View style={styles.container}>
@@ -30,6 +41,23 @@ const SignupScreen = () => {
       </TouchableOpacity>
       <Text style={styles.title}>Create your account</Text>
 
+      <View style={[styles.textInput, isNameActive && styles.textInputActive]}>
+        <Ionicons
+          name="person"
+          size={18}
+          color={isNameActive ? colors.light.primary : colors.light.grey1}
+        />
+        <TextInput
+          placeholder="Name"
+          style={styles.input}
+          placeholderTextColor={colors.light.grey1}
+          keyboardType="default"
+          value={name}
+          onChangeText={text => setName(text)}
+          onFocus={() => setIsNameActive(true)}
+          onBlur={() => setIsNameActive(false)}
+        />
+      </View>
       <View style={[styles.textInput, isEmailActive && styles.textInputActive]}>
         <Ionicons
           name="mail"
@@ -65,7 +93,7 @@ const SignupScreen = () => {
           onBlur={() => setIsPasswordActive(false)}
         />
       </View>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={handelSignup}>
         <Text style={styles.signupButtonText}>Sign up</Text>
       </TouchableOpacity>
       <View

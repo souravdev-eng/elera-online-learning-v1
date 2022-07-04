@@ -6,11 +6,13 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import DatePicker from 'react-native-date-picker';
 import {Dropdown} from 'react-native-element-dropdown';
 import styles from './styles';
 import {Icons} from '../../theme';
+import {useAppNavigation} from '../../hooks/useAppNavigation';
+import {useAppDispatch, useAppSelector} from '../../hooks/useRedux';
 
 const data = [
   {label: 'Male', value: '1'},
@@ -19,8 +21,16 @@ const data = [
 ];
 
 const ProfileUpdateScreen = () => {
-  const [date, setDate] = useState(new Date());
+  const {handelGoBack, navigation} = useAppNavigation();
+  const {user} = useAppSelector(state => state.user);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    console.log(user?.data.token);
+  }, []);
+
   const currentDate = new Date();
+  const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
@@ -28,7 +38,7 @@ const ProfileUpdateScreen = () => {
   return (
     <ScrollView contentContainerStyle={{flexGrow: 1, backgroundColor: '#fff'}}>
       <View style={styles.headerWarper}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handelGoBack}>
           <Image source={Icons.ArrowBack} style={styles.backIcon} />
         </TouchableOpacity>
         <Text style={styles.title}>Fill your profile</Text>

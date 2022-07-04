@@ -1,18 +1,19 @@
-import {View, Text, LogBox} from 'react-native';
+import {LogBox} from 'react-native';
 LogBox.ignoreLogs([
   'ViewPropTypes will be removed',
   'ColorPropType will be removed',
 ]);
+
 import React from 'react';
-import SplashScreen from './src/screens/SplashScreen';
-import HomeScreen from './src/screens/HomeScreen';
 import MainNavigation from './src/navigation/MainNavigation';
+import {Provider} from 'react-redux';
+import {store} from './src/store/store';
 
 const App = () => {
   return (
-    <>
+    <Provider store={store}>
       <MainNavigation />
-    </>
+    </Provider>
   );
 };
 
