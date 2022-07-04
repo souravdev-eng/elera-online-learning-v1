@@ -9,7 +9,7 @@ import { userSignUpValidation } from '../validation/userValidationSchema';
 
 const router = Router();
 
-router.post('/sign-up', userSignUpValidation, requestValidation, newUser);
+router.post('/signup', userSignUpValidation, requestValidation, newUser);
 router.post('/login', login);
 router.patch('/update-user-profile/:id', userProfileUpdate);
 

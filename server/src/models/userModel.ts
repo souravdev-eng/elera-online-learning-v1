@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs';
 interface UserAttars {
   email: string;
   password: string;
+  fullName: string;
 }
 
 interface UserDoc extends mongoose.Document {

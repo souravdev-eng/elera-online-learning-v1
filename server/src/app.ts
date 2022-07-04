@@ -4,6 +4,7 @@ import './service/cache';
 import { createClient } from 'redis';
 import express from 'express';
 import morgan from 'morgan';
+import cors from 'cors';
 
 import { userRouter } from './routes/user.routes';
 import { creatorRouter } from './routes/creator.routes';
@@ -17,6 +18,7 @@ const client = createClient({
 });
 
 app.use(express.json());
+app.use(cors());
 app.use(morgan('dev'));
 
 app.use('/api/v1/user', userRouter);
