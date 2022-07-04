@@ -15,6 +15,7 @@ export enum Type {
 
   ProfileUpdate = 'ProfileUpdate',
   CourseDetails = 'CourseDetails',
+  Chat = 'Chat',
 }
 
 export type RootStackParamList = {
@@ -34,4 +35,5 @@ export type RootStackParamList = {
   Search: undefined;
   ProfileUpdate: undefined;
   CourseDetails: {id: string};
+  Chat: undefined;
 };

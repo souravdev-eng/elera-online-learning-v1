@@ -2,11 +2,16 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import styles from './styles';
 import {Icons} from '../../theme';
+import {useAppNavigation} from '../../hooks/useAppNavigation';
 
 const MessageCard = () => {
+  const {navigation} = useAppNavigation();
   return (
     <>
-      <TouchableOpacity style={styles.messageContainer} activeOpacity={0.8}>
+      <TouchableOpacity
+        style={styles.messageContainer}
+        activeOpacity={0.8}
+        onPress={() => navigation.navigate('Chat')}>
         <View style={styles.row}>
           <Image source={Icons.User1} style={styles.userImage} />
           <View style={{marginLeft: 10}}>

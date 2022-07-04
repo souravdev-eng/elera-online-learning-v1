@@ -3,8 +3,8 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 import {colors, fonts_Family, fonts_Size} from '../../theme';
 
 import LogoHeader from '../../components/LogoHeader';
-import OngoingCourse from '../OngoingCourseScreen';
-import CompleteCourse from '../CompleteCourse';
+import OngoingCourse from './OngoingCourseScreen';
+import CompleteCourse from './CompleteCourse';
 
 const Tab = createMaterialTopTabNavigator();
 

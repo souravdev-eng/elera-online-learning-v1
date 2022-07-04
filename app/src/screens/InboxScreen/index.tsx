@@ -1,7 +1,8 @@
-import {View, FlatList, TouchableOpacity} from 'react-native';
 import React from 'react';
-import styles from './styles';
+import {View, FlatList, TouchableOpacity} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import styles from './styles';
+
 import MessageCard from '../../components/MessageCard';
 import LogoHeader from '../../components/LogoHeader';
 import {colors} from '../../theme';

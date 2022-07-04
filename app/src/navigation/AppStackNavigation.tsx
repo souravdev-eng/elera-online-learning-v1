@@ -12,16 +12,16 @@ import ProfileUpdateScreen from '../screens/ProfileUpdateScreen';
 import CourseDetailScreen from '../screens/CourseDetailScreen';
 import SignupScreen from '../screens/Auth/SignupScreen';
 import LoginWithPassword from '../screens/Auth/LogInWithPassword';
+import ChatScreen from '../screens/ChatScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const AppStackNavigation = () => {
-  const token = 'null';
+  const token = null;
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      // initialRouteName={Type.CourseDetails}
-    >
+      initialRouteName={Type.Main}>
       {!token ? (
         <>
           <Stack.Screen name={Type.Login} component={LoginScreen} />
@@ -38,6 +38,7 @@ export const AppStackNavigation = () => {
             component={ProfileUpdateScreen}
           /> */}
           <Stack.Screen name={Type.Main} component={BottomTabNavigation} />
+          <Stack.Screen name={Type.Chat} component={ChatScreen} />
           <Stack.Screen name={Type.TopMentors} component={TopMentorsScreen} />
           <Stack.Screen name={Type.MyBookmarks} component={MyBookMarksScreen} />
           <Stack.Screen

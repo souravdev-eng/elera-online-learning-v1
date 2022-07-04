@@ -8,14 +8,15 @@ const styles = StyleSheet.create({
   },
   add: {
     backgroundColor: colors.light.primary,
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 50,
     borderRadius: 55,
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
     right: 12,
     bottom: 20,
+    elevation: 5,
   },
 });
 

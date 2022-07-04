@@ -1,8 +1,7 @@
 import {View, FlatList} from 'react-native';
 import React from 'react';
-import {CourseListData} from '../../assets/data/courseList.data';
-import MyCourseCard from '../../components/MyCourseCard';
-import {OngoingCourseData} from '../../assets/data/ongoingCourse';
+import MyCourseCard from '../../../components/MyCourseCard';
+import {OngoingCourseData} from '../../../assets/data/ongoingCourse';
 
 const OngoingCourse = () => {
   return (
