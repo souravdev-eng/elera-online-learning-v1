@@ -14,7 +14,7 @@ export const newCreator = async (req: Request, res: Response, next: NextFunction
   const creator = Creator.build({ email, dialCode, phoneNumber, password });
   await creator.save();
 
-  const token = jwt.sign({ id: creator.id }, process.env.JWT_SECRET!, { expiresIn: process.env.JWT_SECRET_EXPIRY! });
+  const token = jwt.sign({ id: creator.id, email: creator.email }, process.env.JWT_SECRET!, { expiresIn: process.env.JWT_SECRET_EXPIRY! });
 
   res.status(201).json({ token, creator });
 };

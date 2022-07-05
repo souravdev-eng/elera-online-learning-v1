@@ -1,11 +1,11 @@
 import {View, FlatList} from 'react-native';
 import React from 'react';
-import {Tags} from '../../assets/data/tagdata';
 import {CourseListData} from '../../assets/data/courseList.data';
+import {Tags} from '../../assets/data/tagdata';
 
-import GoBack from '../../components/GoBack';
 import CourseCard from '../../components/CourseCard';
 import FilterCard from '../../components/FilterCard';
+import GoBack from '../../components/GoBack';
 import {Icons} from '../../theme';
 
 const MyBookMarksScreen = () => {

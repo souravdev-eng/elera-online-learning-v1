@@ -5,12 +5,12 @@ import { userDetails } from '../controllers/user/userDetails';
 import { userProfileUpdate } from '../controllers/user/userProfileUpdate';
 import { protect } from '../middleware/protect';
 import { requestValidation } from '../middleware/requestValidation';
-import { userSignUpValidation } from '../validation/userValidationSchema';
+import { userLoginUpValidation, userSignUpValidation } from '../validation/userValidationSchema';
 
 const router = Router();
 
 router.post('/signup', userSignUpValidation, requestValidation, newUser);
-router.post('/login', login);
+router.post('/login', userLoginUpValidation, requestValidation, login);
 router.patch('/update-user-profile/:id', userProfileUpdate);
 
 router.route('/me').get(protect, userDetails);

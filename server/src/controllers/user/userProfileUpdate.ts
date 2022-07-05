@@ -5,12 +5,6 @@ import { User } from '../../models/userModel';
 export const userProfileUpdate = async (req: Request, res: Response, next: NextFunction) => {
   const id = req.user!.id;
 
-  // const existingUser = await User.findById(id);
-
-  // if (!existingUser) {
-  //   return next(new NotFoundError('User not found'));
-  // }
-
   const { fullName, nickName, dateOfBirth, phoneNumber, dialCode, gender, profileImage } = req.body;
 
   const user = await User.findByIdAndUpdate(
