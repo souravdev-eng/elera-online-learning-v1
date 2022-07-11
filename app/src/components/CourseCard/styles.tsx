@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginVertical: 12,
     flexDirection: 'row',
-    paddingHorizontal: 12,
+    paddingHorizontal: 10,
     backgroundColor: colors.light.white,
     elevation: 3,
     paddingVertical: 18,
@@ -32,12 +32,12 @@ const styles = StyleSheet.create({
   },
   tagContainer: {
     backgroundColor: colors.light.blueLight,
-    paddingHorizontal: 4,
     borderRadius: 6,
     paddingVertical: 6,
-    // width: 120,
-    width: '48%',
-    marginBottom: 6,
+    paddingHorizontal: 8,
+    position: 'absolute',
+    top: -6,
+    left: -5,
   },
   tagText: {
     fontFamily: fonts_Family.UrbanistSemiBold,
@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     color: colors.light.darkGrey,
     fontSize: fonts_Size.medium,
     marginBottom: 6,
+    marginTop: 28,
   },
   priceWrapper: {
     flexDirection: 'row',
@@ -59,8 +60,8 @@ const styles = StyleSheet.create({
   offerPrice: {
     fontFamily: fonts_Family.UrbanistBold,
     color: colors.light.primary,
-    fontSize: fonts_Size.h2,
-    marginRight: 6,
+    fontSize: fonts_Size.h3,
+    marginRight: 8,
   },
   originalPrice: {
     fontFamily: fonts_Family.UrbanistRegular,

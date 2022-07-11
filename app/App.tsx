@@ -7,12 +7,15 @@ LogBox.ignoreLogs([
 import React from 'react';
 import MainNavigation from './src/navigation/MainNavigation';
 import {Provider} from 'react-redux';
-import {store} from './src/store/store';
+import {persistor, store} from './src/store/store';
+import {PersistGate} from 'redux-persist/integration/react';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <MainNavigation />
+      <PersistGate loading={null} persistor={persistor}>
+        <MainNavigation />
+      </PersistGate>
     </Provider>
   );
 };

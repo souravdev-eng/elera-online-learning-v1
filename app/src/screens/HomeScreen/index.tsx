@@ -7,24 +7,33 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Icons} from '../../theme';
 import styles from './styles';
 
+import {useAppDispatch, useAppSelector} from '../../hooks/useRedux';
 import {useAppNavigation} from '../../hooks/useAppNavigation';
-import {useAppSelector} from '../../hooks/useRedux';
 
 import ViewAll from '../../components/ViewAll';
 import CourseCard from '../../components/CourseCard';
 import FilterCard from '../../components/FilterCard';
 
 import {CourseListData} from '../../assets/data/courseList.data';
-import {MentorsListData} from '../../assets/data/mentorsList.data';
 import {Tags} from '../../assets/data/tagdata';
+import {getCreatorList} from '../../store/actions/creator.action';
+import {getCourseList} from '../../store/actions/course.action';
 
 const HomeScreen: React.FC = () => {
   const {navigation} = useAppNavigation();
   const {data} = useAppSelector(state => state.user);
+  const {creatorList, loading} = useAppSelector(state => state.creator);
+  const {courseList} = useAppSelector(state => state.course);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getCreatorList(data.token));
+    dispatch(getCourseList(data.token));
+  }, []);
 
   return (
     <ScrollView
@@ -75,15 +84,15 @@ const HomeScreen: React.FC = () => {
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
           style={{flexGrow: 0}}
-          data={MentorsListData}
+          data={creatorList}
           renderItem={({item}) => (
             <TouchableOpacity activeOpacity={0.7} style={styles.userCard}>
               <Image
-                source={{uri: item.image}}
+                source={{uri: item.profileImage}}
                 style={styles.userNameCardImage}
               />
               <Text style={styles.userNameCardText} numberOfLines={1}>
-                {item.name}
+                {item.nickName}
               </Text>
             </TouchableOpacity>
           )}
@@ -110,7 +119,7 @@ const HomeScreen: React.FC = () => {
             keyExtractor={(_, idx) => idx.toString()}
           />
           <View style={{alignItems: 'center'}}>
-            {CourseListData.map((el, index) => (
+            {courseList.map((el, index) => (
               <CourseCard {...el} key={index} />
             ))}
           </View>

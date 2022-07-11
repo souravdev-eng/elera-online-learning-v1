@@ -6,9 +6,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '90%',
     alignSelf: 'center',
-    marginVertical: 12,
+    padding: 10,
   },
   userImage: {
     width: 60,
@@ -33,6 +32,7 @@ const styles = StyleSheet.create({
     color: colors.light.grey,
     marginLeft: 14,
     letterSpacing: 0.5,
+    marginRight: 4,
   },
 });
 

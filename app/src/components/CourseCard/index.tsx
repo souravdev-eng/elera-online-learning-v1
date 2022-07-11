@@ -5,12 +5,14 @@ import {Icons} from '../../theme';
 
 interface Props {
   title: string;
-  price: number;
-  originalPrice: number;
+  category: string;
   ratingAvg: number;
-  totalStudents: number;
-  tag: string;
+  totalReview: number;
+  originalPrice: number;
+  price: number;
   image: string;
+  id: string;
+  totalStudent: number;
   onPress?: () => void;
   onBookmarkPress?: () => void;
 }
@@ -18,14 +20,14 @@ interface Props {
 const CourseCard: FC<Props> = props => {
   const {
     title,
-    totalStudents,
+    totalStudent,
     image,
     onBookmarkPress,
     onPress,
     originalPrice,
     price,
     ratingAvg,
-    tag,
+    category,
   } = props;
   return (
     <TouchableOpacity style={styles.container} activeOpacity={0.9}>
@@ -42,7 +44,7 @@ const CourseCard: FC<Props> = props => {
       <View style={{width: '60%'}}>
         <View style={styles.tagContainer}>
           <Text style={styles.tagText} numberOfLines={1}>
-            {tag}
+            {category}
           </Text>
         </View>
         <Text style={styles.title} numberOfLines={2}>
@@ -55,7 +57,7 @@ const CourseCard: FC<Props> = props => {
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Image source={Icons.Star} style={styles.ratingIcon} />
           <Text style={styles.ratingText}>
-            {ratingAvg} | {totalStudents} students
+            {ratingAvg} | {totalStudent} students
           </Text>
         </View>
       </View>
