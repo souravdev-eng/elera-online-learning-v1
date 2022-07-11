@@ -1,0 +1,135 @@
+[
+  {
+    "title": "The Complete 2022 Web Development Bootcamp",
+    "price": 499,
+    "lessons": [
+      {
+        "title": "#1 Frontend development",
+        "videos": [
+          {
+            "title": "Introduction",
+            "videoUrl": "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
+          },
+          {
+            "title": "How to get help?",
+            "videoUrl": "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
+          }
+        ]
+      },
+      {
+        "title": "#2 Backend development",
+        "videos": [
+          {
+            "title": "Introduction to backend Development",
+            "videoUrl": "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
+          },
+          {
+            "title": "What is SQL server?",
+            "videoUrl": "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
+          }
+        ]
+      }
+    ],
+    "category": "WebDevelopment",
+    "creatorId": "62bd738368273b8ace1b9759",
+    "introVideo": "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+    "aboutCourse": "Welcome to the Complete Web Development Bootcamp, the only course you need to learn to code and become a full-stack web developer. With 150,000+ ratings and a 4.8 average, my Web Development course is one of the HIGHEST RATED courses in the history of Udemy! ",
+    "preRequisite": [
+      "No programming experience needed - I'll teach you everything you need to know",
+      "A computer with access to the internet",
+      "No paid software required",
+      "I'll walk you through, step-by-step how to get all the software installed and set up"
+    ],
+    "durationHours": 56.8,
+    "originalPrice": 699,
+    "image": "https://learnacourseonline.com/wp-content/uploads/2022/04/The-Complete-2022-Web-Development-Bootcamp-udemy.jpg"
+  },
+  {
+    "title": "Master the Coding Interview: Data Structures + Algorithms",
+    "price": 499,
+    "lessons": [
+      {
+        "title": "#1 Frontend development",
+        "videos": [
+          {
+            "title": "Introduction",
+            "videoUrl": "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
+          },
+          {
+            "title": "How to get help?",
+            "videoUrl": "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
+          }
+        ]
+      },
+      {
+        "title": "#2 Backend development",
+        "videos": [
+          {
+            "title": "Introduction to backend Development",
+            "videoUrl": "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
+          },
+          {
+            "title": "What is SQL server?",
+            "videoUrl": "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
+          }
+        ]
+      }
+    ],
+    "category": "Programing",
+    "creatorId": "62b419e524f163c50a4a973e",
+    "introVideo": "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+    "aboutCourse": "Updated for the 2022 hiring season! Join a live online community of over 600,000+ developers and a course taught by an industry expert that has actually worked both in Silicon Valley and Toronto as a senior developer. Graduates of this course are now working at Google, Tesla, Amazon, Apple, IBM, JP Morgan, Facebook + other top tech companies.",
+    "preRequisite": [
+      "No experience with data structures or algorithms needed",
+      "Basic understanding of one programming language",
+      "No previous computer science knowledge necessary"
+    ],
+    "durationHours": 23.8,
+    "originalPrice": 699,
+    "image": "https://images.ctfassets.net/aq13lwl6616q/34oTrOaPCY3VKnubPKZCKv/a8eb7d89a56594d9d5acb91252b451b5/MTCI.png?w=700&fm=webp"
+  },
+  {
+    "title": "Microservice with Node JS and React",
+    "price": 499,
+    "lessons": [
+      {
+        "title": "#1 Frontend development",
+        "videos": [
+          {
+            "title": "Introduction",
+            "videoUrl": "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
+          },
+          {
+            "title": "How to get help?",
+            "videoUrl": "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
+          }
+        ]
+      },
+      {
+        "title": "#2 Backend development",
+        "videos": [
+          {
+            "title": "Introduction to backend Development",
+            "videoUrl": "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
+          },
+          {
+            "title": "What is SQL server?",
+            "videoUrl": "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
+          }
+        ]
+      }
+    ],
+    "category": "Web Development",
+    "creatorId": "62b1da8f91f51d0817044bce",
+    "introVideo": "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+    "aboutCourse": "Event-Based Architecture? Covered! Server side rendering with React Yep.  Scalable, production-ready code? Its here! Microservices are the number one solution for building and scaling out apps that are intended to grow.  Just one little issue: there are few resources online that delve into the most complex and nasty issues around them!  I built this course to fix that.  This course tackles every major issues around microservices head on. From challenges with data replication to confusing unordered event streams, every major challenge of building microservices is covered. ",
+    "preRequisite": [
+      "Basic knowledge of Javascript and Express is required",
+      "Knowledge of React is good, but not needed",
+      "You must be familiar and comfortable with the command line"
+    ],
+    "durationHours": 62.8,
+    "originalPrice": 699,
+    "image": "https://girishgodage.in/img/webdevelopment/1/Nodejs-eCommerce.png"
+  }
+]

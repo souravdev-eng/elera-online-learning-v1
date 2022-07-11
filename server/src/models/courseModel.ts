@@ -1,10 +1,22 @@
 import mongoose from 'mongoose';
 
+enum CourseCategory {
+  WebDevelopment = 'Web Development',
+  Programing = 'Programing',
+  UIUX = 'UI/UX',
+  Design = '3D Design',
+  WebDesign = 'Web Design',
+  MobileDevelopment = 'Mobile Development',
+  Photography = 'Photography',
+  Illustration = 'Illustration',
+  Animation = 'Animation',
+}
+
 interface CourseAttars {
   title: string;
   image: string;
   introVideo: string;
-  category: string;
+  category: CourseCategory;
   originalPrice: number;
   price: number;
   creatorId: mongoose.Types.ObjectId;
@@ -17,7 +29,7 @@ interface CourseAttars {
 interface CourseDoc extends mongoose.Document {
   title: string;
   introVideo: string;
-  category: string;
+  category: CourseCategory;
   ratingAvg: number;
   totalReview: number;
   totalStudent: number;
@@ -49,6 +61,7 @@ const courseSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
+      enum: Object.values(CourseCategory),
     },
     ratingAvg: {
       type: Number,
