@@ -1,22 +1,29 @@
 import {View, Text, Image, Pressable, ScrollView} from 'react-native';
-import React from 'react';
+import React, {FC} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import styles from './styles';
 import {colors, Icons} from '../../theme';
 
-const AboutCourse = () => {
+interface Props {
+  name: string;
+  bio: string;
+  imageUri: string;
+  aboutCourse: string;
+}
+
+const AboutCourse: FC<Props> = ({name, bio, imageUri, aboutCourse}) => {
   return (
-    <ScrollView contentContainerStyle={{flexGrow: 1}}>
+    <>
       <View style={styles.container}>
         {/* mentor */}
         <Text style={styles.mentorHeading}>Mentor</Text>
         <View style={styles.mentor}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Image source={Icons.User1} style={styles.mentorImage} />
+            <Image source={{uri: imageUri}} style={styles.mentorImage} />
             <View style={{width: '70%'}}>
-              <Text style={styles.mentorName}>John Doe</Text>
+              <Text style={styles.mentorName}>{name}</Text>
               <Text style={styles.bio} numberOfLines={1}>
-                Senior UI/UX Designer at Google
+                {bio}
               </Text>
             </View>
           </View>
@@ -25,20 +32,14 @@ const AboutCourse = () => {
           </Pressable>
         </View>
         {/* About course */}
-        <View>
+        <View style={{marginTop: 10}}>
           <Text style={styles.headingText}>About Course</Text>
-          <Text style={styles.text}>
-            Data structures form the heart of Redis. Rather than hiding
-            functionality behind complex abstractions, Redis exposes several
-            powerful data structures that developers use to store and query
-            data. Learning about these different data structures is the key to
-            mastering Redis.
-          </Text>
+          <Text style={styles.text}>{aboutCourse}</Text>
         </View>
         {/* Tools */}
         {/* BUY Button */}
       </View>
-    </ScrollView>
+    </>
   );
 };
 

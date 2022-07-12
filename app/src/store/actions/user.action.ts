@@ -23,7 +23,6 @@ export const userLoginAction = createAsyncThunk(
         {email, password},
         {headers: {'Content-type': 'application/json'}},
       );
-      console.log({data});
       return data;
     } catch (error: any) {
       console.log('User Login Error: ', error.response.data.errors);

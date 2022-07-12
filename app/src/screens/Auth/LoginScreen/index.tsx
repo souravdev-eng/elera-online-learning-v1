@@ -24,7 +24,6 @@ const LoginScreen = () => {
   const signIn = async () => {
     try {
       const {user} = await GoogleSignin.signIn();
-      console.log({user});
     } catch (error) {
       console.log(error);
     }

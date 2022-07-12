@@ -35,6 +35,10 @@ const HomeScreen: React.FC = () => {
     dispatch(getCourseList(data.token));
   }, []);
 
+  const navigateToCourseDetail = (id: string) => {
+    navigation.navigate('CourseDetails', {id});
+  };
+
   return (
     <ScrollView
       showsHorizontalScrollIndicator={false}
@@ -120,7 +124,12 @@ const HomeScreen: React.FC = () => {
           />
           <View style={{alignItems: 'center'}}>
             {courseList.map((el, index) => (
-              <CourseCard {...el} key={index} />
+              <CourseCard
+                {...el}
+                key={index}
+                onPress={() => navigateToCourseDetail(el.id)}
+                onBookmarkPress={() => {}}
+              />
             ))}
           </View>
         </View>

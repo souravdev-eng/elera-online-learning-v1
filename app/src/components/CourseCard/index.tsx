@@ -30,8 +30,13 @@ const CourseCard: FC<Props> = props => {
     category,
   } = props;
   return (
-    <TouchableOpacity style={styles.container} activeOpacity={0.9}>
-      <TouchableOpacity style={{position: 'absolute', right: 10, top: 10}}>
+    <TouchableOpacity
+      style={styles.container}
+      activeOpacity={0.9}
+      onPress={onPress}>
+      <TouchableOpacity
+        style={{position: 'absolute', right: 10, top: 10}}
+        onPress={onBookmarkPress}>
         <Image style={styles.bookMark} source={Icons.BookmarkOutline} />
       </TouchableOpacity>
       <View style={{overflow: 'hidden'}}>

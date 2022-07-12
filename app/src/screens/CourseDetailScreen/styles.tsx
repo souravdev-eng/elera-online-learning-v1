@@ -37,8 +37,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: fonts_Family.UrbanistBold,
-    fontSize: fonts_Size.h2,
+    fontSize: fonts_Size.h3,
     color: colors.light.darkGrey,
+    width: '94%',
+    letterSpacing: 0.4,
   },
   bookMarks: {
     width: 30,
@@ -76,7 +78,7 @@ const styles = StyleSheet.create({
   courseDetailsWrapper: {
     marginVertical: 12,
     justifyContent: 'space-between',
-    borderBottomWidth: 0.4,
+    borderBottomWidth: 0.2,
     paddingBottom: 15,
     borderBottomColor: colors.light.grey1,
   },
@@ -97,6 +99,23 @@ const styles = StyleSheet.create({
     height: 20,
     tintColor: colors.light.PrimaryLight,
     marginRight: 4,
+  },
+  buyButton: {
+    width: '94%',
+    height: 58,
+    backgroundColor: colors.light.primary,
+    marginVertical: 10,
+    alignSelf: 'center',
+    borderRadius: 28,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 0,
+  },
+  buyNowText: {
+    fontFamily: fonts_Family.UrbanistBold,
+    fontSize: fonts_Size.h4,
+    color: colors.light.white,
   },
 });
 

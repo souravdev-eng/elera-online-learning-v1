@@ -22,12 +22,8 @@ const data = [
 
 const ProfileUpdateScreen = () => {
   const {handelGoBack, navigation} = useAppNavigation();
-  const {user} = useAppSelector(state => state.user);
+  // const {user} = useAppSelector(state => state.user);
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    console.log(user?.data.token);
-  }, []);
 
   const currentDate = new Date();
   const [date, setDate] = useState(new Date());

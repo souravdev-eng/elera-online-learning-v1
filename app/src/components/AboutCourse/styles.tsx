@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts_Family.UrbanistBold,
     fontSize: fonts_Size.h4,
     color: colors.light.darkGrey,
-    marginVertical: 12,
+    marginBottom: 14,
   },
   mentorImage: {
     width: 55,
@@ -47,8 +47,11 @@ const styles = StyleSheet.create({
     fontFamily: fonts_Family.UrbanistRegular,
     fontSize: fonts_Size.medium,
     letterSpacing: 0.5,
-    lineHeight: 20,
+    lineHeight: 21,
     color: colors.light.darkGrey,
+    // textAlign: 'center',
+    width: '100%',
+    overflow: 'hidden',
   },
 });
 

@@ -12,7 +12,6 @@ export const getCreatorList = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data.creator);
       return response.data.creator;
     } catch (error: any) {
       throw rejectWithValue(error.response.data.errors);

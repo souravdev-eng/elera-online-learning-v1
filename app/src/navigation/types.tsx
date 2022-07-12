@@ -37,3 +37,11 @@ export type RootStackParamList = {
   CourseDetails: {id: string};
   Chat: undefined;
 };
+
+export type RootTabParamList = {
+  Home: undefined;
+  Course: undefined;
+  Inbox: undefined;
+  Cart: undefined;
+  Profile: undefined;
+};
