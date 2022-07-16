@@ -10,6 +10,7 @@ enum CourseCategory {
   Photography = 'Photography',
   Illustration = 'Illustration',
   Animation = 'Animation',
+  DevOps = 'DevOps',
 }
 
 interface CourseAttars {
@@ -19,7 +20,7 @@ interface CourseAttars {
   category: CourseCategory;
   originalPrice: number;
   price: number;
-  creatorId: mongoose.Types.ObjectId;
+  creatorId: string;
   durationHours: number;
   lessons: { title: string; videos: [{ title: string; videoUrl: string }] }[];
   aboutCourse: string;
@@ -35,7 +36,7 @@ interface CourseDoc extends mongoose.Document {
   totalStudent: number;
   originalPrice: number;
   price: number;
-  creatorId: mongoose.Types.ObjectId;
+  creatorId: string;
   durationHours: number;
   lessons: { title: string; videos: [{ title: string; videoUrl: string }] }[];
   aboutCourse: string;

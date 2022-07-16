@@ -45,7 +45,6 @@ const creatorSchema = new mongoose.Schema(
     },
     fullName: {
       type: String,
-
       trim: true,
     },
     nickName: {

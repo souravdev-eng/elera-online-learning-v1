@@ -3,10 +3,10 @@ import jwt from 'jsonwebtoken';
 
 import { BadRequestError } from '../errors/badRequestError';
 
-interface UserPayload {
-  id: string;
-  email: string;
-}
+type UserPayload = {
+  readonly id: string;
+  readonly email: string;
+};
 
 declare global {
   namespace Express {

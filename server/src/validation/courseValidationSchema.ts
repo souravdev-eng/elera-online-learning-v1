@@ -1,5 +1,4 @@
-import { check, body } from 'express-validator';
-import mongoose from 'mongoose';
+import { body } from 'express-validator';
 
 export const courseCreateValidation = [
   body('title').not().isEmpty().withMessage('Course must have a title'),
@@ -19,7 +18,7 @@ export const courseCreateValidation = [
       lt: 1000000,
     })
     .withMessage('Course must have a original price under 299-1000000'),
-  body('creatorId')
-    .custom((input: string) => mongoose.Types.ObjectId.isValid(input))
-    .withMessage('creatorId must be provided'),
+
+  body('creatorId').not().isEmpty().withMessage('creatorId must be provided'),
+  // .custom((input: string) => mongoose.Types.ObjectId.isValid(input))
 ];

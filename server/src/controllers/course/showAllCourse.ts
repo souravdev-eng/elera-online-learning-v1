@@ -4,8 +4,6 @@ import { Course } from '../../models/courseModel';
 import { APIFeatures } from '../../utils/apiFetcher';
 
 export const showAllCourse = async (req: Request, res: Response, next: NextFunction) => {
-  // req.query.fields = 'title,price,originalPrice,totalReview,ratingAvg,category,image';
-
   const features = new APIFeatures(Course.find(), req.query).filter().sort().limitFields().paginate();
   const course = await features.query.cache();
 
@@ -13,5 +11,5 @@ export const showAllCourse = async (req: Request, res: Response, next: NextFunct
     return next(new NotFoundError('There is no course found'));
   }
 
-  res.status(200).json({ data: course });
+  res.status(200).json({ course });
 };
