@@ -27,9 +27,10 @@ export const BottomTabNavigation = () => {
           paddingBottom: 8,
           borderTopWidth: 0,
         },
-      }}>
+      }}
+      initialRouteName="Profile">
       <Tab.Screen
-        name={Type.Home}
+        name={'Home'}
         component={HomeScreen}
         options={{
           tabBarLabelStyle: {
@@ -45,7 +46,7 @@ export const BottomTabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name={Type.Course}
+        name={'Course'}
         component={MyCourseScreen}
         options={{
           tabBarLabelStyle: {

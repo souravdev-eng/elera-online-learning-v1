@@ -40,8 +40,6 @@ export const getCourseDetailsById = createAsyncThunk(
         },
       });
 
-      console.log(data.course);
-
       return data.course;
     } catch (error: any) {
       throw rejectWithValue(error.response.data.errors);

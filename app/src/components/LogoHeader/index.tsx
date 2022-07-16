@@ -5,9 +5,10 @@ import {colors, fonts_Family, fonts_Size, Icons} from '../../theme';
 interface Props {
   style?: any;
   title: string;
+  isSearch?: boolean;
 }
 
-const LogoHeader: FC<Props> = ({style, title}) => {
+const LogoHeader: FC<Props> = ({style, title, isSearch = true}) => {
   return (
     <View
       style={[
@@ -25,7 +26,7 @@ const LogoHeader: FC<Props> = ({style, title}) => {
         <Text style={styles.title}>{title}</Text>
       </View>
       <View style={styles.row}>
-        <Image source={Icons.Search} style={styles.icon} />
+        {isSearch && <Image source={Icons.Search} style={styles.icon} />}
         <Image source={Icons.More} style={styles.icon} />
       </View>
     </View>
