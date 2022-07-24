@@ -19,6 +19,7 @@ interface UserDoc extends mongoose.Document {
   profileImage: string;
   role: string;
   correctPassword(candidatePassword: string, userPassword: string): Promise<boolean>;
+  bookMarks: string[];
 }
 
 interface UserModel extends mongoose.Model<UserDoc> {
@@ -47,6 +48,10 @@ const userSchema = new mongoose.Schema(
     },
     phoneNumber: {
       type: String,
+    },
+    bookMarks: {
+      type: Array,
+      default: [],
     },
     dialCode: {
       type: String,
