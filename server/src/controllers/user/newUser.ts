@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
-import { BadRequestError } from '../../errors/badRequestError';
+import { BadRequestError } from '../../errors';
 import { User } from '../../models/userModel';
 
 export const newUser = async (req: Request, res: Response, next: NextFunction) => {
@@ -16,7 +16,9 @@ export const newUser = async (req: Request, res: Response, next: NextFunction) =
   const user = User.build({ fullName, email, password });
   await user.save();
 
-  const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, { expiresIn: process.env.JWT_SECRET_EXPIRY! });
+  const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, {
+    expiresIn: process.env.JWT_SECRET_EXPIRY!,
+  });
 
   res.status(201).json({ token, user });
 };

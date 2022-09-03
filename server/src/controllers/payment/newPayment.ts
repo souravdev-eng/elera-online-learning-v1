@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import { BadRequestError } from '../../errors/badRequestError';
+import { OrderStatus } from '../../utils/OrderType';
 import { Order } from '../../models/orderModel';
 import { Payment } from '../../models/payment';
-import { OrderStatus } from '../../utils/OrderType';
+import { BadRequestError } from '../../errors';
 import { stripe } from '../../utils/stripe';
 
 export const newPayment = async (req: Request, res: Response, next: NextFunction) => {

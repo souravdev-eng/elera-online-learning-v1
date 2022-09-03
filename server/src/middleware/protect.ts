@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
-import { BadRequestError } from '../errors/badRequestError';
+import { BadRequestError } from '../errors';
 
 type UserPayload = {
   readonly id: string;

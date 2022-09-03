@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { BadRequestError } from '../../errors/badRequestError';
+import { BadRequestError } from '../../errors';
 import { Course } from '../../models/courseModel';
 import { Order } from '../../models/orderModel';
 
@@ -17,7 +17,9 @@ export const newOrder = async (req: Request, res: Response, next: NextFunction) 
 
   if (existingOrder) {
     console.log('existingOrder', existingOrder);
-    return next(new BadRequestError('Order already exists on your cart! Complete the payment to proceed'));
+    return next(
+      new BadRequestError('Order already exists on your cart! Complete the payment to proceed')
+    );
   }
 
   const order = Order.build({

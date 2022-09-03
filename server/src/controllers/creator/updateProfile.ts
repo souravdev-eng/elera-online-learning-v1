@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { BadRequestError } from '../../errors/badRequestError';
-import { NotFoundError } from '../../errors/notFoundError';
+import { BadRequestError, NotFoundError } from '../../errors';
 import { Creator } from '../../models/creatorModel';
 
 export const updateProfile = async (req: Request, res: Response, next: NextFunction) => {
@@ -14,10 +13,15 @@ export const updateProfile = async (req: Request, res: Response, next: NextFunct
   }
 
   if (isCreator?.id !== id) {
-    return next(new BadRequestError('You are not a creator! Only creator have a permission to access this route'));
+    return next(
+      new BadRequestError(
+        'You are not a creator! Only creator have a permission to access this route'
+      )
+    );
   }
 
-  const { fullName, nickName, dateOfBirth, phoneNumber, dialCode, gender, profileImage, bio } = req.body;
+  const { fullName, nickName, dateOfBirth, phoneNumber, dialCode, gender, profileImage, bio } =
+    req.body;
 
   const creator = await Creator.findByIdAndUpdate(
     isCreator.id,

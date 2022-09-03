@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { BadRequestError } from '../../errors/badRequestError';
+import { BadRequestError } from '../../errors';
 import { Creator } from '../../models/creatorModel';
 
 export const newCreator = async (req: Request, res: Response, next: NextFunction) => {

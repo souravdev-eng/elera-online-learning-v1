@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { BadRequestError } from '../../errors/badRequestError';
-import { NotFoundError } from '../../errors/notFoundError';
+import { NotFoundError } from '../../errors';
 import { Course } from '../../models/courseModel';
 import { User } from '../../models/userModel';
 
