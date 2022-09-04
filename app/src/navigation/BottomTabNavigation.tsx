@@ -9,7 +9,6 @@ import ProfileScreen from '../screens/ProfileScreen';
 import InboxScreen from '../screens/InboxScreen';
 import HomeScreen from '../screens/HomeScreen';
 import CartScreen from '../screens/CartScreen';
-import {AppStackNavigation} from './AppStackNavigation';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
@@ -28,7 +27,7 @@ export const BottomTabNavigation = () => {
           borderTopWidth: 0,
         },
       }}
-      initialRouteName="Profile">
+      initialRouteName="Home">
       <Tab.Screen
         name={'Home'}
         component={HomeScreen}

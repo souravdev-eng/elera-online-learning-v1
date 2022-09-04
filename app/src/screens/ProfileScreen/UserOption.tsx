@@ -8,11 +8,12 @@ interface Props {
   icon: string;
   title: string;
   color?: string;
+  onPress?: () => void;
 }
 
-const UserOption: FC<Props> = ({icon, title, color = '#000'}) => {
+const UserOption: FC<Props> = ({icon, title, color = '#000', onPress}) => {
   return (
-    <TouchableOpacity style={styles.option}>
+    <TouchableOpacity style={styles.option} onPress={onPress}>
       <View style={styles.optionContent}>
         <Ionicons name={icon} size={22} color={color} />
         <Text style={styles.optionText}>{title}</Text>

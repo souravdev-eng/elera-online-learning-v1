@@ -32,14 +32,20 @@ const MyCourseCard: FC<Props> = props => {
           style={styles.courseImage}
         />
       </View>
-      <View style={{width: '80%'}}>
+      <View style={{width: '90%'}}>
         <Text style={styles.title} numberOfLines={2}>
           {title}
         </Text>
         <Text style={styles.timeText}>
           {hrs} hrs {mins} mins
         </Text>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            // backgroundColor: 'pink',
+            width: '70%',
+          }}>
           <View style={styles.progressBar}>
             <View
               style={[styles.progress, {width: `${completePercentage}%`}]}

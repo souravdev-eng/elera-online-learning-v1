@@ -2,18 +2,19 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {RootStackParamList, Type} from './types';
 
-import MostPopularCourseScreen from '../screens/MostPopularCourseScreen';
-import MyBookMarksScreen from '../screens/MyBookMarksScreen';
-import TopMentorsScreen from '../screens/TopMentorsScreen';
 import {BottomTabNavigation} from './BottomTabNavigation';
-import SearchScreen from '../screens/SearchScreen';
-import LoginScreen from '../screens/Auth/LoginScreen';
+import {useAppSelector} from '../hooks/useRedux';
+
+import MostPopularCourseScreen from '../screens/MostPopularCourseScreen';
+import LoginWithPassword from '../screens/Auth/LogInWithPassword';
 import ProfileUpdateScreen from '../screens/ProfileUpdateScreen';
 import CourseDetailScreen from '../screens/CourseDetailScreen';
+import MyBookMarksScreen from '../screens/MyBookMarksScreen';
+import TopMentorsScreen from '../screens/TopMentorsScreen';
 import SignupScreen from '../screens/Auth/SignupScreen';
-import LoginWithPassword from '../screens/Auth/LogInWithPassword';
+import LoginScreen from '../screens/Auth/LoginScreen';
+import SearchScreen from '../screens/SearchScreen';
 import ChatScreen from '../screens/ChatScreen';
-import {useAppSelector} from '../hooks/useRedux';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

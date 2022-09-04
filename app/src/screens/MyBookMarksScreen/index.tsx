@@ -1,14 +1,16 @@
 import {View, FlatList} from 'react-native';
 import React from 'react';
-import {CourseListData} from '../../assets/data/courseList.data';
 import {Tags} from '../../assets/data/tagdata';
+
+import {useAppSelector} from '../../hooks/useRedux';
+import {Icons} from '../../theme';
 
 import CourseCard from '../../components/CourseCard';
 import FilterCard from '../../components/FilterCard';
 import GoBack from '../../components/GoBack';
-import {Icons} from '../../theme';
 
 const MyBookMarksScreen = () => {
+  const {courseList} = useAppSelector(state => state.course);
   return (
     <>
       <FlatList
@@ -34,7 +36,7 @@ const MyBookMarksScreen = () => {
             />
           </>
         }
-        data={CourseListData}
+        data={courseList}
         renderItem={({item}) => (
           <View style={{alignItems: 'center'}}>
             <CourseCard {...item} />

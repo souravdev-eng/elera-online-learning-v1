@@ -1,12 +1,13 @@
-import {View, Text, FlatList} from 'react-native';
+import {View, FlatList} from 'react-native';
 import React from 'react';
-import {CourseListData} from '../../assets/data/courseList.data';
 import CourseCard from '../../components/CourseCard';
 import GoBack from '../../components/GoBack';
 import {Tags} from '../../assets/data/tagdata';
 import FilterCard from '../../components/FilterCard';
+import {useAppSelector} from '../../hooks/useRedux';
 
 const MostPopularCourseScreen = () => {
+  const {courseList} = useAppSelector(state => state.course);
   return (
     <>
       <FlatList
@@ -32,7 +33,7 @@ const MostPopularCourseScreen = () => {
             />
           </>
         }
-        data={CourseListData}
+        data={courseList}
         renderItem={({item}) => (
           <View style={{alignItems: 'center'}}>
             <CourseCard {...item} />

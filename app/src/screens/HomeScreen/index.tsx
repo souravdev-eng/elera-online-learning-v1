@@ -31,8 +31,8 @@ const HomeScreen: React.FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getCreatorList(data.token));
-    dispatch(getCourseList(data.token));
+    dispatch(getCreatorList({token: data?.token!}));
+    dispatch(getCourseList({token: data?.token!}));
   }, []);
 
   const navigateToCourseDetail = (id: string) => {

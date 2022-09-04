@@ -96,6 +96,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginHorizontal: 12,
   },
+  footerContainer: {
+    alignSelf: 'center',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+  },
 });
 
 export default styles;

@@ -4,14 +4,14 @@ import {BASE_URL} from '../../api/baseUrl';
 
 export const getCourseList = createAsyncThunk(
   'get/courseList',
-  async (token: string, {rejectWithValue}) => {
+  async (Data: {token: string}, {rejectWithValue}) => {
     try {
       const {data} = await axios.get(
         `${BASE_URL}/course?fields=title,price,originalPrice,totalReview,ratingAvg,category,image,totalStudent`,
         {
           headers: {
             'Content-type': 'application/json',
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${Data.token}`,
           },
         },
       );

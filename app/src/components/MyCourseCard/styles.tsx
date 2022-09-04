@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     marginBottom: 6,
     marginLeft: 10,
     paddingRight: 10,
+    width: '80%',
   },
 
   timeText: {
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
     height: 8,
     backgroundColor: '#EEEEEE',
     borderRadius: 6,
-    width: width / 2,
+    width: '80%',
     marginLeft: 10,
     marginVertical: 8,
   },
