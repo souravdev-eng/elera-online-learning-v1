@@ -7,10 +7,10 @@ export const errorHandling = async (
   res: Response,
   next: NextFunction
 ) => {
-  if (process.env.NODE_ENV !== 'test') {
-    console.log(err.stack);
-    console.log(err.message);
-  }
+  // if (process.env.NODE_ENV !== 'test') {
+  console.log(err.stack);
+  console.log(err.message);
+  // }
 
   if (err instanceof BaseError) {
     return res.status(err.statusCode).json({ errors: err.serializeErrors() });

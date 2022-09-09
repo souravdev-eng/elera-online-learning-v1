@@ -3,7 +3,9 @@ import { body } from 'express-validator';
 export const courseCreateValidation = [
   body('title').not().isEmpty().withMessage('Course must have a title'),
   body('image').not().isEmpty().withMessage('Course must have a poster image'),
-  body('price').isFloat({ gt: 299, lt: 1000000 }).withMessage('Course must have a price under 299-1000000'),
+  body('price')
+    .isFloat({ gt: 299, lt: 1000000 })
+    .withMessage('Course must have a price under 299-1000000'),
   body('category').not().isEmpty().withMessage('Course must have a category'),
   body('aboutCourse')
     .isLength({
@@ -18,7 +20,6 @@ export const courseCreateValidation = [
       lt: 1000000,
     })
     .withMessage('Course must have a original price under 299-1000000'),
-
   body('creatorId').not().isEmpty().withMessage('creatorId must be provided'),
   // .custom((input: string) => mongoose.Types.ObjectId.isValid(input))
 ];

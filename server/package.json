@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node-dev ./src/server.ts",
-    "test": "jest --watchAll --no-cache"
+    "test": "jest --watchAll --no-cache",
+    "test:ci": "jest"
   },
   "jest": {
     "preset": "ts-jest",
@@ -41,7 +42,9 @@
     "@types/jest": "^28.1.2",
     "@types/supertest": "^2.0.12",
     "jest": "^28.1.1",
+    "jest-redis": "^0.1.0",
     "mongodb-memory-server": "^8.6.1",
+    "redis-memory-server": "^0.6.0",
     "supertest": "^6.2.3",
     "ts-jest": "^28.0.5"
   }
