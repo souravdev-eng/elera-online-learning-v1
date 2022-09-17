@@ -1,4 +1,5 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import React, {FC, useState} from 'react';
 import {colors, fonts_Family, fonts_Size} from '../../theme';
 
@@ -6,14 +7,26 @@ interface Props {
   title: string;
   onPress?: any;
   isActive?: boolean;
+  star?: boolean;
 }
 
-const FilterCard: FC<Props> = ({title, onPress, isActive}) => {
+const FilterCard: FC<Props> = ({title, onPress, isActive, star}) => {
   return (
     <TouchableOpacity
       activeOpacity={0.7}
-      style={isActive ? styles.tagActive : styles.tag}
+      style={[
+        isActive ? styles.tagActive : styles.tag,
+        star ? styles.starContainer : null,
+      ]}
       onPress={onPress}>
+      {star && (
+        <Ionicons
+          name="star"
+          size={14}
+          style={{marginRight: 2}}
+          color={isActive ? colors.light.white : colors.light.primary}
+        />
+      )}
       <Text style={isActive ? styles.tagActiveText : styles.tagText}>
         {title}
       </Text>
@@ -52,5 +65,10 @@ const styles = StyleSheet.create({
     minWidth: 55,
     backgroundColor: colors.light.primary,
     justifyContent: 'center',
+  },
+  starContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });
