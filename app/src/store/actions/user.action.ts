@@ -49,3 +49,24 @@ export const userSignupAction = createAsyncThunk(
     }
   },
 );
+
+export const showMyBookMarks = createAsyncThunk(
+  'get/showAllBookMarks',
+  async (token: string, {rejectWithValue}) => {
+    try {
+      const {data} = await axios.get(
+        `${BASE_URL}/course/bookmarks/?fields=title,price,originalPrice,totalReview,ratingAvg,category,image,totalStudent`,
+        {
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      return data.course;
+    } catch (error: any) {
+      throw rejectWithValue(error.response.data.errors);
+    }
+  },
+);

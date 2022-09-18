@@ -11,6 +11,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
 import {colors, Icons} from '../../theme';
 
+import {useAppNavigation} from '../../hooks/useAppNavigation';
 import {useAppDispatch, useAppSelector} from '../../hooks/useRedux';
 import {getCourseDetailsById} from '../../store/actions/course.action';
 import {RootStackParamList} from '../../navigation/types';
@@ -27,11 +28,12 @@ type CourseDetailScreenRouteProp = RouteProp<
 
 const CourseDetailScreen = () => {
   const {params} = useRoute<CourseDetailScreenRouteProp>();
-  const [isPaused, setIsPaused] = useState(true);
-  const videoRef = useRef(null);
-  const {data} = useAppSelector(state => state.user);
-  const {courseDetails, loading} = useAppSelector(state => state.course);
+  const {handelGoBack} = useAppNavigation();
   const dispatch = useAppDispatch();
+  const videoRef = useRef(null);
+  const {courseDetails, loading} = useAppSelector(state => state.course);
+  const {data} = useAppSelector(state => state.user);
+  const [isPaused, setIsPaused] = useState(true);
 
   const handelPlay = useCallback(() => {
     setIsPaused(false);
@@ -53,6 +55,19 @@ const CourseDetailScreen = () => {
               paddingBottom: '20%',
             }}>
             <>
+              <TouchableOpacity
+                style={{
+                  position: 'absolute',
+                  top: 6,
+                  zIndex: 1,
+                  left: 4,
+                }}
+                onPress={handelGoBack}>
+                <Image
+                  source={Icons.ArrowBack}
+                  style={{width: 30, height: 30, tintColor: '#fff'}}
+                />
+              </TouchableOpacity>
               <View style={styles.container}>
                 <VideoPlayer
                   ref={videoRef}
@@ -151,9 +166,11 @@ const CourseDetailScreen = () => {
               <CourseReview />
             </>
           </ScrollView>
-          <TouchableOpacity style={styles.buyButton}>
-            <Text style={styles.buyNowText}>Buy Now</Text>
-          </TouchableOpacity>
+          <View style={{backgroundColor: '#fff', height: 48, width: '100%'}}>
+            <TouchableOpacity style={styles.buyButton}>
+              <Text style={styles.buyNowText}>Buy Now</Text>
+            </TouchableOpacity>
+          </View>
         </>
       )}
     </>

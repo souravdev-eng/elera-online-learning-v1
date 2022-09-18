@@ -22,6 +22,7 @@ import {CourseListData} from '../../assets/data/courseList.data';
 import {Tags} from '../../assets/data/tagdata';
 import {getCreatorList} from '../../store/actions/creator.action';
 import {getCourseList} from '../../store/actions/course.action';
+import {showMyBookMarks} from '../../store/actions/user.action';
 
 const HomeScreen: React.FC = () => {
   const {navigation} = useAppNavigation();
@@ -33,6 +34,7 @@ const HomeScreen: React.FC = () => {
   useEffect(() => {
     dispatch(getCreatorList(data.token));
     dispatch(getCourseList(data.token));
+    dispatch(showMyBookMarks(data.token));
   }, []);
 
   const navigateToCourseDetail = (id: string) => {

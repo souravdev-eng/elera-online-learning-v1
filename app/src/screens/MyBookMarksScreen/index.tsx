@@ -7,40 +7,47 @@ import CourseCard from '../../components/CourseCard';
 import FilterCard from '../../components/FilterCard';
 import GoBack from '../../components/GoBack';
 import {Icons} from '../../theme';
+import {useAppSelector} from '../../hooks/useRedux';
+import Loading from '../../components/Loading';
 
 const MyBookMarksScreen = () => {
+  const {loading, myBookMarks} = useAppSelector(state => state.user);
   return (
     <>
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}
-        style={{backgroundColor: '#fff'}}
-        ListHeaderComponent={
-          <>
-            <GoBack title="My Bookmark" iconName={Icons.More} />
-            <FlatList
-              showsVerticalScrollIndicator={false}
-              showsHorizontalScrollIndicator={false}
-              horizontal
-              data={Tags}
-              style={{marginVertical: 12}}
-              renderItem={({item}) => (
-                <FilterCard
-                  title={item}
-                  isActive={item === 'All' ? true : false}
-                />
-              )}
-              keyExtractor={(_, idx) => idx.toString()}
-            />
-          </>
-        }
-        data={CourseListData}
-        renderItem={({item}) => (
-          <View style={{alignItems: 'center'}}>
-            <CourseCard {...item} />
-          </View>
-        )}
-      />
+      {loading ? (
+        <Loading />
+      ) : (
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+          style={{backgroundColor: '#fff'}}
+          ListHeaderComponent={
+            <>
+              <GoBack title="My Bookmark" iconName={Icons.More} />
+              <FlatList
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+                horizontal
+                data={Tags}
+                style={{marginVertical: 12}}
+                renderItem={({item}) => (
+                  <FilterCard
+                    title={item}
+                    isActive={item === 'All' ? true : false}
+                  />
+                )}
+                keyExtractor={(_, idx) => idx.toString()}
+              />
+            </>
+          }
+          data={myBookMarks}
+          renderItem={({item}) => (
+            <View style={{alignItems: 'center'}}>
+              <CourseCard {...item} />
+            </View>
+          )}
+        />
+      )}
     </>
   );
 };
