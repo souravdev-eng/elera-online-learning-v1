@@ -4,6 +4,13 @@ import styles from './styles';
 import {Icons} from '../../theme';
 import FilterCard from '../FilterCard';
 
+interface Props {
+  userName: string;
+  profileImage: string;
+  rating: number;
+  review: string;
+}
+
 const ReviewCard = () => {
   return (
     <>

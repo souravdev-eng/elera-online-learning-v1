@@ -150,6 +150,7 @@ const CourseDetailScreen = () => {
               </TouchableOpacity>
             </View>
             <LearningList />
+            <Text style={styles.mentorHeading}>Curriculum</Text>
             <CourseLesson
               data={courseDetails}
               // isActive={isActive}

@@ -1,11 +1,11 @@
-import {View, Text, Image, ScrollView} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 import React from 'react';
 import styles from './styles';
-import {Icons} from '../../theme';
-import FilterCard from '../FilterCard';
-import {RatingTags} from '../../assets/data/rating.data';
 import ViewAll from '../ViewAll';
+import FilterCard from '../FilterCard';
 import ReviewCard from '../ReviewCard';
+
+import {RatingTags} from '../../assets/data/rating.data';
 
 const CourseReview = () => {
   return (

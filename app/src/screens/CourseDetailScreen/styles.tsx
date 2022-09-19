@@ -137,6 +137,13 @@ const styles = StyleSheet.create({
     fontSize: fonts_Size.h4,
     color: colors.light.black,
   },
+  mentorHeading: {
+    fontFamily: fonts_Family.UrbanistBold,
+    fontSize: fonts_Size.h4,
+    color: colors.light.darkGrey,
+    marginVertical: 10,
+    marginLeft: 14,
+  },
 });
 
 export default styles;

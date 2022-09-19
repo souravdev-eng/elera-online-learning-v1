@@ -1,6 +1,6 @@
 export enum Type {
   Home = 'Home',
-  Cart = 'Cart',
+  Transactions = 'Transactions',
   Inbox = 'Inbox',
   Course = 'Course',
   Profile = 'Profile',
@@ -26,7 +26,7 @@ export type RootStackParamList = {
   Home: undefined;
   Course: undefined;
   Inbox: undefined;
-  Cart: undefined;
+  Transactions: undefined;
   Profile: undefined;
   TopMentors: undefined;
   Main: undefined;
@@ -42,6 +42,6 @@ export type RootTabParamList = {
   Home: undefined;
   Course: undefined;
   Inbox: undefined;
-  Cart: undefined;
+  Transactions: undefined;
   Profile: undefined;
 };
