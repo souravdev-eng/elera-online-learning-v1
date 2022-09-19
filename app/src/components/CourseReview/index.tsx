@@ -5,6 +5,7 @@ import {Icons} from '../../theme';
 import FilterCard from '../FilterCard';
 import {RatingTags} from '../../assets/data/rating.data';
 import ViewAll from '../ViewAll';
+import ReviewCard from '../ReviewCard';
 
 const CourseReview = () => {
   return (
@@ -26,6 +27,10 @@ const CourseReview = () => {
           />
         ))}
       </ScrollView>
+      <ReviewCard />
+      <ReviewCard />
+      <ReviewCard />
+      <ReviewCard />
     </View>
   );
 };

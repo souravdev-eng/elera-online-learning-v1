@@ -8,13 +8,15 @@ interface Props {
   onPress?: any;
   isActive?: boolean;
   star?: boolean;
+  style?: any;
 }
 
-const FilterCard: FC<Props> = ({title, onPress, isActive, star}) => {
+const FilterCard: FC<Props> = ({title, onPress, isActive, star, style}) => {
   return (
     <TouchableOpacity
       activeOpacity={0.7}
       style={[
+        style,
         isActive ? styles.tagActive : styles.tag,
         star ? styles.starContainer : null,
       ]}
@@ -69,6 +71,6 @@ const styles = StyleSheet.create({
   starContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
   },
 });

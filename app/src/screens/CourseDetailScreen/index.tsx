@@ -3,24 +3,23 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {useRoute, RouteProp} from '@react-navigation/native';
 // @ts-ignore
 import VideoPlayer from 'react-native-video-controls';
-
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import styles from './styles';
-import {colors, Icons} from '../../theme';
-
-import {useAppDispatch, useAppSelector} from '../../hooks/useRedux';
 import {getCourseDetailsById} from '../../store/actions/course.action';
+import {useAppDispatch, useAppSelector} from '../../hooks/useRedux';
 import {RootStackParamList} from '../../navigation/types';
+import {
+  CourseLesson,
+  AboutCourse,
+  CourseReview,
+  Loading,
+  LearningList,
+  VirtualizedScrollView,
+} from '../../components';
 
-import CourseLesson from '../../components/CourseLesson';
-import AboutCourse from '../../components/AboutCourse';
-import CourseReview from '../../components/CourseReview';
-import Loading from '../../components/Loading';
-import LearningList from '../../components/LearningList';
-import VirtualizedScrollView from '../../components/VirtualizedScrollView';
+import {colors, Icons} from '../../theme';
+import styles from './styles';
 
 type CourseDetailScreenRouteProp = RouteProp<
   RootStackParamList,
@@ -29,13 +28,15 @@ type CourseDetailScreenRouteProp = RouteProp<
 
 const CourseDetailScreen = () => {
   const {params} = useRoute<CourseDetailScreenRouteProp>();
-  const [isPaused, setIsPaused] = useState(true);
-  const videoRef = useRef(null);
   const {data} = useAppSelector(state => state.user);
-  const token = data?.token!;
   const {courseDetails, loading} = useAppSelector(state => state.course);
+  const videoRef = useRef(null);
   const dispatch = useAppDispatch();
 
+  const [isPaused, setIsPaused] = useState(true);
+  const [isActive, setIsActive] = useState(false);
+
+  const token = data?.token!;
   const handelPlay = useCallback(() => {
     setIsPaused(false);
   }, [isPaused]);
@@ -149,11 +150,12 @@ const CourseDetailScreen = () => {
               </TouchableOpacity>
             </View>
             <LearningList />
-            <CourseLesson />
-            {/* <CourseLesson />
-            <CourseLesson />
-            <CourseLesson />
-            <CourseLesson /> */}
+            <CourseLesson
+              data={courseDetails}
+              // isActive={isActive}
+              // onActivePress={() => setIsActive(!isActive)}
+            />
+
             <AboutCourse
               imageUri={courseDetails?.creatorId?.profileImage}
               name={courseDetails?.creatorId?.nickName}
