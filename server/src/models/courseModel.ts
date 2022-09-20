@@ -111,10 +111,18 @@ const courseSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
+    // reviews: [
+    //   {
+    //     type: mongoose.Types.ObjectId,
+    //     ref: 'Review',
+    //   },
+    // ],
   },
   {
     timestamps: true,
+    toObject: { virtuals: true },
     toJSON: {
+      virtuals: true,
       transform(doc, ret) {
         ret.id = ret._id;
         delete ret._id;
@@ -123,6 +131,12 @@ const courseSchema = new mongoose.Schema(
     },
   }
 );
+
+courseSchema.virtual('reviews', {
+  ref: 'Review',
+  foreignField: 'course',
+  localField: '_id',
+});
 
 courseSchema.statics.build = function (attars: CourseAttars) {
   return new Course(attars);

@@ -4,8 +4,8 @@ import jwt from 'jsonwebtoken';
 import { BadRequestError } from '../errors';
 
 type UserPayload = {
-  readonly id: string;
-  readonly email: string;
+  id: string;
+  email: string;
 };
 
 declare global {
