@@ -2,11 +2,12 @@ import { NextFunction, Request, Response } from 'express';
 import { Review } from '../../models/reviewModel';
 
 export const newReview = async (req: Request, res: Response, next: NextFunction) => {
-  const userId = req.user?.id;
+  if (!req.body.course) req.body.course = req.params.courseId;
+  if (!req.body.user) req.body.user = req.user?.id;
 
   const review = Review.build({
     course: req.body.course,
-    user: userId!,
+    user: req.body.user,
     rating: req.body.rating,
     review: req.body.review,
   });

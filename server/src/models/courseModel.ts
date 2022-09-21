@@ -111,12 +111,6 @@ const courseSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
-    // reviews: [
-    //   {
-    //     type: mongoose.Types.ObjectId,
-    //     ref: 'Review',
-    //   },
-    // ],
   },
   {
     timestamps: true,
@@ -131,6 +125,8 @@ const courseSchema = new mongoose.Schema(
     },
   }
 );
+
+courseSchema.index({ ratingAvg: 1 });
 
 courseSchema.virtual('reviews', {
   ref: 'Review',
