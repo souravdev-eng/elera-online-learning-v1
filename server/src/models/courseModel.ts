@@ -67,6 +67,7 @@ const courseSchema = new mongoose.Schema(
     ratingAvg: {
       type: Number,
       default: 0,
+      set: (val: number) => Math.round(val * 10) / 10,
     },
     totalReview: {
       type: Number,
