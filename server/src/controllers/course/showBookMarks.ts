@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { NotFoundError } from '../../errors';
-import { Course } from '../../models/courseModel';
 import { User } from '../../models/userModel';
+import { Course } from '../../models/courseModel';
 import { APIFeatures } from '../../utils/apiFetcher';
 
 export const showAllBookMarks = async (req: Request, res: Response, next: NextFunction) => {

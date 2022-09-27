@@ -10,14 +10,14 @@ const styles = StyleSheet.create({
   },
   lessonCard: {
     width: width / 1.05,
-    padding: 14,
+    padding: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     alignSelf: 'center',
     marginVertical: 10,
     backgroundColor: light.white,
-    elevation: 3,
+    // elevation: 3,
     borderRadius: 8,
   },
   lessonText: {
@@ -26,10 +26,11 @@ const styles = StyleSheet.create({
     color: light.black,
   },
   time: {
-    fontSize: fonts_Size.medium,
+    fontSize: fonts_Size.small,
     fontFamily: fonts_Family.UrbanistSemiBold,
     color: light.grey1,
     marginTop: 4,
+    marginLeft: 10,
   },
   sectionContainer: {
     flexDirection: 'row',

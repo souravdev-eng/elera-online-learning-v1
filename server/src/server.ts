@@ -19,7 +19,7 @@ const start = async () => {
     client.on('error', (err) => console.log('Redis Client Error', err));
     client.connect().then(() => console.log('Redis contented..'));
   } catch (error: any) {
-    console.log(error.message);
+    console.log(error);
   }
   app.listen(process.env.PORT || 4000, () =>
     console.log(`App is running PORT ${process.env.PORT}`)
