@@ -19,7 +19,7 @@ import CourseCard from '../../components/CourseCard';
 import FilterCard from '../../components/FilterCard';
 
 import {CourseListData} from '../../assets/data/courseList.data';
-import {Tags} from '../../assets/data/tagdata';
+import {Tags} from '../../assets/data/tagData';
 import {getCreatorList} from '../../store/actions/creator.action';
 import {getCourseList} from '../../store/actions/course.action';
 

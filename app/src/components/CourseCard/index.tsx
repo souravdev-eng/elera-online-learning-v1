@@ -62,7 +62,7 @@ const CourseCard: FC<Props> = props => {
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Image source={Icons.Star} style={styles.ratingIcon} />
           <Text style={styles.ratingText}>
-            {ratingAvg} | {totalStudent} students
+            {ratingAvg.toFixed(1)} | {totalStudent} students
           </Text>
         </View>
       </View>
