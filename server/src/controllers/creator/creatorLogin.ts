@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { Creator } from '../../models/creatorModel';
 import { BadRequestError } from '../../errors';
+import { Creator } from '../../models';
 
 export const creatorLogin = async (req: Request, res: Response, next: NextFunction) => {
   const { email, password } = req.body;

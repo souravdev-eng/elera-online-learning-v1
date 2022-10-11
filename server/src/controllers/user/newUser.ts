@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
 import { BadRequestError } from '../../errors';
-import { User } from '../../models/userModel';
+import { User } from '../../models';
 
 export const newUser = async (req: Request, res: Response, next: NextFunction) => {
   const { fullName, email, password } = req.body;

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { BadRequestError } from '../../errors';
-import { Order } from '../../models/orderModel';
-import { APIFeatures } from '../../utils/apiFetcher';
+import { APIFeatures } from '../../utils';
+import { Order } from '../../models';
 
 export const showOrder = async (req: Request, res: Response, next: NextFunction) => {
   const features = new APIFeatures(Order.find(), req.query)

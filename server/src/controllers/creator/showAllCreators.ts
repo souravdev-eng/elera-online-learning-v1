@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { NotFoundError } from '../../errors';
-import { Creator } from '../../models/creatorModel';
-import { APIFeatures } from '../../utils/apiFetcher';
+import { APIFeatures } from '../../utils';
+import { Creator } from '../../models';
 
 export const showAllCreators = async (req: Request, res: Response, next: NextFunction) => {
   req.query.fields = 'nickName,profileImage,bio';

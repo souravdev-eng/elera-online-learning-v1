@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { BadRequestError, NotFoundError } from '../../errors';
-import { Creator } from '../../models/creatorModel';
+import { Creator } from '../../models';
 
 export const updateProfile = async (req: Request, res: Response, next: NextFunction) => {
   const id = req.user!.id;

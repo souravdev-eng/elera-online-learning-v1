@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { BadRequestError } from '../../errors';
-import { Course } from '../../models/courseModel';
+import { Course } from '../../models';
 
 export const newCourse = async (req: Request, res: Response, next: NextFunction) => {
   const {
