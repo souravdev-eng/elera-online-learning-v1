@@ -16,3 +16,4 @@ export {default as SendMessage} from './SendMessage';
 export {default as ViewAll} from './ViewAll';
 export {default as VirtualizedScrollView} from './VirtualizedScrollView';
 export {default as ReviewCard} from './ReviewCard';
+export {default as PaymentCard} from './PaymentCard';
