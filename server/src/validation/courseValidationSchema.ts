@@ -20,6 +20,6 @@ export const courseCreateValidation = [
       lt: 1000000,
     })
     .withMessage('Course must have a original price under 299-1000000'),
-  body('creatorId').not().isEmpty().withMessage('creatorId must be provided'),
+  // body('creatorId').not().isEmpty().withMessage('creatorId must be provided'),
   // .custom((input: string) => mongoose.Types.ObjectId.isValid(input))
 ];

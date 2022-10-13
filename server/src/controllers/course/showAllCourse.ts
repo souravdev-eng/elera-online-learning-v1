@@ -4,6 +4,8 @@ import { APIFeatures } from '../../utils';
 import { Course } from '../../models';
 
 export const showAllCourse = async (req: Request, res: Response, next: NextFunction) => {
+  req.query.fields = 'title,price,originalPrice,totalReview,ratingAvg,category,image,totalStudent';
+
   const features = new APIFeatures(Course.find(), req.query)
     .filter()
     .sort()

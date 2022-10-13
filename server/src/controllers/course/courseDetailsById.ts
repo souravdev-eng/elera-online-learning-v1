@@ -5,10 +5,12 @@ import { Course } from '../../models';
 export const courseDetailsById = async (req: Request, res: Response, next: NextFunction) => {
   const { id } = req.params;
 
-  const course = await Course.findById(id).populate({
-    path: 'creatorId',
-    select: 'nickName profileImage bio',
-  });
+  const course = await Course.findById(id)
+    .populate({
+      path: 'creatorId',
+      select: 'nickName profileImage bio',
+    })
+    .populate('reviews');
 
   if (!course) {
     return next(new NotFoundError('There is no course found'));
