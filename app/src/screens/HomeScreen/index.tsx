@@ -11,16 +11,15 @@ import React, {useEffect} from 'react';
 import {Icons} from '../../theme';
 import styles from './styles';
 
+import {ViewAll, CourseCard, FilterCard} from '../../components';
+
 import {useAppDispatch, useAppSelector} from '../../hooks/useRedux';
 import {useAppNavigation} from '../../hooks/useAppNavigation';
 
-import ViewAll from '../../components/ViewAll';
-import CourseCard from '../../components/CourseCard';
-import FilterCard from '../../components/FilterCard';
-
-import {Tags} from '../../assets/data/tagData';
 import {getCreatorList} from '../../store/actions/creator.action';
 import {getCourseList} from '../../store/actions/course.action';
+
+import {Tags} from '../../assets/data/tagData';
 
 const HomeScreen: React.FC = () => {
   const {navigation} = useAppNavigation();
@@ -36,6 +35,10 @@ const HomeScreen: React.FC = () => {
 
   const navigateToCourseDetail = (id: string) => {
     navigation.navigate('CourseDetails', {id});
+  };
+
+  const navigateToCreatorProfile = (id: string) => {
+    navigation.navigate('AuthorProfile', {id});
   };
 
   return (
@@ -88,7 +91,10 @@ const HomeScreen: React.FC = () => {
           style={{flexGrow: 0}}
           data={creatorList}
           renderItem={({item}) => (
-            <TouchableOpacity activeOpacity={0.7} style={styles.userCard}>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              style={styles.userCard}
+              onPress={() => navigateToCreatorProfile(item?.id)}>
               <Image
                 source={{uri: item.profileImage}}
                 style={styles.userNameCardImage}

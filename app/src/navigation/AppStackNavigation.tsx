@@ -18,6 +18,7 @@ import {
   ChatScreen,
   PaymentScreen,
 } from '../screens';
+import AuthorProfileScreen from '../screens/AuthorProfile';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -57,6 +58,10 @@ export const AppStackNavigation = () => {
             component={CourseDetailScreen}
           />
           <Stack.Screen name={Type.Payment} component={PaymentScreen} />
+          <Stack.Screen
+            name={Type.AuthorProfile}
+            component={AuthorProfileScreen}
+          />
         </>
       )}
     </Stack.Navigator>
