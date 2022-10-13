@@ -27,11 +27,6 @@ router
   .post(protect, isCreator, courseCreateValidation, requestValidation, newCourse)
   .get(showAllCourse);
 
-<<<<<<< HEAD
 router.route('/:id').get(protect, courseDetailsById);
-=======
-//! Need to creator when course is updating
-router.route('/:id').get(protect, courseDetailsById).patch(protect, updateCourse);
->>>>>>> 06d83f2c9c9ff505864859bc3d59f91f5ec2aaca
 
 export { router as courseRouter };
