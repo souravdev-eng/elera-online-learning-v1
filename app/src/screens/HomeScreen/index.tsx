@@ -18,7 +18,6 @@ import ViewAll from '../../components/ViewAll';
 import CourseCard from '../../components/CourseCard';
 import FilterCard from '../../components/FilterCard';
 
-import {CourseListData} from '../../assets/data/courseList.data';
 import {Tags} from '../../assets/data/tagData';
 import {getCreatorList} from '../../store/actions/creator.action';
 import {getCourseList} from '../../store/actions/course.action';
@@ -26,7 +25,7 @@ import {getCourseList} from '../../store/actions/course.action';
 const HomeScreen: React.FC = () => {
   const {navigation} = useAppNavigation();
   const {data} = useAppSelector(state => state.user);
-  const {creatorList, loading} = useAppSelector(state => state.creator);
+  const {creatorList} = useAppSelector(state => state.creator);
   const {courseList} = useAppSelector(state => state.course);
   const dispatch = useAppDispatch();
 
@@ -67,14 +66,13 @@ const HomeScreen: React.FC = () => {
         </View>
         <View style={styles.searchContainer}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <TouchableOpacity>
-              <Image style={styles.icon} source={Icons.Search} />
-            </TouchableOpacity>
-            <TextInput style={styles.searchBar} placeholder="Search" />
+            <Image style={styles.icon} source={Icons.Search} />
+            <TextInput
+              style={styles.searchBar}
+              placeholder="Search"
+              onFocus={() => navigation.navigate('Search')}
+            />
           </View>
-          <TouchableOpacity>
-            <Image style={styles.filterIcon} source={Icons.FilterOutline} />
-          </TouchableOpacity>
         </View>
         <TouchableOpacity activeOpacity={0.8} style={styles.bannerContainer} />
 
