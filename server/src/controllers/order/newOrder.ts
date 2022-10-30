@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { BadRequestError } from '../../errors';
-import { Course } from '../../models/courseModel';
-import { Order } from '../../models/orderModel';
+import { Order, Course } from '../../models';
 
 export const newOrder = async (req: Request, res: Response, next: NextFunction) => {
   // @ts-ignore

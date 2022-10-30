@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { NotFoundError } from '../../errors';
-import { Course } from '../../models/courseModel';
+import { Course } from '../../models';
 
 export const courseDetailsById = async (req: Request, res: Response, next: NextFunction) => {
   const { id } = req.params;

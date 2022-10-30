@@ -3,19 +3,14 @@ import { NotFoundError } from '../../errors';
 import { APIFeatures } from '../../utils';
 import { Creator } from '../../models';
 
-export const showAllCreators = async (req: Request, res: Response, next: NextFunction) => {
-  req.query.fields = 'nickName,profileImage,bio';
-
-  const features = new APIFeatures(Creator.find(), req.query)
-    .filter()
-    .sort()
-    .limitFields()
-    .paginate();
+export const showCreatorById = async (req: Request, res: Response, next: NextFunction) => {
+  const { id } = req.params;
+  const features = new APIFeatures(Creator.findById(id), req.query);
   const creator = await features.query.cache();
 
   if (!creator) {
     return next(new NotFoundError('There is no creator found'));
   }
 
-  res.status(200).json({ creator });
+  res.status(200).json(creator);
 };

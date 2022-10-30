@@ -5,16 +5,20 @@ import {RootStackParamList, Type} from './types';
 import {BottomTabNavigation} from './BottomTabNavigation';
 import {useAppSelector} from '../hooks/useRedux';
 
-import MostPopularCourseScreen from '../screens/MostPopularCourseScreen';
-import LoginWithPassword from '../screens/Auth/LogInWithPassword';
-import ProfileUpdateScreen from '../screens/ProfileUpdateScreen';
-import CourseDetailScreen from '../screens/CourseDetailScreen';
-import MyBookMarksScreen from '../screens/MyBookMarksScreen';
-import TopMentorsScreen from '../screens/TopMentorsScreen';
-import SignupScreen from '../screens/Auth/SignupScreen';
-import LoginScreen from '../screens/Auth/LoginScreen';
-import SearchScreen from '../screens/SearchScreen';
-import ChatScreen from '../screens/ChatScreen';
+import {
+  MostPopularCourseScreen,
+  LoginWithPassword,
+  ProfileUpdateScreen,
+  CourseDetailScreen,
+  MyBookMarksScreen,
+  TopMentorsScreen,
+  SignupScreen,
+  LoginScreen,
+  SearchScreen,
+  ChatScreen,
+  PaymentScreen,
+} from '../screens';
+import AuthorProfileScreen from '../screens/AuthorProfile';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -52,6 +56,11 @@ export const AppStackNavigation = () => {
           <Stack.Screen
             name={Type.CourseDetails}
             component={CourseDetailScreen}
+          />
+          <Stack.Screen name={Type.Payment} component={PaymentScreen} />
+          <Stack.Screen
+            name={Type.AuthorProfile}
+            component={AuthorProfileScreen}
           />
         </>
       )}

@@ -1,22 +1,11 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {getCreatorList} from '../actions/creator.action';
-
-interface CreatorProp {
-  bio: string;
-  nickName: string;
-  profileImage: string;
-  id: string;
-}
-
-interface CreatorStateProps {
-  creatorList: CreatorProp[];
-  loading: boolean;
-  error: any;
-}
+import {getCreatorList, getCreatorById} from '../actions/creator.action';
+import {CreatorStateProps} from '../types/creator.types';
 
 const initialState = {
   loading: false,
   creatorList: [],
+  creatorDetails: null,
   error: null,
 } as CreatorStateProps;
 
@@ -34,6 +23,18 @@ const creatorSlice = createSlice({
       state.error = null;
     });
     builder.addCase(getCreatorList.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
+
+    builder.addCase(getCreatorById.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(getCreatorById.fulfilled, (state, action) => {
+      state.loading = false;
+      state.creatorDetails = action.payload;
+    });
+    builder.addCase(getCreatorById.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
     });

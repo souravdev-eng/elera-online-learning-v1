@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { NotFoundError } from '../../errors';
-import { Course } from '../../models/courseModel';
-import { APIFeatures } from '../../utils/apiFetcher';
+import { APIFeatures } from '../../utils';
+import { Course } from '../../models';
 
 export const showAllCourse = async (req: Request, res: Response, next: NextFunction) => {
   req.query.fields = 'title,price,originalPrice,totalReview,ratingAvg,category,image,totalStudent';

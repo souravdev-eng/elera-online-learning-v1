@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { User } from '../../models/userModel';
+import { User } from '../../models';
 
 export const userProfileUpdate = async (req: Request, res: Response, next: NextFunction) => {
   const id = req.user?.id;

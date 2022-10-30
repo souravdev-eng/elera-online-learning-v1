@@ -16,6 +16,8 @@ export enum Type {
   ProfileUpdate = 'ProfileUpdate',
   CourseDetails = 'CourseDetails',
   Chat = 'Chat',
+  Payment = 'Payment',
+  AuthorProfile = 'AuthorProfile',
 }
 
 export type RootStackParamList = {
@@ -36,6 +38,8 @@ export type RootStackParamList = {
   ProfileUpdate: undefined;
   CourseDetails: {id: string};
   Chat: undefined;
+  Payment: undefined;
+  AuthorProfile: {id: string};
 };
 
 export type RootTabParamList = {

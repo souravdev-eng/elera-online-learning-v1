@@ -1,8 +1,8 @@
-import {View, Text, Image, Pressable, ScrollView} from 'react-native';
 import React, {FC} from 'react';
+import {View, Text, Image, Pressable, ScrollView} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import styles from './styles';
-import {colors, Icons} from '../../theme';
+import {colors} from '../../theme';
 
 interface Props {
   name: string;

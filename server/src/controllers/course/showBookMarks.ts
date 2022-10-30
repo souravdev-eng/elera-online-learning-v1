@@ -1,8 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { NotFoundError } from '../../errors';
-import { User } from '../../models/userModel';
-import { Course } from '../../models/courseModel';
-import { APIFeatures } from '../../utils/apiFetcher';
+import { User, Course } from '../../models';
+import { APIFeatures } from '../../utils';
 
 export const showAllBookMarks = async (req: Request, res: Response, next: NextFunction) => {
   const userId = req.user?.id;

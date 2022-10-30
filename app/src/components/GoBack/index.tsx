@@ -5,7 +5,7 @@ import styles from './styles';
 import {useAppNavigation} from '../../hooks/useAppNavigation';
 
 interface Props {
-  title: string;
+  title?: string;
   iconName?: any;
 }
 

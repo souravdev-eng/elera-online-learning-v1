@@ -1,6 +1,5 @@
 import {View, FlatList} from 'react-native';
 import React from 'react';
-import {Tags} from '../../assets/data/tagdata';
 
 import {useAppSelector} from '../../hooks/useRedux';
 import {Icons} from '../../theme';
@@ -8,6 +7,7 @@ import {Icons} from '../../theme';
 import CourseCard from '../../components/CourseCard';
 import FilterCard from '../../components/FilterCard';
 import GoBack from '../../components/GoBack';
+import {Tags} from '../../assets/data/tagData';
 
 const MyBookMarksScreen = () => {
   const {courseList} = useAppSelector(state => state.course);
