@@ -1,15 +1,11 @@
 import {createSlice} from '@reduxjs/toolkit';
-<<<<<<< HEAD
 import {
   showMyBookMarks,
   userLoginAction,
   userSignupAction,
+  updateUserProfile,
 } from '../actions/user.action';
-import {UserBookMarksProps} from '../types/user.types';
-=======
-import {userLoginAction, userSignupAction} from '../actions/user.action';
-import {UserDataProps} from '../types/user.types';
->>>>>>> 49990abfaa3e1cfe0c7afc9fc29ca9d4a5701751
+import {UserDataProps, UserBookMarksProps} from '../types/user.types';
 
 interface UserProps {
   loading: boolean;
@@ -47,7 +43,7 @@ const userSlice = createSlice({
       state.error = payload;
     });
 
-    builder.addCase(userSignupAction.pending, (state, {payload}) => {
+    builder.addCase(userSignupAction.pending, state => {
       state.loading = true;
     });
 
@@ -62,7 +58,7 @@ const userSlice = createSlice({
       state.error = payload;
     });
 
-    builder.addCase(showMyBookMarks.pending, (state, {payload}) => {
+    builder.addCase(showMyBookMarks.pending, state => {
       state.loading = true;
     });
 
@@ -73,6 +69,19 @@ const userSlice = createSlice({
     });
 
     builder.addCase(showMyBookMarks.rejected, (state, {payload}) => {
+      state.loading = false;
+      state.error = payload;
+    });
+
+    builder.addCase(updateUserProfile.pending, state => {
+      state.loading = true;
+    });
+    builder.addCase(updateUserProfile.fulfilled, (state, {payload}) => {
+      state.loading = false;
+      state.data!.user = payload;
+    });
+
+    builder.addCase(updateUserProfile.rejected, (state, {payload}) => {
       state.loading = false;
       state.error = payload;
     });

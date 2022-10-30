@@ -7,8 +7,9 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
-import DatePicker from 'react-native-date-picker';
+import {launchImageLibrary} from 'react-native-image-picker';
 import {Dropdown} from 'react-native-element-dropdown';
+import DatePicker from 'react-native-date-picker';
 
 import AppTextInput from '../../global/AppTextInput';
 import {colors, Icons} from '../../theme';
@@ -17,16 +18,17 @@ import styles from './styles';
 import {useAppDispatch, useAppSelector} from '../../hooks/useRedux';
 import {useAppNavigation} from '../../hooks/useAppNavigation';
 import {useProfileUpdateHook} from './useProfileUpdateHook';
+import {updateUserProfile} from '../../store/actions/user.action';
 
 const ProfileUpdateScreen = () => {
   const {handelGoBack, navigation} = useAppNavigation();
-  // const {user} = useAppSelector(state => state.user);
+  const {data} = useAppSelector(state => state.user);
   const dispatch = useAppDispatch();
   const currentDate = new Date();
   const [open, setOpen] = useState(false);
 
   const {
-    data,
+    GanderData,
     name,
     isName,
     email,
@@ -64,6 +66,32 @@ const ProfileUpdateScreen = () => {
     );
   };
 
+  const uploadImage = async () => {
+    const result = await launchImageLibrary({
+      mediaType: 'photo',
+      quality: 0.6,
+      maxHeight: 400,
+      maxWidth: 400,
+    });
+    if (result.assets) {
+      console.log(result.assets);
+    }
+  };
+
+  const handelSubmit = () => {
+    dispatch(
+      updateUserProfile({
+        id: data?.user.id!,
+        token: data?.token!,
+        dateOfBirth: date,
+        gender: gander,
+        phoneNumber: phone,
+        nickName: name,
+      }),
+    );
+    navigation.navigate('Profile');
+  };
+
   return (
     <ScrollView contentContainerStyle={{flexGrow: 1, backgroundColor: '#fff'}}>
       <View style={styles.headerWarper}>
@@ -79,7 +107,7 @@ const ProfileUpdateScreen = () => {
             style={styles.userIcon}
             resizeMode="contain"
           />
-          <TouchableOpacity style={styles.edit}>
+          <TouchableOpacity style={styles.edit} onPress={uploadImage}>
             <Image source={Icons.Edit} style={styles.editIcon} />
           </TouchableOpacity>
         </View>
@@ -104,7 +132,7 @@ const ProfileUpdateScreen = () => {
                 : 'Date of Birth'}
             </Text>
             <DatePicker
-              maximumDate={new Date()}
+              // maximumDate={new Date()}
               modal
               open={open}
               date={date}
@@ -153,7 +181,7 @@ const ProfileUpdateScreen = () => {
             style={styles.inputWarper}
             placeholderStyle={styles.dropDownText}
             selectedTextStyle={styles.textInput}
-            data={data}
+            data={GanderData}
             labelField="label"
             valueField="value"
             placeholder={!isGander ? 'Select Gender' : '...'}
@@ -169,7 +197,7 @@ const ProfileUpdateScreen = () => {
             )}
           />
         </AppTextInput>
-        <TouchableOpacity style={styles.submitButton}>
+        <TouchableOpacity style={styles.submitButton} onPress={handelSubmit}>
           <Text style={styles.submitButtonText}>Continue</Text>
         </TouchableOpacity>
       </View>

@@ -3,14 +3,7 @@ import {Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {colors, fonts_Family, fonts_Size, Icons} from '../theme';
 import {RootStackParamList, Type} from './types';
-<<<<<<< HEAD
 
-import MyCourseScreen from '../screens/MyCourseScreen';
-import ProfileScreen from '../screens/ProfileScreen';
-import InboxScreen from '../screens/InboxScreen';
-import HomeScreen from '../screens/HomeScreen';
-import CartScreen from '../screens/CartScreen';
-=======
 import {
   MyCourseScreen,
   HomeScreen,
@@ -18,7 +11,6 @@ import {
   ProfileScreen,
   TransactionsScreen,
 } from '../screens';
->>>>>>> 49990abfaa3e1cfe0c7afc9fc29ca9d4a5701751
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 

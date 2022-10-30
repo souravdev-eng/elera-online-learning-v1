@@ -30,14 +30,8 @@ const HomeScreen: React.FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-<<<<<<< HEAD
-    dispatch(getCreatorList(data.token));
-    dispatch(getCourseList(data.token));
-    dispatch(showMyBookMarks(data.token));
-=======
     dispatch(getCreatorList({token: data?.token!}));
     dispatch(getCourseList({token: data?.token!}));
->>>>>>> 49990abfaa3e1cfe0c7afc9fc29ca9d4a5701751
   }, []);
 
   const navigateToCourseDetail = (id: string) => {

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 export interface UserBookMarksProps {
   title: string;
   category: string;
@@ -9,7 +8,7 @@ export interface UserBookMarksProps {
   price: number;
   image: string;
   id: string;
-=======
+}
 export interface UserDataProps {
   token: string;
   user: {
@@ -20,5 +19,4 @@ export interface UserDataProps {
     updatedAt: string;
     id: string;
   };
->>>>>>> 49990abfaa3e1cfe0c7afc9fc29ca9d4a5701751
 }

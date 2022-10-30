@@ -6,14 +6,6 @@ import VideoPlayer from 'react-native-video-controls';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-<<<<<<< HEAD
-import styles from './styles';
-import {colors, Icons} from '../../theme';
-
-import {useAppNavigation} from '../../hooks/useAppNavigation';
-import {useAppDispatch, useAppSelector} from '../../hooks/useRedux';
-=======
->>>>>>> 49990abfaa3e1cfe0c7afc9fc29ca9d4a5701751
 import {getCourseDetailsById} from '../../store/actions/course.action';
 import {useAppDispatch, useAppSelector} from '../../hooks/useRedux';
 import {RootStackParamList} from '../../navigation/types';
@@ -36,19 +28,10 @@ type CourseDetailScreenRouteProp = RouteProp<
 
 const CourseDetailScreen = () => {
   const {params} = useRoute<CourseDetailScreenRouteProp>();
-<<<<<<< HEAD
-  const {handelGoBack} = useAppNavigation();
-  const dispatch = useAppDispatch();
-  const videoRef = useRef(null);
-  const {courseDetails, loading} = useAppSelector(state => state.course);
-  const {data} = useAppSelector(state => state.user);
-  const [isPaused, setIsPaused] = useState(true);
-=======
   const {data} = useAppSelector(state => state.user);
   const {courseDetails, loading} = useAppSelector(state => state.course);
   const videoRef = useRef(null);
   const dispatch = useAppDispatch();
->>>>>>> 49990abfaa3e1cfe0c7afc9fc29ca9d4a5701751
 
   const [isPaused, setIsPaused] = useState(true);
   const [isActive, setIsActive] = useState(false);
@@ -66,56 +49,6 @@ const CourseDetailScreen = () => {
     <>
       {loading && <Loading />}
       {courseDetails && (
-<<<<<<< HEAD
-        <>
-          <ScrollView
-            contentContainerStyle={{
-              flexGrow: 1,
-              backgroundColor: '#fff',
-              paddingBottom: '20%',
-            }}>
-            <>
-              <TouchableOpacity
-                style={{
-                  position: 'absolute',
-                  top: 6,
-                  zIndex: 1,
-                  left: 4,
-                }}
-                onPress={handelGoBack}>
-                <Image
-                  source={Icons.ArrowBack}
-                  style={{width: 30, height: 30, tintColor: '#fff'}}
-                />
-              </TouchableOpacity>
-              <View style={styles.container}>
-                <VideoPlayer
-                  ref={videoRef}
-                  source={{uri: courseDetails?.introVideo}}
-                  poster={courseDetails?.image}
-                  style={styles.videoPlayer}
-                  showOnStart={false}
-                  posterResizeMod="cover"
-                  paused={isPaused}
-                  seekColor={colors.light.primary}
-                  disableBack={true}
-                  disableVolume={true}
-                  disablePlayPause={true}
-                  tapAnywhereToPause={true}
-                />
-                {isPaused === true && (
-                  <TouchableOpacity
-                    onPress={handelPlay}
-                    style={styles.playIconContainer}>
-                    <Ionicons
-                      name="ios-play-circle"
-                      size={40}
-                      color={colors.light.PrimaryLight}
-                      style={{alignSelf: 'center', marginLeft: 2, opacity: 0.8}}
-                    />
-                  </TouchableOpacity>
-                )}
-=======
         <VirtualizedScrollView
           style={{
             flexGrow: 1,
@@ -158,7 +91,6 @@ const CourseDetailScreen = () => {
             <View style={{paddingHorizontal: 12}}>
               <View style={styles.titleWrapper}>
                 <Text style={styles.title}>{courseDetails?.title}</Text>
->>>>>>> 49990abfaa3e1cfe0c7afc9fc29ca9d4a5701751
               </View>
               <View style={styles.row}>
                 <View style={styles.category}>
@@ -207,24 +139,6 @@ const CourseDetailScreen = () => {
                   <Text style={styles.ratingText}>Certificate</Text>
                 </View>
               </View>
-<<<<<<< HEAD
-              <CourseLesson />
-              <AboutCourse
-                imageUri={courseDetails?.creatorId?.profileImage}
-                name={courseDetails?.creatorId?.nickName}
-                bio={courseDetails?.creatorId?.bio}
-                aboutCourse={courseDetails?.aboutCourse || ''}
-              />
-              <CourseReview />
-            </>
-          </ScrollView>
-          <View style={{backgroundColor: '#fff', height: 48, width: '100%'}}>
-            <TouchableOpacity style={styles.buyButton}>
-              <Text style={styles.buyNowText}>Buy Now</Text>
-            </TouchableOpacity>
-          </View>
-        </>
-=======
             </View>
             {/* @@@@@@@@@@@@@@@@ Buttons @@@@@@@@@@@@@@@*/}
             <View style={styles.buttonsWrapper}>
@@ -252,7 +166,6 @@ const CourseDetailScreen = () => {
             <CourseReview />
           </>
         </VirtualizedScrollView>
->>>>>>> 49990abfaa3e1cfe0c7afc9fc29ca9d4a5701751
       )}
     </>
   );
