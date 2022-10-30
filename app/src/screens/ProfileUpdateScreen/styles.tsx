@@ -57,19 +57,20 @@ const styles = StyleSheet.create({
     tintColor: colors.light.white,
   },
   inputWarper: {
-    width: '90%',
-    height: 58,
-    backgroundColor: '#f1f1f184',
-    borderRadius: 12,
-    marginBottom: 20,
-    justifyContent: 'center',
+    width: '100%',
+    // height: 58,
+    // backgroundColor: '#f1f1f184',
+    // borderRadius: 12,
+    // marginBottom: 20,
+    // justifyContent: 'center',
   },
   textInput: {
-    paddingLeft: 14,
+    paddingLeft: 12,
     fontFamily: fonts_Family.UrbanistSemiBold,
     color: colors.light.darkGrey,
     width: '80%',
   },
+
   icon: {
     width: 20,
     height: 20,
@@ -79,13 +80,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingLeft: 0,
-    paddingRight: 14,
   },
   text: {
     paddingLeft: 14,
     fontFamily: fonts_Family.UrbanistSemiBold,
     color: colors.light.grey1,
+  },
+  dropDownText: {
+    fontFamily: fonts_Family.UrbanistMedium,
+    color: colors.light.grey1,
+    paddingLeft: 14,
+    fontSize: 14,
   },
   submitButton: {
     width: '90%',

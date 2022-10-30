@@ -34,6 +34,7 @@ export const Icons = {
   ChevronDown: require('../assets/images/chevron-down.png'),
   PlayCircle: require('../assets/images/play-circle.png'),
   FileText: require('../assets/images/file-text.png'),
+  Call: require('../assets/images/call.png'),
 
   // Banners
 

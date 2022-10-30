@@ -7,9 +7,11 @@ import LogoHeader from '../../components/LogoHeader';
 import UserOption from './UserOption';
 import {useAppDispatch, useAppSelector} from '../../hooks/useRedux';
 import {signOut} from '../../store/reducers/user.reducer';
+import {useAppNavigation} from '../../hooks/useAppNavigation';
 
 const ProfileScreen = () => {
   let dispatch = useAppDispatch();
+  const {navigation} = useAppNavigation();
   const {data} = useAppSelector(state => state.user);
 
   const handelSignOut = () => {
@@ -36,7 +38,11 @@ const ProfileScreen = () => {
           <Text style={styles.userEmail}>{data?.user.email}</Text>
         </View>
         <View style={styles.userOptionContainer}>
-          <UserOption title="Edit Profile" icon="person-outline" />
+          <UserOption
+            title="Edit Profile"
+            icon="person-outline"
+            onPress={() => navigation.navigate('ProfileUpdate')}
+          />
           <UserOption icon="notifications-outline" title="Notification" />
           <UserOption icon="wallet-outline" title="Payment" />
           <UserOption icon="shield-outline" title="Security" />

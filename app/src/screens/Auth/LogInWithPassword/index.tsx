@@ -1,20 +1,22 @@
 import {
   View,
   Text,
+  Image,
   TextInput,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  Image,
 } from 'react-native';
 import React, {useState} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import styles from './styles';
+import Loading from '../../../components/Loading';
+
 import {colors, Icons} from '../../../theme';
-import {useAppNavigation} from '../../../hooks/useAppNavigation';
+import styles from './styles';
+
 import {useAppDispatch, useAppSelector} from '../../../hooks/useRedux';
 import {userLoginAction} from '../../../store/actions/user.action';
-import Loading from '../../../components/Loading';
+import {useAppNavigation} from '../../../hooks/useAppNavigation';
 
 const LoginWithPassword = () => {
   const {handelGoBack, navigation} = useAppNavigation();
@@ -87,8 +89,7 @@ const LoginWithPassword = () => {
           <TouchableOpacity style={styles.button} onPress={handelLogin}>
             <Text style={styles.signupButtonText}>Sign in</Text>
           </TouchableOpacity>
-          <View
-            style={styles.footerContainer}>
+          <View style={styles.footerContainer}>
             <View style={styles.divider}>
               <View style={{borderBottomWidth: 0.5, width: '32%'}} />
               <Text style={styles.orText}>or continue with</Text>
