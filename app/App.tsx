@@ -2,6 +2,7 @@ import {LogBox} from 'react-native';
 LogBox.ignoreLogs([
   'ViewPropTypes will be removed',
   'ColorPropType will be removed',
+  'new NativeEventEmitter',
 ]);
 
 import React from 'react';

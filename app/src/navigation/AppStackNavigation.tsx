@@ -2,18 +2,23 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {RootStackParamList, Type} from './types';
 
-import MostPopularCourseScreen from '../screens/MostPopularCourseScreen';
-import MyBookMarksScreen from '../screens/MyBookMarksScreen';
-import TopMentorsScreen from '../screens/TopMentorsScreen';
 import {BottomTabNavigation} from './BottomTabNavigation';
-import SearchScreen from '../screens/SearchScreen';
-import LoginScreen from '../screens/Auth/LoginScreen';
-import ProfileUpdateScreen from '../screens/ProfileUpdateScreen';
-import CourseDetailScreen from '../screens/CourseDetailScreen';
-import SignupScreen from '../screens/Auth/SignupScreen';
-import LoginWithPassword from '../screens/Auth/LogInWithPassword';
-import ChatScreen from '../screens/ChatScreen';
 import {useAppSelector} from '../hooks/useRedux';
+
+import {
+  MostPopularCourseScreen,
+  LoginWithPassword,
+  ProfileUpdateScreen,
+  CourseDetailScreen,
+  MyBookMarksScreen,
+  TopMentorsScreen,
+  SignupScreen,
+  LoginScreen,
+  SearchScreen,
+  ChatScreen,
+  PaymentScreen,
+} from '../screens';
+import AuthorProfileScreen from '../screens/AuthorProfile';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -51,6 +56,11 @@ export const AppStackNavigation = () => {
           <Stack.Screen
             name={Type.CourseDetails}
             component={CourseDetailScreen}
+          />
+          <Stack.Screen name={Type.Payment} component={PaymentScreen} />
+          <Stack.Screen
+            name={Type.AuthorProfile}
+            component={AuthorProfileScreen}
           />
         </>
       )}

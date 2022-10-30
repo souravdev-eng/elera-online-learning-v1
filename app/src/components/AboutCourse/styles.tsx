@@ -3,7 +3,7 @@ import {colors, fonts_Family, fonts_Size} from '../../theme';
 
 const styles = StyleSheet.create({
   container: {
-    padding: 15,
+    padding: 12,
     flex: 1,
     backgroundColor: colors.light.white,
   },
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   mentorName: {
     fontFamily: fonts_Family.UrbanistBold,
     fontSize: fonts_Size.h4,
-    color: colors.light.darkGrey,
+    color: colors.light.primary,
     marginBottom: 4,
   },
   bio: {

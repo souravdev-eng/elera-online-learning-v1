@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts_Family.UrbanistBold,
     fontSize: fonts_Size.h3,
     color: colors.light.darkGrey,
-    width: '94%',
+    // width: '94%',
     letterSpacing: 0.4,
   },
   bookMarks: {
@@ -100,22 +100,58 @@ const styles = StyleSheet.create({
     tintColor: colors.light.PrimaryLight,
     marginRight: 4,
   },
+  buttonsWrapper: {
+    width: width,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 8,
+    marginBottom: 10,
+  },
   buyButton: {
+<<<<<<< HEAD
     width: '96%',
     height: 58,
+=======
+    width: '48%',
+    height: 48,
+>>>>>>> 49990abfaa3e1cfe0c7afc9fc29ca9d4a5701751
     backgroundColor: colors.light.primary,
-    marginVertical: 10,
     alignSelf: 'center',
+<<<<<<< HEAD
     borderRadius: 8,
+=======
+    borderRadius: 6,
+>>>>>>> 49990abfaa3e1cfe0c7afc9fc29ca9d4a5701751
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'absolute',
-    bottom: 0,
+  },
+  addToCart: {
+    width: '48%',
+    height: 48,
+    backgroundColor: colors.light.white,
+    alignSelf: 'center',
+    borderRadius: 6,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 2,
   },
   buyNowText: {
     fontFamily: fonts_Family.UrbanistBold,
     fontSize: fonts_Size.h4,
     color: colors.light.white,
+  },
+  addToCartText: {
+    fontFamily: fonts_Family.UrbanistSemiBold,
+    fontSize: fonts_Size.h4,
+    color: colors.light.black,
+  },
+  mentorHeading: {
+    fontFamily: fonts_Family.UrbanistBold,
+    fontSize: fonts_Size.h4,
+    color: colors.light.darkGrey,
+    marginVertical: 10,
+    marginLeft: 14,
   },
 });
 

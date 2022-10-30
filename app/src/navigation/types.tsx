@@ -1,6 +1,6 @@
 export enum Type {
   Home = 'Home',
-  Cart = 'Cart',
+  Transactions = 'Transactions',
   Inbox = 'Inbox',
   Course = 'Course',
   Profile = 'Profile',
@@ -16,6 +16,8 @@ export enum Type {
   ProfileUpdate = 'ProfileUpdate',
   CourseDetails = 'CourseDetails',
   Chat = 'Chat',
+  Payment = 'Payment',
+  AuthorProfile = 'AuthorProfile',
 }
 
 export type RootStackParamList = {
@@ -26,7 +28,7 @@ export type RootStackParamList = {
   Home: undefined;
   Course: undefined;
   Inbox: undefined;
-  Cart: undefined;
+  Transactions: undefined;
   Profile: undefined;
   TopMentors: undefined;
   Main: undefined;
@@ -36,12 +38,14 @@ export type RootStackParamList = {
   ProfileUpdate: undefined;
   CourseDetails: {id: string};
   Chat: undefined;
+  Payment: undefined;
+  AuthorProfile: {id: string};
 };
 
 export type RootTabParamList = {
   Home: undefined;
   Course: undefined;
   Inbox: undefined;
-  Cart: undefined;
+  Transactions: undefined;
   Profile: undefined;
 };

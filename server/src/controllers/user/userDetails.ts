@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import { NotFoundError } from '../../errors/notFoundError';
-import { User } from '../../models/userModel';
+import { NotFoundError } from '../../errors';
+import { User } from '../../models';
 
 export const userDetails = async (req: Request, res: Response, next: NextFunction) => {
   const user = await User.findById(req.user?.id);

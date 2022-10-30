@@ -2,12 +2,12 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import axios from 'axios';
 import {BASE_URL} from '../../api/baseUrl';
 
-interface Props {
+interface LoginProps {
   email: string;
   password: string;
 }
 
-interface Props1 {
+interface SignupProps {
   email: string;
   password: string;
   fullName: string;
@@ -15,7 +15,7 @@ interface Props1 {
 
 export const userLoginAction = createAsyncThunk(
   'user/login',
-  async (data: Props, {rejectWithValue}) => {
+  async (data: LoginProps, {rejectWithValue}) => {
     const {email, password} = data;
     try {
       const {data} = await axios.post(
@@ -33,7 +33,7 @@ export const userLoginAction = createAsyncThunk(
 
 export const userSignupAction = createAsyncThunk(
   'user/signup',
-  async (data: Props1, {rejectWithValue}) => {
+  async (data: SignupProps, {rejectWithValue}) => {
     const {email, password, fullName} = data;
     try {
       const {data} = await axios.post(

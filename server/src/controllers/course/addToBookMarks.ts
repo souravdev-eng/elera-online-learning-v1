@@ -1,8 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import { BadRequestError } from '../../errors/badRequestError';
-import { NotFoundError } from '../../errors/notFoundError';
-import { Course } from '../../models/courseModel';
-import { User } from '../../models/userModel';
+import { NotFoundError } from '../../errors';
+import { User, Course } from '../../models';
 
 export const addToBookMarks = async (req: Request, res: Response, next: NextFunction) => {
   const { id } = req.params;

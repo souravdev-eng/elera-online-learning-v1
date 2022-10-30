@@ -67,6 +67,7 @@ const courseSchema = new mongoose.Schema(
     ratingAvg: {
       type: Number,
       default: 0,
+      set: (val: number) => Math.round(val * 10) / 10,
     },
     totalReview: {
       type: Number,
@@ -114,7 +115,9 @@ const courseSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    toObject: { virtuals: true },
     toJSON: {
+      virtuals: true,
       transform(doc, ret) {
         ret.id = ret._id;
         delete ret._id;
@@ -123,6 +126,14 @@ const courseSchema = new mongoose.Schema(
     },
   }
 );
+
+courseSchema.index({ ratingAvg: 1 });
+
+courseSchema.virtual('reviews', {
+  ref: 'Review',
+  foreignField: 'course',
+  localField: '_id',
+});
 
 courseSchema.statics.build = function (attars: CourseAttars) {
   return new Course(attars);

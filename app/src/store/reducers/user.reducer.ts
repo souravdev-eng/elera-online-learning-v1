@@ -1,14 +1,19 @@
 import {createSlice} from '@reduxjs/toolkit';
+<<<<<<< HEAD
 import {
   showMyBookMarks,
   userLoginAction,
   userSignupAction,
 } from '../actions/user.action';
 import {UserBookMarksProps} from '../types/user.types';
+=======
+import {userLoginAction, userSignupAction} from '../actions/user.action';
+import {UserDataProps} from '../types/user.types';
+>>>>>>> 49990abfaa3e1cfe0c7afc9fc29ca9d4a5701751
 
 interface UserProps {
   loading: boolean;
-  data: any;
+  data: UserDataProps | null;
   error: any;
   myBookMarks: UserBookMarksProps[];
 }
@@ -23,7 +28,9 @@ const initialState = {
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    signOut: () => initialState,
+  },
   extraReducers: builder => {
     builder.addCase(userLoginAction.pending, state => {
       state.loading = true;
@@ -71,5 +78,6 @@ const userSlice = createSlice({
     });
   },
 });
+export const {signOut} = userSlice.actions;
 
 export default userSlice.reducer;

@@ -11,7 +11,7 @@ const router = Router();
 
 router.post('/signup', userSignUpValidation, requestValidation, newUser);
 router.post('/login', userLoginUpValidation, requestValidation, login);
-router.patch('/update-user-profile/:id', userProfileUpdate);
+router.patch('/update-user-profile/:id', protect, userProfileUpdate);
 
 router.route('/me').get(protect, userDetails);
 

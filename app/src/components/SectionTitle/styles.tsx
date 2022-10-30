@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
     fontSize: fonts_Size.body,
     fontFamily: fonts_Family.UrbanistBold,
     color: light.primary,
-    // marginTop: 4,
   },
 });
 

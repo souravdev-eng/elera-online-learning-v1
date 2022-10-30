@@ -1,10 +1,16 @@
 import { NextFunction, Request, Response } from 'express';
-import { NotFoundError } from '../../errors/notFoundError';
-import { Course } from '../../models/courseModel';
-import { APIFeatures } from '../../utils/apiFetcher';
+import { NotFoundError } from '../../errors';
+import { APIFeatures } from '../../utils';
+import { Course } from '../../models';
 
 export const showAllCourse = async (req: Request, res: Response, next: NextFunction) => {
-  const features = new APIFeatures(Course.find(), req.query).filter().sort().limitFields().paginate();
+  req.query.fields = 'title,price,originalPrice,totalReview,ratingAvg,category,image,totalStudent';
+
+  const features = new APIFeatures(Course.find(), req.query)
+    .filter()
+    .sort()
+    .limitFields()
+    .paginate();
   const course = await features.query.cache();
 
   if (!course) {

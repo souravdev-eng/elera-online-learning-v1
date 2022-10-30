@@ -1,19 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
-import { BadRequestError } from '../../errors/badRequestError';
-import { Order } from '../../models/orderModel';
-import { Payment } from '../../models/payment';
-import { OrderStatus } from '../../utils/OrderType';
-import { stripe } from '../../utils/stripe';
+import { BadRequestError } from '../../errors';
+import { Payment, Order } from '../../models';
+import { OrderStatus, stripe } from '../../utils';
 
 export const newPayment = async (req: Request, res: Response, next: NextFunction) => {
   const { token } = req.body;
   const orderId = req.params.orderId;
-
   const order = await Order.findById(orderId);
-
-  // if (order?.user !== req.user?.id) {
-  //   return next(new BadRequestError('You cannot pay for this order'));
-  // }
 
   if (!order) {
     return next(new BadRequestError('Order not found'));
