@@ -109,20 +109,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   buyButton: {
-<<<<<<< HEAD
-    width: '96%',
-    height: 58,
-=======
     width: '48%',
     height: 48,
->>>>>>> 49990abfaa3e1cfe0c7afc9fc29ca9d4a5701751
     backgroundColor: colors.light.primary,
     alignSelf: 'center',
-<<<<<<< HEAD
-    borderRadius: 8,
-=======
     borderRadius: 6,
->>>>>>> 49990abfaa3e1cfe0c7afc9fc29ca9d4a5701751
     justifyContent: 'center',
     alignItems: 'center',
   },
