@@ -13,18 +13,17 @@ on: # This on block is when we want to run this job
 jobs:
   build-and-test: # This build-and-test is the job name
     runs-on: ubuntu-latest # In this runs-on block we said which server we are running on our jobs
-
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    defaults:
+      run:
+        working-directory: ./server/
 
     steps:
       - uses: actions/checkout@v3 # This actions/checkout@v3 means we check our branch
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 16
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: 16
           cache: 'npm'
+          cache-dependency-path: './server/package-lock.json'
       - run: npm install
       - run: npm run test:ci
