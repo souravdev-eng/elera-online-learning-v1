@@ -9,15 +9,12 @@ on: # This on block is when we want to run this job
 jobs:
   deploy: # This build-and-test is the job name
     runs-on: ubuntu-latest # In this runs-on block we said which server we are running on our jobs
-    defaults:
-      run:
-        working-directory: ./server/
 
     steps:
-      - uses: actions/checkout@v3 # This actions/checkout@v3 means we check our branch
+      - uses: actions/checkout@v2 # This actions/checkout@v3 means we check our branch
       - run: cd server && docker build -t souravdeveloper/elera-server .
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       - run: docker push souravdeveloper/elera-server
