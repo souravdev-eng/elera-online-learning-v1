@@ -95,12 +95,12 @@ const styles = StyleSheet.create({
   submitButton: {
     width: '90%',
     height: 58,
-    borderRadius: 22,
+    borderRadius: 28,
     backgroundColor: colors.light.PrimaryLight,
-    marginBottom: 26,
-    marginTop: 12,
     justifyContent: 'center',
     alignItems: 'center',
+    position: 'absolute',
+    bottom: 10,
   },
   submitButtonText: {
     fontFamily: fonts_Family.UrbanistSemiBold,
