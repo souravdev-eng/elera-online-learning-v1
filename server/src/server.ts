@@ -16,7 +16,7 @@ const start = async () => {
     });
     console.log('Connected to MongoDB');
 
-    client.on('error', (err) => console.log('Redis Client Error...', err));
+    client.on('error', (err) => console.log('Redis Client Error', err));
     client.connect().then(() => console.log('Redis contented...'));
   } catch (error: any) {
     console.log(error);
