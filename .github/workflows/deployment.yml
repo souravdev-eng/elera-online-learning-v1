@@ -15,6 +15,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3 # This actions/checkout@v3 means we check our branch
-      - run: docker build ./server -t souravdeveloper/elera-server
-      - run: echo "${{secrets.DOCKER_PASSWORD}}" | docker login -u ${{secrets.DOCKER_HUB_USERNAME}} --password-stdin
-      - run: docker push souravdeveloper/elera-server/el  era-server
+      - run: cd server && docker build -t souravdeveloper/elera-server .
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - run: docker push souravdeveloper/elera-server
