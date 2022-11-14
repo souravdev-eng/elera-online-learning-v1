@@ -3,8 +3,12 @@ name: Elera Server # Name of the Elera CI/CD pipeline name
 on: # This on block is when we want to run this job
   push:
     branches: ['main']
+    paths:
+      - 'server/**'
   pull_request:
     branches: ['main']
+    paths:
+      - 'server/**'
 
 jobs:
   build-and-test: # This build-and-test is the job name
