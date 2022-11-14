@@ -1,0 +1,20 @@
+name: Deployment # Name of the Elera CI/CD pipeline name
+
+on: # This on block is when we want to run this job
+  push:
+    branches: ['main']
+    paths:
+      - 'server/**'
+
+jobs:
+  deploy: # This build-and-test is the job name
+    runs-on: ubuntu-latest # In this runs-on block we said which server we are running on our jobs
+    defaults:
+      run:
+        working-directory: ./server/
+
+    steps:
+      - uses: actions/checkout@v3 # This actions/checkout@v3 means we check our branch
+      - run: docker build -t ${{secrets.DOCKER_HUB_USERNAME}}/elera-server .
+      - run: echo "${{secrets.DOCKER_PASSWORD}}" | docker login -u ${{secrets.DOCKER_HUB_USERNAME}} --password stdin
+      - run: docker push ${{secrets.DOCKER_HUB_USERNAME}}/elera-server
