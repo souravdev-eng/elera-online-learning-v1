@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const data = [
+const GanderData = [
   {label: 'Male', value: 'male'},
   {label: 'Female', value: 'female'},
   {label: 'Others', value: 'others'},
@@ -18,11 +18,11 @@ export const useProfileUpdateHook = () => {
   const [phone, setPhone] = useState('');
   const [isPhone, setIsPhone] = useState(false);
 
-  const [gander, setGander] = useState(null);
+  const [gander, setGander] = useState('');
   const [isGander, setIsGander] = useState(false);
 
   return {
-    data,
+    GanderData,
     name,
     isName,
     email,

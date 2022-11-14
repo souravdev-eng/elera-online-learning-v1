@@ -70,3 +70,47 @@ export const showMyBookMarks = createAsyncThunk(
     }
   },
 );
+
+interface UpdateUserProfileProps {
+  id: string;
+  token: string;
+  nickName?: string;
+  dateOfBirth?: Date | string;
+  phoneNumber?: string;
+  // dialCode: string;
+  gender?: string;
+  profileImage?: string;
+}
+
+export const updateUserProfile = createAsyncThunk(
+  'patch/user-profile-update',
+  async (
+    {
+      id,
+      token,
+      nickName,
+      dateOfBirth,
+      phoneNumber,
+      gender,
+      profileImage,
+    }: UpdateUserProfileProps,
+    {rejectWithValue},
+  ) => {
+    try {
+      const {data} = await axios.patch(
+        `${BASE_URL}/user/update-user-profile/${id}`,
+        {nickName, dateOfBirth, phoneNumber, gender, profileImage},
+        {
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      return data.user;
+    } catch (error: any) {
+      throw rejectWithValue(error.response.data.errors);
+    }
+  },
+);
