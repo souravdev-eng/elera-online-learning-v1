@@ -5,7 +5,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/souravdev-eng/E-com-micro-service">
+  <a href="https://github.com/souravdev-eng/elera-online-learning">
     <img src="./app/src/assets/images/logo.png" alt="Logo" width="120" height="40">
   </a>
 
@@ -38,7 +38,7 @@ E-com is a commerce project where the main goal is to build a distributed and sc
 
 ### Built With
 
-For this project, I am carefully chosen my tech stack:
+For this project, I am chosen my tech stack:
 
 <a href="https://reactnative.dev/" title="React Native"><img src="https://github.com/get-icon/geticon/raw/master/icons/react.svg" alt="React Native" width="35px" height="35px"></a><a href="https://redux.js.org/" title="Redux"><img src="https://github.com/get-icon/geticon/raw/master/icons/redux.svg" alt="Redux" width="35px" height="35px"></a><a href="https://expressjs.com/" title="Express"><img src="https://github.com/get-icon/geticon/raw/master/icons/express.svg" alt="Express" width="35px" height="35px"></a> <a href="https://nodejs.org/" title="Node.js"><img src="https://github.com/get-icon/geticon/raw/master/icons/nodejs-icon.svg" alt="Node.js" width="35px" height="35px"></a> <a href="https://www.mongodb.org/" title="MongoDB"><img src="https://github.com/get-icon/geticon/raw/master/icons/mongodb-icon.svg" alt="MongoDB" width="35px" height="35px"></a> <a href="https://www.typescriptlang.org/" title="Typescript"><img src="https://github.com/get-icon/geticon/raw/master/icons/typescript-icon.svg" alt="Typescript" width="35px" height="35px"></a>
 
