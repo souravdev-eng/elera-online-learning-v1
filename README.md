@@ -17,7 +17,7 @@
 
 ## About The Project
 
-E-com is a commerce project where the main goal is to build a distributed and scalable application with zero downtime.
+E-com is an online video-based learning platform. Where users can buy any type of course.
 
 **Here's is some feature overview:**
 
