@@ -28,7 +28,7 @@ export const AppStackNavigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={Type.Main}>
+      initialRouteName={Type.Payment}>
       {!data ? (
         <>
           <Stack.Screen name={Type.Login} component={LoginScreen} />

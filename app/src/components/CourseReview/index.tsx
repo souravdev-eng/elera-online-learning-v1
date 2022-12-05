@@ -17,7 +17,10 @@ const CourseReview = () => {
         title="4.8 (4,479 reviews)"
         // onPress={() => navigation.navigate('MostPopularCourse')}
       />
-      <ScrollView horizontal>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}>
         {RatingTags.map(el => (
           <FilterCard
             star
@@ -27,10 +30,9 @@ const CourseReview = () => {
           />
         ))}
       </ScrollView>
-      <ReviewCard />
-      <ReviewCard />
-      <ReviewCard />
-      <ReviewCard />
+      {[1, 2, 3, 4, 5].map(el => (
+        <ReviewCard key={el} />
+      ))}
     </View>
   );
 };

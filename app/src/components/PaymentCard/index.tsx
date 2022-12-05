@@ -8,9 +8,10 @@ interface Props {
   active: boolean;
   title: string;
   icon: any;
+  onPress: () => void;
 }
 
-const PaymentCard: FC<Props> = ({active, title, icon}) => {
+const PaymentCard: FC<Props> = ({active, title, icon, onPress}) => {
   return (
     <>
       <View style={styles.container}>
@@ -19,7 +20,7 @@ const PaymentCard: FC<Props> = ({active, title, icon}) => {
           <Text style={styles.title}>{title}</Text>
         </View>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onPress}>
           <MaterialCommunityIcons
             name={active ? 'circle-slice-8' : 'circle-outline'}
             size={26}

@@ -1,28 +1,23 @@
+import {StripeProvider} from '@stripe/stripe-react-native';
+import {StyleSheet, Text, View} from 'react-native';
+import Payment from './Payment';
 import React from 'react';
-import {CardField, StripeProvider} from '@stripe/stripe-react-native';
-import {View} from 'react-native';
 
-function Demo() {
+export default function Demo() {
   return (
-    <View style={{height: 200, width: '100%'}}>
-      <CardField
-        postalCodeEnabled={false}
-        placeholders={{number: '4242 4242 4242 4242'}}
-        onCardChange={cardDetails => {
-          console.log('cardDetails', cardDetails);
-        }}
-        cardStyle={{
-          backgroundColor: '#FFFFFF',
-          textColor: '#000000',
-        }}
-        style={{
-          width: '100%',
-          height: 50,
-          marginVertical: 30,
-        }}
-      />
+    <View style={styles.container}>
+      <StripeProvider publishableKey="pk_test_51JOBJnSA4EPPqs66VxVusJrEerUnYWuDGHkzasE78kNncq9UgLx4PwQdU8XPpn41qwz1vhNsxcY14rSQ7fC0c0gt00lNQYG9wa">
+        <Payment />
+      </StripeProvider>
     </View>
   );
 }
 
-export default Demo;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});

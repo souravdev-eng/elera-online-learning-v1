@@ -20,6 +20,7 @@ import {
 
 import {colors, Icons} from '../../theme';
 import styles from './styles';
+import {useAppNavigation} from '../../hooks/useAppNavigation';
 
 type CourseDetailScreenRouteProp = RouteProp<
   RootStackParamList,
@@ -28,6 +29,7 @@ type CourseDetailScreenRouteProp = RouteProp<
 
 const CourseDetailScreen = () => {
   const {params} = useRoute<CourseDetailScreenRouteProp>();
+  const {navigation} = useAppNavigation();
   const {data} = useAppSelector(state => state.user);
   const {courseDetails, loading} = useAppSelector(state => state.course);
   const videoRef = useRef(null);
@@ -37,7 +39,8 @@ const CourseDetailScreen = () => {
   const [isActive, setIsActive] = useState(false);
 
   const token = data?.token!;
-  const handelPlay = useCallback(() => {
+
+  const handlePlay = useCallback(() => {
     setIsPaused(false);
   }, [isPaused]);
 
@@ -73,7 +76,7 @@ const CourseDetailScreen = () => {
               />
               {isPaused === true && (
                 <TouchableOpacity
-                  onPress={handelPlay}
+                  onPress={handlePlay}
                   style={styles.playIconContainer}>
                   <Ionicons
                     name="ios-play-circle"
@@ -101,14 +104,14 @@ const CourseDetailScreen = () => {
 
                 <Image source={Icons.Star} style={styles.star} />
                 <Text style={styles.ratingText}>
-                  {courseDetails?.ratingAvg} ({courseDetails?.totalStudent}{' '}
-                  students)
+                  {courseDetails?.ratingAvg?.toFixed(1)} (
+                  {courseDetails?.totalStudent} students)
                 </Text>
               </View>
               <View style={[styles.row, {marginVertical: 12}]}>
-                <Text style={styles.price}>${courseDetails?.price}</Text>
+                <Text style={styles.price}>₹{courseDetails?.price}</Text>
                 <Text style={styles.originalPrice}>
-                  ${courseDetails?.originalPrice}
+                  ₹{courseDetails?.originalPrice}
                 </Text>
               </View>
               <View style={[styles.row, styles.courseDetailsWrapper]}>
@@ -142,13 +145,21 @@ const CourseDetailScreen = () => {
             </View>
             {/* @@@@@@@@@@@@@@@@ Buttons @@@@@@@@@@@@@@@*/}
             <View style={styles.buttonsWrapper}>
-              <TouchableOpacity style={styles.buyButton}>
+              <TouchableOpacity
+                style={styles.buyButton}
+                activeOpacity={0.7}
+                onPress={() =>
+                  navigation.navigate('Payment', {
+                    price: courseDetails?.price,
+                  })
+                }>
                 <Text style={styles.buyNowText}>Buy Now</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.addToCart}>
+              <TouchableOpacity style={styles.addToCart} activeOpacity={0.8}>
                 <Text style={styles.addToCartText}>Add to cart</Text>
               </TouchableOpacity>
             </View>
+            {/* @@@@@@@@ Learning Lists @@@@@@@@ */}
             <LearningList />
             <Text style={styles.mentorHeading}>Curriculum</Text>
             <CourseLesson

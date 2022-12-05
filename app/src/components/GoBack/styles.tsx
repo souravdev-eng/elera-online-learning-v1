@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
   wrapper: {flexDirection: 'row', alignItems: 'center'},
   heading: {
-    fontSize: fonts_Size.h2,
+    fontSize: fonts_Size.h3,
     fontFamily: fonts_Family.UrbanistBold,
     color: colors.light.darkGrey,
     marginLeft: 14,

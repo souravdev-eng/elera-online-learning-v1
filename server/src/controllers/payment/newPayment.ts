@@ -31,9 +31,11 @@ export const newPayment = async (req: Request, res: Response, next: NextFunction
     stripeId: charge.id,
   });
 
-  await payment.save();
-  order.status = OrderStatus.COMPLETED;
-  await order.save();
+  console.log(charge);
+
+  // await payment.save();
+  // order.status = OrderStatus.COMPLETED;
+  // await order.save();
 
   res.status(200).json({ payment });
 };

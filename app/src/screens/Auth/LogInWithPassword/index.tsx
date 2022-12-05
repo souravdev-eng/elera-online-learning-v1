@@ -19,7 +19,7 @@ import {userLoginAction} from '../../../store/actions/user.action';
 import {useAppNavigation} from '../../../hooks/useAppNavigation';
 
 const LoginWithPassword = () => {
-  const {handelGoBack, navigation} = useAppNavigation();
+  const {handleGoBack, navigation} = useAppNavigation();
   let dispatch = useAppDispatch();
   const {loading} = useAppSelector(state => state.user);
 
@@ -40,7 +40,7 @@ const LoginWithPassword = () => {
         <View style={styles.container}>
           <TouchableOpacity
             style={{marginTop: 10, marginBottom: 30}}
-            onPress={handelGoBack}>
+            onPress={handleGoBack}>
             <AntDesign name="arrowleft" size={24} color={colors.light.grey} />
           </TouchableOpacity>
           <Text style={styles.title}>Login to your account</Text>

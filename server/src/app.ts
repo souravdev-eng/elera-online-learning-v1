@@ -12,6 +12,7 @@ import { courseRouter } from './routes/course.routes';
 import { orderRouter } from './routes/order.routes';
 import { reviewRoute } from './routes/review.routes';
 import { errorHandling } from './middleware/errorHandling';
+import { demoPayment } from './controllers/payment/demoPayment';
 
 const app = express();
 const client = createClient({
@@ -34,6 +35,7 @@ app.use('/api/v1/creator', creatorRouter);
 app.use('/api/v1/course', courseRouter);
 app.use('/api/v1/order', orderRouter);
 app.use('/api/v1/reviews', reviewRoute);
+app.use('/demo/demoPayment', demoPayment);
 
 app.all('*', (req, res, next) => {
   res.status(404).json({ message: `${req.originalUrl} not found` });

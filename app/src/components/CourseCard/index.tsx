@@ -2,33 +2,19 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import React, {FC} from 'react';
 import styles from './styles';
 import {Icons} from '../../theme';
+import {CourseCardProps} from './types';
 
-interface Props {
-  title: string;
-  category: string;
-  ratingAvg: number;
-  totalReview: number;
-  originalPrice: number;
-  price: number;
-  image: string;
-  id: string;
-  totalStudent: number;
-  onPress?: () => void;
-  onBookmarkPress?: () => void;
-}
-
-const CourseCard: FC<Props> = props => {
-  const {
-    title,
-    totalStudent,
-    image,
-    onBookmarkPress,
-    onPress,
-    originalPrice,
-    price,
-    ratingAvg,
-    category,
-  } = props;
+const CourseCard: FC<CourseCardProps> = ({
+  title,
+  totalStudent,
+  image,
+  onBookmarkPress,
+  onPress,
+  originalPrice,
+  price,
+  ratingAvg,
+  category,
+}) => {
   return (
     <TouchableOpacity
       style={styles.container}
@@ -56,8 +42,8 @@ const CourseCard: FC<Props> = props => {
           {title}
         </Text>
         <View style={styles.priceWrapper}>
-          <Text style={styles.offerPrice}>${price}</Text>
-          <Text style={styles.originalPrice}>${originalPrice}</Text>
+          <Text style={styles.offerPrice}>₹{price}</Text>
+          <Text style={styles.originalPrice}>₹{originalPrice}</Text>
         </View>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Image source={Icons.Star} style={styles.ratingIcon} />
