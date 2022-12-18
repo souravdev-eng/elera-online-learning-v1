@@ -11,24 +11,27 @@ type UserPayload = {
 declare global {
   namespace Express {
     interface Request {
-      user?: UserPayload;
+      user: UserPayload;
     }
   }
 }
 
 export const protect = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    let token;
+  let token;
 
-    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-      token = req.headers.authorization.split(' ')[1];
-    }
-    if (!token) {
-      return next(new BadRequestError('You are not logged in! Please login first'));
-    }
+  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+    token = req.headers.authorization.split(' ')[1];
+  }
+  if (!token) {
+    throw new BadRequestError('You are not logged in! Please login first');
+  }
+
+  try {
     const payload = jwt.verify(token, process.env.JWT_SECRET!) as UserPayload;
     req.user = payload;
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 
   next();
 };

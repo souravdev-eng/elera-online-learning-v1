@@ -25,4 +25,5 @@ export interface courseDetailsProps {
   aboutCourse: string;
   preRequisite: string[];
   image: string;
+  id: any;
 }

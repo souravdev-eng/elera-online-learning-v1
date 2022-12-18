@@ -25,7 +25,7 @@ router.get('/bookmarks', protect, showAllBookMarks);
 router
   .route('/')
   .post(protect, isCreator, courseCreateValidation, requestValidation, newCourse)
-  .get(showAllCourse);
+  .get(protect, showAllCourse);
 
 router.route('/:id').get(protect, courseDetailsById);
 

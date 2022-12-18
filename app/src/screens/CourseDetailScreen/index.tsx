@@ -21,6 +21,7 @@ import {
 import {colors, Icons} from '../../theme';
 import styles from './styles';
 import {useAppNavigation} from '../../hooks/useAppNavigation';
+import {newOrderAction} from '../../store/actions/order.action';
 
 type CourseDetailScreenRouteProp = RouteProp<
   RootStackParamList,
@@ -43,6 +44,16 @@ const CourseDetailScreen = () => {
   const handlePlay = useCallback(() => {
     setIsPaused(false);
   }, [isPaused]);
+
+  const handleBuy = (price: number) => {
+    if (courseDetails) {
+      dispatch(newOrderAction({courseId: courseDetails.id, token})).then(() => {
+        navigation.navigate('Payment', {
+          price: price,
+        });
+      });
+    }
+  };
 
   useEffect(() => {
     dispatch(getCourseDetailsById({id: params.id, token}));
@@ -148,11 +159,7 @@ const CourseDetailScreen = () => {
               <TouchableOpacity
                 style={styles.buyButton}
                 activeOpacity={0.7}
-                onPress={() =>
-                  navigation.navigate('Payment', {
-                    price: courseDetails?.price,
-                  })
-                }>
+                onPress={() => handleBuy(courseDetails.price)}>
                 <Text style={styles.buyNowText}>Buy Now</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.addToCart} activeOpacity={0.8}>

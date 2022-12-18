@@ -24,7 +24,7 @@ const Payment = () => {
       body: JSON.stringify({name}),
       headers: {'Content-Type': 'application/json'},
     });
-    const {clientSecret, ephemeralKey, customer} = await response.json();
+    const {clientSecret, stripeId} = await response.json();
     setClientSecret(clientSecret);
   };
 
@@ -58,6 +58,7 @@ const Payment = () => {
     if (error) {
       Alert.alert(`Error code: ${error.code}`, error.message);
     } else {
+      // save order in DB
       Alert.alert('Success', 'Your order is confirmed!');
     }
   };
