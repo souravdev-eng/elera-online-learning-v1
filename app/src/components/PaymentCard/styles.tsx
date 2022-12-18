@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.light.white,
     width: width / 1.09,
     alignSelf: 'center',
-    marginVertical: 16,
+    marginVertical: 14,
     borderRadius: 8,
     elevation: 3,
     alignItems: 'center',

@@ -19,7 +19,7 @@ import styles from './styles';
 
 const ChatScreen = () => {
   const [text, setText] = React.useState('');
-  const {handelGoBack} = useAppNavigation();
+  const {handleGoBack} = useAppNavigation();
 
   return (
     <>
@@ -28,7 +28,7 @@ const ChatScreen = () => {
           <View style={styles.container}>
             <View style={styles.header}>
               <View style={styles.row}>
-                <TouchableWithoutFeedback onPress={handelGoBack}>
+                <TouchableWithoutFeedback onPress={handleGoBack}>
                   <Image source={Icons.ArrowBack} style={styles.icon} />
                 </TouchableWithoutFeedback>
                 <Image style={styles.userImage} source={Icons.User1} />

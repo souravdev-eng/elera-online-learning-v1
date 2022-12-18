@@ -10,11 +10,12 @@ interface Props {
 }
 
 const GoBack: FC<Props> = ({title, iconName}) => {
-  const {handelGoBack} = useAppNavigation();
+  const {handleGoBack} = useAppNavigation();
+
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
-        <TouchableOpacity activeOpacity={0.7} onPress={handelGoBack}>
+        <TouchableOpacity activeOpacity={0.7} onPress={handleGoBack}>
           <Image source={Icons.ArrowBack} style={styles.icon} />
         </TouchableOpacity>
         <Text style={styles.heading}>{title}</Text>

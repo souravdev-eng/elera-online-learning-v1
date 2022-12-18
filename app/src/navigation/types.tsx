@@ -38,7 +38,7 @@ export type RootStackParamList = {
   ProfileUpdate: undefined;
   CourseDetails: {id: string};
   Chat: undefined;
-  Payment: undefined;
+  Payment: {price: number};
   AuthorProfile: {id: string};
 };
 

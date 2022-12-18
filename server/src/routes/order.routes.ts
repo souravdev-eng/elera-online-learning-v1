@@ -1,16 +1,15 @@
 import { Router } from 'express';
 
-import { newOrder } from '../controllers/order/newOrder';
 import { protect } from '../middleware/protect';
-import { newPayment } from '../controllers/payment/newPayment';
+import { newOrder } from '../controllers/order/newOrder';
 import { showOrder } from '../controllers/order/showOrder';
+import { orderComplete } from '../controllers/order/orderUpdate';
+import { newPayment } from '../controllers/payment/newPayment';
 
 const router = Router();
 
-router.use(protect);
-
-router.route('/').get(showOrder);
-router.route('/:courseId').post(newOrder);
-router.post('/payment/:orderId', newPayment);
+router.route('/').get(protect, showOrder);
+router.route('/:courseId').post(protect, newOrder);
+router.route('/payment/:orderId').post(protect, newPayment).put(protect, orderComplete);
 
 export { router as orderRouter };

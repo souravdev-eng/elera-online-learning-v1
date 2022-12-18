@@ -4,7 +4,6 @@ import { Payment, Order } from '../../models';
 import { OrderStatus, stripe } from '../../utils';
 
 export const newPayment = async (req: Request, res: Response, next: NextFunction) => {
-  const { token } = req.body;
   const orderId = req.params.orderId;
   const order = await Order.findById(orderId);
 
@@ -20,20 +19,30 @@ export const newPayment = async (req: Request, res: Response, next: NextFunction
     return next(new BadRequestError('This order already has been completed'));
   }
 
-  const charge = await stripe.charges.create({
+  const customer = await stripe.customers.create();
+  const ephemeralKey = await stripe.ephemeralKeys.create(
+    { customer: customer.id },
+    { apiVersion: '2020-08-27' }
+  );
+
+  const paymentIntent = await stripe.paymentIntents.create({
     amount: order.price * 100,
     currency: 'inr',
-    source: token,
   });
 
   const payment = Payment.build({
     order: order.id,
-    stripeId: charge.id,
+    stripeId: paymentIntent.id,
   });
 
   await payment.save();
-  order.status = OrderStatus.COMPLETED;
+  order.status = OrderStatus.PENDING;
   await order.save();
 
-  res.status(200).json({ payment });
+  res.status(200).json({
+    payment,
+    clientSecret: paymentIntent.client_secret,
+    ephemeralKey: ephemeralKey.secret,
+    customer: customer.id,
+  });
 };

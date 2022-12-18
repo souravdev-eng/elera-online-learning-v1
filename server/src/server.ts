@@ -5,9 +5,13 @@ dotenv.config({ path: 'config.env' });
 import { app, client } from './app';
 
 const start = async () => {
-  // if (!process.env.STRIPE_KEY) {
-  //   throw new Error('Stripe key not found');
-  // }
+  if (!process.env.JWT_SECRET) {
+    throw new Error('JWT_SECRET is not found');
+  }
+
+  if (!process.env.JWT_SECRET_EXPIRY) {
+    throw new Error('JWT_SECRET_EXPIRY is not found');
+  }
 
   try {
     await mongoose.connect(process.env.DB_URL!, {

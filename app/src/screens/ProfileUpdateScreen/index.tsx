@@ -21,7 +21,7 @@ import {useProfileUpdateHook} from './useProfileUpdateHook';
 import {updateUserProfile} from '../../store/actions/user.action';
 
 const ProfileUpdateScreen = () => {
-  const {handelGoBack, navigation} = useAppNavigation();
+  const {handleGoBack, navigation} = useAppNavigation();
   const {data} = useAppSelector(state => state.user);
   const dispatch = useAppDispatch();
   const currentDate = new Date();
@@ -95,7 +95,7 @@ const ProfileUpdateScreen = () => {
   return (
     <ScrollView contentContainerStyle={{flexGrow: 1, backgroundColor: '#fff'}}>
       <View style={styles.headerWarper}>
-        <TouchableOpacity onPress={handelGoBack}>
+        <TouchableOpacity onPress={handleGoBack}>
           <Image source={Icons.ArrowBack} style={styles.backIcon} />
         </TouchableOpacity>
         <Text style={styles.title}>Fill your profile</Text>

@@ -8,8 +8,8 @@ export const errorHandling = async (
   next: NextFunction
 ) => {
   if (process.env.NODE_ENV !== 'test') {
-  console.log(err.stack);
-  console.log(err.message);
+    // console.log(err.stack);
+    console.log(err.message);
   }
 
   if (err instanceof BaseError) {

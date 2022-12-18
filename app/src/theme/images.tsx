@@ -35,6 +35,7 @@ export const Icons = {
   PlayCircle: require('../assets/images/play-circle.png'),
   FileText: require('../assets/images/file-text.png'),
   Call: require('../assets/images/call.png'),
+  MSCard: require('../assets/images/ms-card.png'),
 
   // Banners
 

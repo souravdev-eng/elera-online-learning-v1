@@ -19,7 +19,7 @@ import {userSignupAction} from '../../../store/actions/user.action';
 import Loading from '../../../components/Loading';
 
 const SignupScreen = () => {
-  const {handelGoBack, navigation} = useAppNavigation();
+  const {handleGoBack, navigation} = useAppNavigation();
   const dispatch = useAppDispatch();
   const {loading} = useAppSelector(state => state.user);
   const [name, setName] = useState('');
@@ -41,7 +41,7 @@ const SignupScreen = () => {
         <View style={styles.container}>
           <TouchableOpacity
             style={{marginTop: 10, marginBottom: 30}}
-            onPress={handelGoBack}>
+            onPress={handleGoBack}>
             <AntDesign name="arrowleft" size={24} color={colors.light.grey} />
           </TouchableOpacity>
           <Text style={styles.title}>Create your account</Text>

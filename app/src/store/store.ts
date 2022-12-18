@@ -13,6 +13,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import userReducer from './reducers/user.reducer';
 import creatorReducer from './reducers/creator.reducer';
 import courseReducer from './reducers/course.reducer';
+import orderReducers from './reducers/order.reducers';
 
 const persistConfig = {
   key: 'root',
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   creator: creatorReducer,
   course: courseReducer,
+  order: orderReducers,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

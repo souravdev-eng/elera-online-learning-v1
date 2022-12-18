@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Types } from 'mongoose';
 import { OrderStatus } from '../utils/OrderType';
 
 interface OrderAttars {
@@ -8,7 +8,7 @@ interface OrderAttars {
 }
 
 interface OrderDocument extends mongoose.Document {
-  course: mongoose.Types.ObjectId;
+  course: string;
   user: string;
   price: number;
   status: OrderStatus;
