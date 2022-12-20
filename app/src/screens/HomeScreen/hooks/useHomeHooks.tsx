@@ -15,12 +15,12 @@ export const useHomeHook = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (data?.token) {
-      dispatch(getCreatorList({token: data.token}));
-      dispatch(getCourseList({token: data.token}));
-      dispatch(showMyCourseAction({token: data.token}));
+    if (data !== null) {
+      dispatch(getCourseList({token: data?.token}));
+      dispatch(showMyCourseAction({token: data?.token}));
+      dispatch(getCreatorList({token: data?.token}));
     }
-  }, [dispatch]);
+  }, [dispatch, data]);
 
   const navigateToCourseDetail = (id: string) => {
     navigation.navigate('CourseDetails', {id});

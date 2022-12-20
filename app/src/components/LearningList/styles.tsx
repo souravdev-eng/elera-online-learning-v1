@@ -5,13 +5,14 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 10,
+    paddingVertical: 6,
     marginLeft: 10,
   },
   pointText: {
     fontFamily: fonts_Family.UrbanistSemiBold,
     fontSize: fonts_Size.medium + 2,
     color: colors.light.darkGrey,
+    width: '90%',
   },
 });
 
