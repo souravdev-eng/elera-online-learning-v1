@@ -17,11 +17,11 @@ const MyCourseCard: FC<Props> = props => {
   const {
     title,
     image,
-    hrs,
-    mins,
-    completePercentage,
-    videoNumber,
-    videoComplete,
+    hrs = 20,
+    mins = 30,
+    completePercentage = 20,
+    videoNumber = 1,
+    videoComplete = 3,
   } = props;
   return (
     <TouchableOpacity style={styles.container} activeOpacity={0.9}>

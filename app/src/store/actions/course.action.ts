@@ -2,6 +2,22 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import axios from 'axios';
 import {BASE_URL} from '../../api/baseUrl';
 
+export const showMyCourseAction = createAsyncThunk(
+  'get/myCourse',
+  async (Data: {token: string}, {rejectWithValue}) => {
+    try {
+      const {data} = await axios.get(`${BASE_URL}/course/mycourse`, {
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${Data.token}`,
+        },
+      });
+      return data;
+    } catch (error: any) {
+      throw rejectWithValue(error.response.data.errors);
+    }
+  },
+);
 export const getCourseList = createAsyncThunk(
   'get/courseList',
   async (Data: {token: string}, {rejectWithValue}) => {

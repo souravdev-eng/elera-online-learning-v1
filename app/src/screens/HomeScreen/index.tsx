@@ -7,40 +7,22 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import React, {useEffect} from 'react';
+import React from 'react';
+import {ViewAll, CourseCard, FilterCard} from '../../components';
+import {Tags} from '../../assets/data/tagData';
+import {useHomeHook} from './hooks/useHomeHooks';
 import {Icons} from '../../theme';
 import styles from './styles';
 
-import {ViewAll, CourseCard, FilterCard} from '../../components';
-
-import {useAppDispatch, useAppSelector} from '../../hooks/useRedux';
-import {useAppNavigation} from '../../hooks/useAppNavigation';
-
-import {getCreatorList} from '../../store/actions/creator.action';
-import {getCourseList} from '../../store/actions/course.action';
-import {showMyBookMarks} from '../../store/actions/user.action';
-
-import {Tags} from '../../assets/data/tagData';
-
 const HomeScreen: React.FC = () => {
-  const {navigation} = useAppNavigation();
-  const {data} = useAppSelector(state => state.user);
-  const {creatorList} = useAppSelector(state => state.creator);
-  const {courseList} = useAppSelector(state => state.course);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(getCreatorList({token: data?.token!}));
-    dispatch(getCourseList({token: data?.token!}));
-  }, []);
-
-  const navigateToCourseDetail = (id: string) => {
-    navigation.navigate('CourseDetails', {id});
-  };
-
-  const navigateToCreatorProfile = (id: string) => {
-    navigation.navigate('AuthorProfile', {id});
-  };
+  const {
+    data,
+    courseList,
+    navigation,
+    creatorList,
+    navigateToCourseDetail,
+    navigateToCreatorProfile,
+  } = useHomeHook();
 
   return (
     <ScrollView

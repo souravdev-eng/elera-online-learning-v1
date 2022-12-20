@@ -1,15 +1,18 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {showMyCourseAction} from '../actions/course.action';
 import {
   showMyBookMarks,
   userLoginAction,
   userSignupAction,
   updateUserProfile,
 } from '../actions/user.action';
+import {courseDetailsProps, MyCourseInterface} from '../types/course.types';
 import {UserDataProps, UserBookMarksProps} from '../types/user.types';
 
 interface UserProps {
   loading: boolean;
   data: UserDataProps | null;
+  myCourse: MyCourseInterface[];
   error: any;
   myBookMarks: UserBookMarksProps[];
 }
@@ -17,8 +20,9 @@ interface UserProps {
 const initialState = {
   loading: false,
   data: null,
-  error: null,
+  myCourse: [],
   myBookMarks: [],
+  error: null,
 } as UserProps;
 
 const userSlice = createSlice({
@@ -28,6 +32,21 @@ const userSlice = createSlice({
     signOut: () => initialState,
   },
   extraReducers: builder => {
+    // @@@@@@@@@@@@@@ SHOW MY COURSE @@@@@@@@@@@@@@
+    builder.addCase(showMyCourseAction.pending, state => {
+      state.loading = true;
+    });
+    builder.addCase(showMyCourseAction.fulfilled, (state, {payload}) => {
+      state.loading = false;
+      state.myCourse = payload;
+    });
+    builder.addCase(showMyCourseAction.rejected, (state, {payload}) => {
+      state.loading = false;
+      state.error = payload;
+    });
+
+    // @@@@@@@@@@@@@@ USER LOGIN @@@@@@@@@@@@@@
+
     builder.addCase(userLoginAction.pending, state => {
       state.loading = true;
     });
@@ -43,6 +62,8 @@ const userSlice = createSlice({
       state.error = payload;
     });
 
+    // @@@@@@@@@@@@@@ USER SIGNUP @@@@@@@@@@@@@@
+
     builder.addCase(userSignupAction.pending, state => {
       state.loading = true;
     });
@@ -57,7 +78,7 @@ const userSlice = createSlice({
       state.loading = false;
       state.error = payload;
     });
-
+    // @@@@@@@@@@@@@@ SHOW MY BOOK MARKS @@@@@@@@@@@@@@
     builder.addCase(showMyBookMarks.pending, state => {
       state.loading = true;
     });
@@ -72,7 +93,7 @@ const userSlice = createSlice({
       state.loading = false;
       state.error = payload;
     });
-
+    // @@@@@@@@@@@@@@ USER PROFILE @@@@@@@@@@@@@@
     builder.addCase(updateUserProfile.pending, state => {
       state.loading = true;
     });

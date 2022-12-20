@@ -27,3 +27,19 @@ export interface courseDetailsProps {
   image: string;
   id: any;
 }
+
+export interface MyCourseInterface {
+  course: {
+    title: string;
+    category: string;
+    creatorId: string;
+    durationHours: number;
+    lessons: {
+      title: string;
+      videos: {title: string; videoUrl: string}[];
+    }[];
+
+    image: string;
+    id: string;
+  };
+}
