@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import { BadRequestError } from '../../errors';
 import { Order, Course } from '../../models';
+import { OrderStatus } from '../../utils';
+// const EXPIRATION_WINDOW_SECONDS = 10 * 60 * 1000;
 
 export const newOrder = async (req: Request, res: Response, next: NextFunction) => {
   const course = await Course.findById(req.params.courseId);
@@ -10,7 +12,9 @@ export const newOrder = async (req: Request, res: Response, next: NextFunction) 
   }
   const existingOrder = await Order.findOne({ course });
 
-  if (existingOrder) {
+  if (existingOrder?.status === OrderStatus.COMPLETED) {
+    return next(new BadRequestError('This course already punched'));
+  } else if (existingOrder) {
     return res.status(201).json({ order: existingOrder });
   } else {
     const order = Order.build({
@@ -20,7 +24,6 @@ export const newOrder = async (req: Request, res: Response, next: NextFunction) 
     });
 
     await order.save();
-
     res.status(201).json({ order });
   }
 };

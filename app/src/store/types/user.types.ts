@@ -18,5 +18,8 @@ export interface UserDataProps {
     createdAt: string;
     updatedAt: string;
     id: string;
+    dateOfBirth: any;
+    phoneNumber: string;
+    gender: string;
   };
 }

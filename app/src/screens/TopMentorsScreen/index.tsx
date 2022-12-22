@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -7,21 +7,13 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native';
-import {MentorsListData} from '../../assets/data/mentorsList.data';
-import GoBack from '../../components/GoBack';
-import {useAppDispatch, useAppSelector} from '../../hooks/useRedux';
-import {getCreatorList} from '../../store/actions/creator.action';
+import {GoBack} from '../../components';
+import {useAppSelector} from '../../hooks/useRedux';
 import {Icons} from '../../theme';
 import styles from './styles';
 
 const TopMentorsScreen = () => {
-  const {token} = useAppSelector(state => state.user.data);
-  const {creatorList, loading} = useAppSelector(state => state.creator);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(getCreatorList(token));
-  }, []);
+  const {creatorList} = useAppSelector(state => state.creator);
 
   return (
     <>

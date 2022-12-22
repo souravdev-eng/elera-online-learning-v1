@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useAppSelector} from '../../hooks/useRedux';
 
 const GanderData = [
   {label: 'Male', value: 'male'},
@@ -7,18 +8,21 @@ const GanderData = [
 ];
 
 export const useProfileUpdateHook = () => {
-  const [name, setName] = useState('');
+  const {data} = useAppSelector(state => state.user);
+  const dateOfBirth = new Date(data?.user?.dateOfBirth);
+
+  const [name, setName] = useState(data?.user?.fullName || '');
   const [isName, setIsName] = useState(false);
 
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState(data?.user?.email || '');
   const [isEmail, setIsEmail] = useState(false);
 
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(dateOfBirth || new Date());
 
-  const [phone, setPhone] = useState('');
+  const [phone, setPhone] = useState(data?.user?.phoneNumber || '');
   const [isPhone, setIsPhone] = useState(false);
 
-  const [gander, setGander] = useState('');
+  const [gander, setGander] = useState(data?.user?.gender || 'others');
   const [isGander, setIsGander] = useState(false);
 
   return {

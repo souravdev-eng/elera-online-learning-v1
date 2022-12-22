@@ -6,6 +6,7 @@ import {
   addToBookMarks,
   showAllBookMarks,
   courseDetailsById,
+  showMyCourse,
 } from '../controllers/course';
 
 import { isCreator, protect } from '../middleware';
@@ -21,6 +22,7 @@ router.use('/:courseId/reviews', reviewRoute);
 
 router.post('/bookmarks/:id', protect, addToBookMarks);
 router.get('/bookmarks', protect, showAllBookMarks);
+router.get('/mycourse', protect, showMyCourse);
 
 router
   .route('/')

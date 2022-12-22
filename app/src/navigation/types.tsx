@@ -18,6 +18,7 @@ export enum Type {
   Chat = 'Chat',
   Payment = 'Payment',
   AuthorProfile = 'AuthorProfile',
+  MyCourseDetails = 'MyCourseDetails',
 }
 
 export type RootStackParamList = {
@@ -40,6 +41,7 @@ export type RootStackParamList = {
   Chat: undefined;
   Payment: {price: number};
   AuthorProfile: {id: string};
+  MyCourseDetails: {id: string};
 };
 
 export type RootTabParamList = {

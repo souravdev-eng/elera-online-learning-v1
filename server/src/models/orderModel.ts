@@ -1,5 +1,6 @@
-import mongoose, { Types } from 'mongoose';
+import mongoose from 'mongoose';
 import { OrderStatus } from '../utils/OrderType';
+import { Course } from './courseModel';
 
 interface OrderAttars {
   course: mongoose.Types.ObjectId;
@@ -16,6 +17,7 @@ interface OrderDocument extends mongoose.Document {
 
 interface OrderModel extends mongoose.Model<OrderDocument> {
   build(attrs: OrderAttars): OrderDocument;
+  updateStudent: (course: any) => Promise<void>;
 }
 
 const orderSchema = new mongoose.Schema(
@@ -49,6 +51,31 @@ const orderSchema = new mongoose.Schema(
     },
   }
 );
+
+orderSchema.statics.updateStudent = async function (course: string) {
+  const stats = await this.aggregate([
+    {
+      $match: { course },
+    },
+    {
+      $group: {
+        _id: '$course',
+        nStudent: { $sum: 1 },
+      },
+    },
+  ]);
+
+  await Course.findByIdAndUpdate(course, {
+    totalStudent: stats[0].nStudent,
+  });
+};
+
+orderSchema.pre('save', async function (next) {
+  if (this.status !== OrderStatus.COMPLETED) return next();
+  // @ts-ignore
+  await this.constructor.updateStudent(this.course);
+  next();
+});
 
 orderSchema.statics.build = (attrs: OrderAttars) => {
   return new Order(attrs);

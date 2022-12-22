@@ -61,129 +61,132 @@ const CourseDetailScreen = () => {
 
   return (
     <>
-      {loading && <Loading />}
-      {courseDetails && (
-        <VirtualizedScrollView
-          style={{
-            flexGrow: 1,
-            backgroundColor: '#fff',
-            paddingBottom: '20%',
-          }}>
-          <>
-            <View style={styles.container}>
-              <VideoPlayer
-                ref={videoRef}
-                source={{uri: courseDetails?.introVideo}}
-                poster={courseDetails?.image}
-                style={styles.videoPlayer}
-                showOnStart={false}
-                posterResizeMod="cover"
-                paused={isPaused}
-                seekColor={colors.light.primary}
-                disableBack={true}
-                disableVolume={true}
-                disablePlayPause={true}
-                tapAnywhereToPause={true}
-              />
-              {isPaused === true && (
+      {loading ? (
+        <Loading />
+      ) : (
+        courseDetails && (
+          <VirtualizedScrollView
+            style={{
+              flexGrow: 1,
+              backgroundColor: '#fff',
+              paddingBottom: '20%',
+            }}>
+            <>
+              <View style={styles.container}>
+                <VideoPlayer
+                  ref={videoRef}
+                  source={{uri: courseDetails?.introVideo}}
+                  poster={courseDetails?.image}
+                  style={styles.videoPlayer}
+                  showOnStart={false}
+                  posterResizeMod="cover"
+                  paused={isPaused}
+                  seekColor={colors.light.primary}
+                  disableBack={true}
+                  disableVolume={true}
+                  disablePlayPause={true}
+                  tapAnywhereToPause={true}
+                />
+                {isPaused === true && (
+                  <TouchableOpacity
+                    onPress={handlePlay}
+                    style={styles.playIconContainer}>
+                    <Ionicons
+                      name="ios-play-circle"
+                      size={40}
+                      color={colors.light.PrimaryLight}
+                      style={{
+                        alignSelf: 'center',
+                        marginLeft: 2,
+                        opacity: 0.8,
+                      }}
+                    />
+                  </TouchableOpacity>
+                )}
+              </View>
+              <View style={{paddingHorizontal: 12}}>
+                <View style={styles.titleWrapper}>
+                  <Text style={styles.title}>{courseDetails?.title}</Text>
+                </View>
+                <View style={styles.row}>
+                  <View style={styles.category}>
+                    <Text style={styles.categoryText}>
+                      {courseDetails?.category}
+                    </Text>
+                  </View>
+
+                  <Image source={Icons.Star} style={styles.star} />
+                  <Text style={styles.ratingText}>
+                    {courseDetails?.ratingAvg?.toFixed(1)} (
+                    {courseDetails?.totalStudent} students)
+                  </Text>
+                </View>
+                <View style={[styles.row, {marginVertical: 12}]}>
+                  <Text style={styles.price}>₹{courseDetails?.price}</Text>
+                  <Text style={styles.originalPrice}>
+                    ₹{courseDetails?.originalPrice}
+                  </Text>
+                </View>
+                <View style={[styles.row, styles.courseDetailsWrapper]}>
+                  <View style={styles.row}>
+                    <MaterialCommunityIcons
+                      name="account-group"
+                      size={20}
+                      color={colors.light.PrimaryLight}
+                      style={{marginRight: 4}}
+                    />
+                    <Text style={styles.ratingText}>
+                      {courseDetails?.totalStudent} Students
+                    </Text>
+                  </View>
+                  <View style={styles.row}>
+                    <MaterialCommunityIcons
+                      name="clock"
+                      size={20}
+                      color={colors.light.PrimaryLight}
+                      style={{marginRight: 4}}
+                    />
+                    <Text style={styles.ratingText}>
+                      {courseDetails?.durationHours} Hours
+                    </Text>
+                  </View>
+                  <View style={styles.row}>
+                    <Image source={Icons.FileText} style={styles.certificate} />
+                    <Text style={styles.ratingText}>Certificate</Text>
+                  </View>
+                </View>
+              </View>
+              {/* @@@@@@@@@@@@@@@@ Buttons @@@@@@@@@@@@@@@*/}
+              <View style={styles.buttonsWrapper}>
                 <TouchableOpacity
-                  onPress={handlePlay}
-                  style={styles.playIconContainer}>
-                  <Ionicons
-                    name="ios-play-circle"
-                    size={40}
-                    color={colors.light.PrimaryLight}
-                    style={{
-                      alignSelf: 'center',
-                      marginLeft: 2,
-                      opacity: 0.8,
-                    }}
-                  />
+                  style={styles.buyButton}
+                  activeOpacity={0.7}
+                  onPress={() => handleBuy(courseDetails.price)}>
+                  <Text style={styles.buyNowText}>Buy Now</Text>
                 </TouchableOpacity>
-              )}
-            </View>
-            <View style={{paddingHorizontal: 12}}>
-              <View style={styles.titleWrapper}>
-                <Text style={styles.title}>{courseDetails?.title}</Text>
+                <TouchableOpacity style={styles.addToCart} activeOpacity={0.8}>
+                  <Text style={styles.addToCartText}>Add to cart</Text>
+                </TouchableOpacity>
               </View>
-              <View style={styles.row}>
-                <View style={styles.category}>
-                  <Text style={styles.categoryText}>
-                    {courseDetails?.category}
-                  </Text>
-                </View>
+              {/* @@@@@@@@ Learning Lists @@@@@@@@ */}
+              <LearningList data={courseDetails?.preRequisite} />
+              <Text style={styles.mentorHeading}>Curriculum</Text>
+              <CourseLesson
+                data={courseDetails}
+                // isActive={isActive}
+                // onActivePress={() => setIsActive(!isActive)}
+              />
 
-                <Image source={Icons.Star} style={styles.star} />
-                <Text style={styles.ratingText}>
-                  {courseDetails?.ratingAvg?.toFixed(1)} (
-                  {courseDetails?.totalStudent} students)
-                </Text>
-              </View>
-              <View style={[styles.row, {marginVertical: 12}]}>
-                <Text style={styles.price}>₹{courseDetails?.price}</Text>
-                <Text style={styles.originalPrice}>
-                  ₹{courseDetails?.originalPrice}
-                </Text>
-              </View>
-              <View style={[styles.row, styles.courseDetailsWrapper]}>
-                <View style={styles.row}>
-                  <MaterialCommunityIcons
-                    name="account-group"
-                    size={20}
-                    color={colors.light.PrimaryLight}
-                    style={{marginRight: 4}}
-                  />
-                  <Text style={styles.ratingText}>
-                    {courseDetails?.totalStudent} Students
-                  </Text>
-                </View>
-                <View style={styles.row}>
-                  <MaterialCommunityIcons
-                    name="clock"
-                    size={20}
-                    color={colors.light.PrimaryLight}
-                    style={{marginRight: 4}}
-                  />
-                  <Text style={styles.ratingText}>
-                    {courseDetails?.durationHours} Hours
-                  </Text>
-                </View>
-                <View style={styles.row}>
-                  <Image source={Icons.FileText} style={styles.certificate} />
-                  <Text style={styles.ratingText}>Certificate</Text>
-                </View>
-              </View>
-            </View>
-            {/* @@@@@@@@@@@@@@@@ Buttons @@@@@@@@@@@@@@@*/}
-            <View style={styles.buttonsWrapper}>
-              <TouchableOpacity
-                style={styles.buyButton}
-                activeOpacity={0.7}
-                onPress={() => handleBuy(courseDetails.price)}>
-                <Text style={styles.buyNowText}>Buy Now</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.addToCart} activeOpacity={0.8}>
-                <Text style={styles.addToCartText}>Add to cart</Text>
-              </TouchableOpacity>
-            </View>
-            {/* @@@@@@@@ Learning Lists @@@@@@@@ */}
-            <LearningList />
-            <Text style={styles.mentorHeading}>Curriculum</Text>
-            <CourseLesson
-              data={courseDetails}
-              // isActive={isActive}
-              // onActivePress={() => setIsActive(!isActive)}
-            />
-
-            <AboutCourse
-              imageUri={courseDetails?.creatorId?.profileImage}
-              name={courseDetails?.creatorId?.nickName}
-              bio={courseDetails?.creatorId?.bio}
-              aboutCourse={courseDetails?.aboutCourse || ''}
-            />
-            <CourseReview />
-          </>
-        </VirtualizedScrollView>
+              <AboutCourse
+                imageUri={courseDetails?.creatorId?.profileImage}
+                name={courseDetails?.creatorId?.nickName}
+                bio={courseDetails?.creatorId?.bio}
+                aboutCourse={courseDetails?.aboutCourse || ''}
+              />
+              <CourseReview />
+            </>
+          </VirtualizedScrollView>
+        )
       )}
     </>
   );

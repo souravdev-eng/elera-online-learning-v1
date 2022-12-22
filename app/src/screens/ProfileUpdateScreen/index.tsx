@@ -78,7 +78,7 @@ const ProfileUpdateScreen = () => {
     }
   };
 
-  const handelSubmit = () => {
+  const handleSubmit = () => {
     dispatch(
       updateUserProfile({
         id: data?.user.id!,
@@ -132,7 +132,7 @@ const ProfileUpdateScreen = () => {
                 : 'Date of Birth'}
             </Text>
             <DatePicker
-              // maximumDate={new Date()}
+              maximumDate={new Date()}
               modal
               open={open}
               date={date}
@@ -197,8 +197,8 @@ const ProfileUpdateScreen = () => {
             )}
           />
         </AppTextInput>
-        <TouchableOpacity style={styles.submitButton} onPress={handelSubmit}>
-          <Text style={styles.submitButtonText}>Continue</Text>
+        <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
+          <Text style={styles.submitButtonText}>Save</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {RootStackParamList, Type} from './types';
 
@@ -19,6 +19,7 @@ import {
   PaymentScreen,
 } from '../screens';
 import AuthorProfileScreen from '../screens/AuthorProfile';
+import MyCourseDetails from '../screens/MyCourseDetails';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -28,7 +29,7 @@ export const AppStackNavigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={Type.Main}>
+      initialRouteName={Type.MyCourseDetails}>
       {!data ? (
         <>
           <Stack.Screen name={Type.Login} component={LoginScreen} />
@@ -61,6 +62,10 @@ export const AppStackNavigation = () => {
           <Stack.Screen
             name={Type.AuthorProfile}
             component={AuthorProfileScreen}
+          />
+          <Stack.Screen
+            name={Type.MyCourseDetails}
+            component={MyCourseDetails}
           />
         </>
       )}
