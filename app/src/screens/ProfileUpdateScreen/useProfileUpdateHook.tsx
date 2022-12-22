@@ -22,7 +22,7 @@ export const useProfileUpdateHook = () => {
   const [phone, setPhone] = useState(data?.user?.phoneNumber || '');
   const [isPhone, setIsPhone] = useState(false);
 
-  const [gander, setGander] = useState('others');
+  const [gander, setGander] = useState(data?.user?.gender || 'others');
   const [isGander, setIsGander] = useState(false);
 
   return {
