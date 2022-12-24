@@ -5,9 +5,11 @@ const VirtualizedScrollView = (props: any) => {
   return (
     <FlatList
       contentContainerStyle={props.style}
+      showsHorizontalScrollIndicator={false}
+      showsVerticalScrollIndicator={false}
       {...props}
       data={[]}
-      keyExtractor={(e, i) => 'dom' + i.toString()}
+      keyExtractor={(_, i) => 'dom' + i.toString()}
       ListEmptyComponent={null}
       renderItem={null}
       ListHeaderComponent={() => <>{props.children}</>}

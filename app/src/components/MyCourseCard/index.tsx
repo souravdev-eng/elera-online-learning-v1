@@ -22,9 +22,13 @@ const MyCourseCard: FC<Props> = props => {
     completePercentage = 20,
     videoNumber = 1,
     videoComplete = 3,
+    onPress,
   } = props;
   return (
-    <TouchableOpacity style={styles.container} activeOpacity={0.9}>
+    <TouchableOpacity
+      style={styles.container}
+      activeOpacity={0.9}
+      onPress={onPress}>
       <View style={{overflow: 'hidden'}}>
         <Image
           source={{uri: image}}

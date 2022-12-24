@@ -7,9 +7,10 @@ import {useAppNavigation} from '../../hooks/useAppNavigation';
 interface Props {
   title?: string;
   iconName?: any;
+  showIcon?: boolean;
 }
 
-const GoBack: FC<Props> = ({title, iconName}) => {
+const GoBack: FC<Props> = ({title, iconName, showIcon = true}) => {
   const {handleGoBack} = useAppNavigation();
 
   return (
@@ -18,14 +19,18 @@ const GoBack: FC<Props> = ({title, iconName}) => {
         <TouchableOpacity activeOpacity={0.7} onPress={handleGoBack}>
           <Image source={Icons.ArrowBack} style={styles.icon} />
         </TouchableOpacity>
-        <Text style={styles.heading}>{title}</Text>
+        <Text style={styles.heading} numberOfLines={1}>
+          {title}
+        </Text>
       </View>
-      <TouchableOpacity>
-        <Image
-          source={iconName ? iconName : Icons.Search}
-          style={styles.icon}
-        />
-      </TouchableOpacity>
+      {showIcon && (
+        <TouchableOpacity>
+          <Image
+            source={iconName ? iconName : Icons.Search}
+            style={styles.icon}
+          />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
