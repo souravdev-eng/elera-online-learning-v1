@@ -29,7 +29,7 @@ export const AppStackNavigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={Type.MyCourseDetails}>
+      initialRouteName={Type.Main}>
       {!data ? (
         <>
           <Stack.Screen name={Type.Login} component={LoginScreen} />

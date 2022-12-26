@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
     fontFamily: fonts_Family.UrbanistBold,
     color: colors.light.black,
   },
-
   searchContainer: {
     width: '90%',
     backgroundColor: colors.light.lightGrey,
@@ -82,25 +81,6 @@ const styles = StyleSheet.create({
     fontFamily: fonts_Family.UrbanistBold,
     fontSize: fonts_Size.medium,
     color: colors.light.black,
-  },
-  userCard: {
-    width: 80,
-    alignItems: 'center',
-    paddingHorizontal: 6,
-    height: 80,
-  },
-  userNameCardImage: {
-    width: 60,
-    height: 60,
-    borderRadius: 60,
-  },
-  userNameCardText: {
-    fontFamily: fonts_Family.UrbanistSemiBold,
-    color: colors.light.darkGrey,
-    fontSize: fonts_Size.medium,
-    width: '100%',
-    textAlign: 'center',
-    marginTop: 2,
   },
   viewAllContainer: {
     marginHorizontal: 18,

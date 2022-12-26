@@ -12,11 +12,10 @@ const styles = StyleSheet.create({
   },
   wrapper: {flexDirection: 'row', alignItems: 'center'},
   heading: {
-    fontSize: fonts_Size.h3,
+    fontSize: fonts_Size.h4,
     fontFamily: fonts_Family.UrbanistBold,
     color: colors.light.darkGrey,
     marginLeft: 14,
-    textTransform: 'capitalize',
   },
   icon: {
     width: 25,

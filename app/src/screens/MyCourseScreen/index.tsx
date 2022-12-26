@@ -12,7 +12,6 @@ const MyCourseScreen = () => {
   return (
     <>
       <LogoHeader title="My Courses" />
-
       <Tab.Navigator
         screenOptions={{
           tabBarStyle: {

@@ -29,7 +29,7 @@ export const BottomTabNavigation = () => {
           borderTopWidth: 0,
         },
       }}
-      initialRouteName="Home">
+      initialRouteName="Course">
       <Tab.Screen
         name={'Home'}
         component={HomeScreen}

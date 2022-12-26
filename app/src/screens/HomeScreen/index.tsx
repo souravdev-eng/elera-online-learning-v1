@@ -8,21 +8,15 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React from 'react';
-import {ViewAll, CourseCard, FilterCard} from '../../components';
+import {ViewAll, CourseCard, FilterCard, MentorsList} from '../../components';
 import {Tags} from '../../assets/data/tagData';
 import {useHomeHook} from './hooks/useHomeHooks';
 import {Icons} from '../../theme';
 import styles from './styles';
 
 const HomeScreen: React.FC = () => {
-  const {
-    data,
-    courseList,
-    navigation,
-    creatorList,
-    navigateToCourseDetail,
-    navigateToCreatorProfile,
-  } = useHomeHook();
+  const {data, courseList, navigation, creatorList, navigateToCourseDetail} =
+    useHomeHook();
 
   return (
     <ScrollView
@@ -60,35 +54,9 @@ const HomeScreen: React.FC = () => {
             />
           </View>
         </View>
-        <TouchableOpacity activeOpacity={0.8} style={styles.bannerContainer} />
+        {/* <TouchableOpacity activeOpacity={0.8} style={styles.bannerContainer} /> */}
+        <MentorsList data={creatorList} />
 
-        <ViewAll
-          style={styles.viewAllContainer}
-          title="Top Mentors"
-          onPress={() => navigation.navigate('TopMentors')}
-        />
-        <FlatList
-          horizontal
-          showsVerticalScrollIndicator={false}
-          showsHorizontalScrollIndicator={false}
-          style={{flexGrow: 0}}
-          data={creatorList}
-          renderItem={({item}) => (
-            <TouchableOpacity
-              activeOpacity={0.7}
-              style={styles.userCard}
-              onPress={() => navigateToCreatorProfile(item?.id)}>
-              <Image
-                source={{uri: item.profileImage}}
-                style={styles.userNameCardImage}
-              />
-              <Text style={styles.userNameCardText} numberOfLines={1}>
-                {item.nickName}
-              </Text>
-            </TouchableOpacity>
-          )}
-          keyExtractor={(_, idx) => idx.toString()}
-        />
         <View style={{marginTop: 22}}>
           <ViewAll
             style={styles.viewAllContainer}
@@ -114,7 +82,7 @@ const HomeScreen: React.FC = () => {
               <CourseCard
                 {...el}
                 key={index}
-                onPress={() => navigateToCourseDetail(el.id)}
+                onPress={() => navigateToCourseDetail(el?.id)}
                 onBookmarkPress={() => {}}
               />
             ))}
