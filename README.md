@@ -17,6 +17,18 @@
 
 ## About The Project
 
+<div>
+   <img src="./screen-shots/demo1.jpeg" alt="Demo 1" />
+   <img src="./screen-shots/demo2.jpeg" alt="Demo 2" />
+   <img src="./screen-shots/demo3.jpeg" alt="Demo 3" />
+   <img src="./screen-shots/demo4.jpeg" alt="Demo 4" />
+   <img src="./screen-shots/demo5.jpeg" alt="Demo 5" />
+   <img src="./screen-shots/demo6.jpeg" alt="Demo 6" />
+   <img src="./screen-shots/demo7.jpeg" alt="Demo 7" />
+   <img src="./screen-shots/demo8.jpeg" alt="Demo 8" />
+   <img src="./screen-shots/demo9.jpeg" alt="Demo 9" />
+   <img src="./screen-shots/demo10.jpeg" alt="Demo 10" />
+</div>
 E-com is an online video-based learning platform. Where users can buy any type of course.
 
 **Here's is some feature overview:**
