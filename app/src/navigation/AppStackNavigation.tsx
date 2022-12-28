@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {RootStackParamList, Type} from './types';
 
@@ -30,7 +30,7 @@ export const AppStackNavigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={Type.Notification}>
+      initialRouteName={Type.Main}>
       {!data ? (
         <>
           <Stack.Screen name={Type.Login} component={LoginScreen} />
