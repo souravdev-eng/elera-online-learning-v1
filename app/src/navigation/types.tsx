@@ -19,13 +19,14 @@ export enum Type {
   Payment = 'Payment',
   AuthorProfile = 'AuthorProfile',
   MyCourseDetails = 'MyCourseDetails',
+  Notification = 'Notification',
 }
 
 export type RootStackParamList = {
   Login: undefined;
   Signup: undefined;
   LoginWithPassword: undefined;
-
+  Notification: undefined;
   Home: undefined;
   Course: undefined;
   Inbox: undefined;

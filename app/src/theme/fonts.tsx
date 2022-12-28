@@ -1,12 +1,12 @@
 import {Dimensions} from 'react-native';
 
 export const fonts_Family = {
+  UrbanistBold: 'Urbanist-Bold',
   UrbanistThin: 'Urbanist-Thin',
   UrbanistLight: 'Urbanist-Light',
   UrbanistRegular: 'Urbanist-Regular',
   UrbanistMedium: 'Urbanist-Medium',
   UrbanistSemiBold: 'Urbanist-SemiBold',
-  UrbanistBold: 'Urbanist-Bold',
 };
 
 /*

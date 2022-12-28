@@ -17,6 +17,7 @@ import {
   SearchScreen,
   ChatScreen,
   PaymentScreen,
+  NotificationScreen,
 } from '../screens';
 import AuthorProfileScreen from '../screens/AuthorProfile';
 import MyCourseDetails from '../screens/MyCourseDetails';
@@ -29,7 +30,7 @@ export const AppStackNavigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={Type.Main}>
+      initialRouteName={Type.Notification}>
       {!data ? (
         <>
           <Stack.Screen name={Type.Login} component={LoginScreen} />
@@ -66,6 +67,10 @@ export const AppStackNavigation = () => {
           <Stack.Screen
             name={Type.MyCourseDetails}
             component={MyCourseDetails}
+          />
+          <Stack.Screen
+            name={Type.Notification}
+            component={NotificationScreen}
           />
         </>
       )}
