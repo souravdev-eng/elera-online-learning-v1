@@ -9,23 +9,23 @@ import {
 import React, {useState} from 'react';
 import styles from './styles';
 import {Icons} from '../../theme';
-import ViewAll from '../../components/ViewAll';
+import {ViewAll} from '../../components';
 
 const SearchScreen = () => {
   const [search, setSearch] = useState<string>('');
   const [recentSearch, setRecentSearch] = useState<string[]>([]);
 
-  const handelSubmit = (event: any) => {
+  const handleSubmit = (event: any) => {
     setRecentSearch([...recentSearch, event.nativeEvent.text]);
     setSearch(event.nativeEvent.text);
     setSearch('');
   };
 
-  const handelRemove = (text: string) => {
+  const handleRemove = (text: string) => {
     setRecentSearch(recentSearch.filter(item => item !== text));
   };
 
-  const handelClear = () => {
+  const handleClear = () => {
     setRecentSearch([]);
   };
 
@@ -43,7 +43,7 @@ const SearchScreen = () => {
             placeholder="Search"
             returnKeyType="search"
             onChangeText={t => setSearch(t)}
-            onSubmitEditing={event => handelSubmit(event)}
+            onSubmitEditing={event => handleSubmit(event)}
           />
         </View>
         <TouchableOpacity>
@@ -51,7 +51,7 @@ const SearchScreen = () => {
         </TouchableOpacity>
       </View>
       <View style={{width: '90%', alignSelf: 'center'}}>
-        <ViewAll title="Recent" subtitle="Clear All" onPress={handelClear} />
+        <ViewAll title="Recent" subtitle="Clear All" onPress={handleClear} />
 
         <View style={styles.line} />
 
@@ -60,7 +60,7 @@ const SearchScreen = () => {
             <Text style={styles.reaccentText}>{item}</Text>
             <TouchableOpacity
               style={styles.closeIcon}
-              onPress={() => handelRemove(item)}>
+              onPress={() => handleRemove(item)}>
               <Image source={Icons.Close} style={styles.icon} />
             </TouchableOpacity>
           </TouchableOpacity>
