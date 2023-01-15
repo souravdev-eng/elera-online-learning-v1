@@ -1,9 +1,10 @@
 import React from 'react';
-import {View, FlatList, Text} from 'react-native';
-import {Loading, MyCourseCard} from '../../../components';
-import {MyCourseInterface} from '../../../store/types/course.types';
+import {View, FlatList} from 'react-native';
+import {Loading, MyCourseCard, EmptyMessage} from '../../../components';
+
 import {useAppSelector} from '../../../hooks/useRedux';
 import {useAppNavigation} from '../../../hooks/useAppNavigation';
+import {MyCourseInterface} from '../../../store/types/course.types';
 
 const OngoingCourse = () => {
   const {myCourse, loading} = useAppSelector(state => state.user);
@@ -34,7 +35,7 @@ const OngoingCourse = () => {
           <FlatList data={myCourse} renderItem={({item}) => renderItem(item)} />
         </View>
       ) : (
-        <Text>No course found</Text>
+        <EmptyMessage message={"You don't have any ongoing course"} />
       )}
     </>
   );
