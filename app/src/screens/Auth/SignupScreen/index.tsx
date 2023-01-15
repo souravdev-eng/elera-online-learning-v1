@@ -10,18 +10,19 @@ import React, {useState} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import Loading from '../../../components/Loading';
 import {colors, Icons} from '../../../theme';
 import styles from './styles';
 
-import {useAppDispatch, useAppSelector} from '../../../hooks/useRedux';
 import {useAppNavigation} from '../../../hooks/useAppNavigation';
 import {userSignupAction} from '../../../store/actions/user.action';
-import Loading from '../../../components/Loading';
+import {useAppDispatch, useAppSelector} from '../../../hooks/useRedux';
 
 const SignupScreen = () => {
   const {handleGoBack, navigation} = useAppNavigation();
-  const dispatch = useAppDispatch();
   const {loading} = useAppSelector(state => state.user);
+  const dispatch = useAppDispatch();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,7 +30,7 @@ const SignupScreen = () => {
   const [isEmailActive, setIsEmailActive] = useState(false);
   const [isPasswordActive, setIsPasswordActive] = useState(false);
 
-  const handelSignup = async () => {
+  const handleSignup = () => {
     dispatch(userSignupAction({email, password, fullName: name}));
   };
 
@@ -105,7 +106,7 @@ const SignupScreen = () => {
               onBlur={() => setIsPasswordActive(false)}
             />
           </View>
-          <TouchableOpacity style={styles.button} onPress={handelSignup}>
+          <TouchableOpacity style={styles.button} onPress={handleSignup}>
             <Text style={styles.signupButtonText}>Sign up</Text>
           </TouchableOpacity>
           <View style={styles.footerContainer}>

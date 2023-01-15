@@ -133,8 +133,6 @@ export const updateUserFCMToken = createAsyncThunk(
         },
       );
 
-      console.log('USER ----> ', data.user);
-
       return data.user;
     } catch (error: any) {
       throw rejectWithValue(error.response.data.errors);

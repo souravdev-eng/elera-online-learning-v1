@@ -28,7 +28,7 @@ const LoginWithPassword = () => {
   const [isEmailActive, setIsEmailActive] = useState(false);
   const [isPasswordActive, setIsPasswordActive] = useState(false);
 
-  const handelLogin = () => {
+  const handelLogin = async () => {
     dispatch(userLoginAction({email, password}));
   };
 

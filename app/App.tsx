@@ -15,31 +15,20 @@ import {
   NotificationListener,
   requestUserPermission,
 } from './src/utils/notificationConfig';
-import {useAppDispatch, useAppSelector} from './src/hooks/useRedux';
-import {updateUserFCMToken} from './src/store/actions/user.action';
-import {getFCMToken, isFCMTokenUpdate} from './src/utils/storage';
+import {useFCMToken} from './src/hooks/useFCMToken';
 
 const App = () => {
-  const {data} = useAppSelector(state => state.user);
-  const dispatch = useAppDispatch();
-
-  const updateFCM = async () => {
-    const fcmToken = await getFCMToken();
-    const isFCMToken = await isFCMTokenUpdate();
-
-    if (isFCMToken === null) {
-      if (fcmToken) {
-        console.log(fcmToken);
-        dispatch(updateUserFCMToken({fcmToken, token: data?.token!}));
-      }
-    }
-  };
+  const {updateFCMToken, getTokens, fcmToken, isFCMToken} = useFCMToken();
 
   useEffect(() => {
     requestUserPermission();
     NotificationListener();
-    updateFCM();
-  }, []);
+    getTokens();
+
+    if (fcmToken !== null && isFCMToken === null) {
+      updateFCMToken();
+    }
+  }, [fcmToken, isFCMToken]);
 
   return (
     <StripeProvider publishableKey="pk_test_51JOBJnSA4EPPqs66VxVusJrEerUnYWuDGHkzasE78kNncq9UgLx4PwQdU8XPpn41qwz1vhNsxcY14rSQ7fC0c0gt00lNQYG9wa">

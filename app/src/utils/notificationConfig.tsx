@@ -18,13 +18,9 @@ const fetchFCMToken = async () => {
   if (!fcmToken) {
     try {
       const tokenFCM = await messaging().getToken();
-      console.log('OLD', tokenFCM);
-
-      if (tokenFCM) {
+      if (tokenFCM !== null) {
         await setFCMToken(tokenFCM);
-        await setIsTokenUpdate('done');
-
-        console.log('NEW', tokenFCM);
+        await setIsTokenUpdate(tokenFCM);
       }
     } catch (error) {
       console.log(error, 'Error FCM token');

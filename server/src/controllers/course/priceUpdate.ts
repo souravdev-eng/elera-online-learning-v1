@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { admin } from '../../firebase/firebase.config';
-import { Course } from '../../models';
+import { Course, User } from '../../models';
 
 const notification_options = {
   priority: 'high',
@@ -13,7 +13,7 @@ export const updateCoursePrice = async (req: Request, res: Response, next: NextF
 
   const message = {
     notification: {
-      title: `Great deal for today ${req.user.email.split('@')[0]}`,
+      title: `Great deal for today`,
       body: `Now you can grow your skill at only for ${req.body.price}`,
     },
   };
