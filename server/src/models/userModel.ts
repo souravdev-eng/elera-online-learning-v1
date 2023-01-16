@@ -63,6 +63,7 @@ const userSchema = new mongoose.Schema(
     },
     profileImage: {
       type: String,
+      default: 'https://img.freepik.com/free-icon/user_318-790139.jpg?w=2000',
     },
     dateOfBirth: {
       type: Date,

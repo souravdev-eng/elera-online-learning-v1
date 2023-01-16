@@ -10,7 +10,7 @@ import {PersistGate} from 'redux-persist/integration/react';
 import {StripeProvider} from '@stripe/stripe-react-native';
 
 import MainNavigation from './src/navigation/MainNavigation';
-import {persistor, store} from './src/store/store';
+import {persistor} from './src/store/store';
 import {
   NotificationListener,
   requestUserPermission,
@@ -19,7 +19,6 @@ import {useFCMToken} from './src/hooks/useFCMToken';
 
 const App = () => {
   const {updateFCMToken, getTokens, fcmToken, isFCMToken} = useFCMToken();
-
   useEffect(() => {
     requestUserPermission();
     NotificationListener();

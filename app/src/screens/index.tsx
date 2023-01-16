@@ -18,3 +18,4 @@ export {default as TransactionsScreen} from './TransactionsScreen';
 export {default as PaymentScreen} from './PaymentScreen';
 export {default as AuthorProfile} from './AuthorProfile';
 export {default as NotificationScreen} from './NotificationScreen';
+export {default as NewContactScreen} from './NewContactScreen';

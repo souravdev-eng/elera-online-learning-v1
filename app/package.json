@@ -22,6 +22,7 @@
     "@reduxjs/toolkit": "^1.8.3",
     "@stripe/stripe-react-native": "^0.22.0",
     "@types/react-native-vector-icons": "^6.4.10",
+    "@types/socket.io-client": "^3.0.0",
     "axios": "^0.27.2",
     "lottie-react-native": "^5.1.4",
     "react": "18.1.0",
@@ -38,7 +39,8 @@
     "react-native-video": "^5.2.0",
     "react-native-video-controls": "^2.8.1",
     "react-redux": "^8.0.2",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "socket.io-client": "^4.5.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

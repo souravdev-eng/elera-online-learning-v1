@@ -3,8 +3,8 @@ import './service/cache';
 
 import { createClient } from 'redis';
 import express from 'express';
-import morgan from 'morgan';
 import cors from 'cors';
+import morgan from 'morgan';
 
 import { userRouter } from './routes/user.routes';
 import { creatorRouter } from './routes/creator.routes';
@@ -14,6 +14,7 @@ import { reviewRoute } from './routes/review.routes';
 import { errorHandling } from './middleware/errorHandling';
 
 const app = express();
+
 const client = createClient({
   socket: {
     host: process.env.REDIS_HOST,

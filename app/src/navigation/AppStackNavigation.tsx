@@ -18,6 +18,7 @@ import {
   ChatScreen,
   PaymentScreen,
   NotificationScreen,
+  NewContactScreen,
 } from '../screens';
 import AuthorProfileScreen from '../screens/AuthorProfile';
 import MyCourseDetails from '../screens/MyCourseDetails';
@@ -72,6 +73,7 @@ export const AppStackNavigation = () => {
             name={Type.Notification}
             component={NotificationScreen}
           />
+          <Stack.Screen name={Type.NewContact} component={NewContactScreen} />
         </>
       )}
     </Stack.Navigator>
