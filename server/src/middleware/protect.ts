@@ -35,7 +35,9 @@ export const protect = async (req: Request, res: Response, next: NextFunction) =
 
     req.user = payload;
   } catch (error) {
-    console.log(error);
+    if(process.env.NODE_ENV !== "test"){
+      console.log(error);
+    }
   }
 
   next();

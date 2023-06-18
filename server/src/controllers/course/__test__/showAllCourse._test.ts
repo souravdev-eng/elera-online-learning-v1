@@ -40,6 +40,6 @@ it('should return 200 after successfully get all data', async () => {
     .expect(201);
 
   const res = await request(app).get('/api/v1/course/');
-  console.log(res.body);
-  // expect(res.body).toHaveLength(2);
+
+  expect(res.body).toHaveLength(2);
 });
