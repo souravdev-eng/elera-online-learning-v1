@@ -8,13 +8,16 @@ import UserOption from './UserOption';
 import {useAppDispatch, useAppSelector} from '../../hooks/useRedux';
 import {signOut} from '../../store/reducers/user.reducer';
 import {useAppNavigation} from '../../hooks/useAppNavigation';
+import {FCMTokenKEY, IsTokenUpdateKEY, removeItem} from '../../utils/storage';
 
 const ProfileScreen = () => {
   let dispatch = useAppDispatch();
   const {navigation} = useAppNavigation();
   const {data} = useAppSelector(state => state.user);
 
-  const handelSignOut = () => {
+  const handelSignOut = async () => {
+    await removeItem(FCMTokenKEY);
+    await removeItem(IsTokenUpdateKEY);
     dispatch(signOut());
   };
 

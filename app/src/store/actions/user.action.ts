@@ -114,3 +114,28 @@ export const updateUserProfile = createAsyncThunk(
     }
   },
 );
+
+export const updateUserFCMToken = createAsyncThunk(
+  'put/update-user-fcm-token',
+  async (
+    {fcmToken, token}: {fcmToken: string; token: string},
+    {rejectWithValue},
+  ) => {
+    try {
+      const {data} = await axios.put(
+        `${BASE_URL}/user/update-fcm-token`,
+        {fcmToken, token},
+        {
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      return data.user;
+    } catch (error: any) {
+      throw rejectWithValue(error.response.data.errors);
+    }
+  },
+);

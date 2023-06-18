@@ -6,6 +6,7 @@ import { BadRequestError } from '../errors';
 type UserPayload = {
   id: string;
   email: string;
+  fcmToken?: string;
 };
 
 declare global {

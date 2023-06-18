@@ -31,6 +31,22 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
+<<<<<<< HEAD
+
+<div>
+   <img src="./screen-shots/demo1.jpeg" alt="Demo 1"  width="328x" height="100%"/>
+   <img src="./screen-shots/demo2.jpeg" alt="Demo 2"  width="328x" height="100%"/>
+   <img src="./screen-shots/demo3.jpeg" alt="Demo 3"  width="328x" height="100%"/>
+   <img src="./screen-shots/demo4.jpeg" alt="Demo 4"  width="328x" height="100%"/>
+   <img src="./screen-shots/demo5.jpeg" alt="Demo 5"  width="328x" height="100%"/>
+   <img src="./screen-shots/demo6.jpeg" alt="Demo 6"  width="328x" height="100%"/>
+   <img src="./screen-shots/demo7.jpeg" alt="Demo 7"  width="328x" height="100%"/>
+   <img src="./screen-shots/demo8.jpeg" alt="Demo 8"  width="328x" height="100%"/>
+   <img src="./screen-shots/demo9.jpeg" alt="Demo 9"  width="328x" height="100%"/>
+   <img src="./screen-shots/demo10.jpeg" alt="Demo 10"  width="328x" height="100%"/>
+</div>
+=======
+>>>>>>> 639a40e4211f8432989064addf9184e171d0bbff
 E-com is an online video-based learning platform. Where users can buy any type of course.
 
 **Here's is some feature overview:**

@@ -20,6 +20,7 @@ interface UserDoc extends mongoose.Document {
   role: string;
   correctPassword(candidatePassword: string, userPassword: string): Promise<boolean>;
   bookMarks: string[];
+  fcmToken: string;
 }
 
 interface UserModel extends mongoose.Model<UserDoc> {
@@ -62,6 +63,7 @@ const userSchema = new mongoose.Schema(
     },
     profileImage: {
       type: String,
+      default: 'https://img.freepik.com/free-icon/user_318-790139.jpg?w=2000',
     },
     dateOfBirth: {
       type: Date,
@@ -69,6 +71,9 @@ const userSchema = new mongoose.Schema(
     role: {
       type: String,
       default: 'student',
+    },
+    fcmToken: {
+      type: String,
     },
   },
   {
@@ -91,7 +96,10 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-userSchema.methods.correctPassword = async function (candidatePassword: string, userPassword: string) {
+userSchema.methods.correctPassword = async function (
+  candidatePassword: string,
+  userPassword: string
+) {
   return await bcrypt.compare(candidatePassword, userPassword);
 };
 

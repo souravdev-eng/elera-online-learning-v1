@@ -1,22 +1,18 @@
-import {
-  View,
-  Text,
-  Image,
-  FlatList,
-  TextInput,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
 import React from 'react';
+import {View, Text, Image, FlatList, ScrollView} from 'react-native';
 import {ViewAll, CourseCard, FilterCard, MentorsList} from '../../components';
 import {Tags} from '../../assets/data/tagData';
+
 import {useHomeHook} from './hooks/useHomeHooks';
+import {useHomeLayout} from './useHomeLayout';
+
 import {Icons} from '../../theme';
 import styles from './styles';
 
 const HomeScreen: React.FC = () => {
   const {data, courseList, navigation, creatorList, navigateToCourseDetail} =
     useHomeHook();
+  const {renderNotification, renderBookMark, renderSearchBar} = useHomeLayout();
 
   return (
     <ScrollView
@@ -34,26 +30,12 @@ const HomeScreen: React.FC = () => {
             </View>
           </View>
           <View style={styles.iconWrapper}>
-            <TouchableOpacity
-              activeOpacity={0.7}
-              onPress={() => navigation.navigate('MyBookmarks')}>
-              <Image source={Icons.BookmarkOutline} style={styles.icon} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Image source={Icons.BellOutline} style={styles.icon} />
-            </TouchableOpacity>
+            {renderBookMark()}
+            {renderNotification()}
           </View>
         </View>
-        <View style={styles.searchContainer}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Image style={styles.icon} source={Icons.Search} />
-            <TextInput
-              style={styles.searchBar}
-              placeholder="Search"
-              onFocus={() => navigation.navigate('Search')}
-            />
-          </View>
-        </View>
+        {renderSearchBar()}
+
         {/* <TouchableOpacity activeOpacity={0.8} style={styles.bannerContainer} /> */}
         <MentorsList data={creatorList} />
 

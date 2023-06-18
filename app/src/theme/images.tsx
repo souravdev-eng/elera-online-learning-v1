@@ -36,6 +36,7 @@ export const Icons = {
   FileText: require('../assets/images/file-text.png'),
   Call: require('../assets/images/call.png'),
   MSCard: require('../assets/images/ms-card.png'),
+  Empty: require('../assets/images/empty.png'),
 
   // Banners
 

@@ -14,7 +14,7 @@ import { isCreator, protect } from '../middleware';
 import { courseCreateValidation } from '../validation/courseValidationSchema';
 import { requestValidation } from '../middleware/requestValidation';
 import { reviewRoute } from './review.routes';
-import { updateCourse } from '../controllers/course/updateCourse';
+import { updateCoursePrice } from '../controllers/course/priceUpdate';
 
 const router = Router();
 
@@ -28,6 +28,8 @@ router
   .route('/')
   .post(protect, isCreator, courseCreateValidation, requestValidation, newCourse)
   .get(protect, showAllCourse);
+
+router.patch('/price-update', protect, updateCoursePrice);
 
 router.route('/:id').get(protect, courseDetailsById);
 

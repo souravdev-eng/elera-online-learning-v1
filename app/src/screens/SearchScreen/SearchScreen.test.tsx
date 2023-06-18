@@ -1,1 +1,0 @@
-import SearchScreen from './index';

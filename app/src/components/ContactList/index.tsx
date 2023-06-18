@@ -1,16 +1,16 @@
 import React, {FC} from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
-
 import {useAppNavigation} from '../../hooks/useAppNavigation';
 import styles from './styles';
 
 interface Props {
-  id: string;
+  bio: string;
   nickName: string;
-  profileImage: string;
+  profileImage: any;
+  id: string;
 }
 
-const MessageCard: FC<Props> = ({id, nickName, profileImage}) => {
+const ContactList: FC<Props> = ({bio, nickName, profileImage, id}) => {
   const {navigation} = useAppNavigation();
 
   return (
@@ -20,29 +20,25 @@ const MessageCard: FC<Props> = ({id, nickName, profileImage}) => {
         activeOpacity={0.8}
         onPress={() =>
           navigation.navigate('Chat', {
-            id,
             nickName,
+            id,
             profileImage,
           })
         }>
         <View style={styles.row}>
-          <Image source={{uri: profileImage}} style={styles.userImage} />
-          <View style={{marginLeft: 10}}>
+          <View style={styles.userImage}>
+            <Image source={{uri: profileImage}} style={styles.userImage} />
+          </View>
+          <View style={{marginLeft: 10, width: '100%'}}>
             <Text style={styles.userName}>{nickName}</Text>
             <Text style={styles.message} numberOfLines={1}>
-              How are you
+              {bio}
             </Text>
           </View>
-        </View>
-        <View style={{alignItems: 'center'}}>
-          <View style={styles.numberOfMessageContainer}>
-            <Text style={styles.numberOfMessage}>2</Text>
-          </View>
-          <Text style={styles.time}>10:20 PM</Text>
         </View>
       </TouchableOpacity>
     </>
   );
 };
 
-export default MessageCard;
+export default ContactList;

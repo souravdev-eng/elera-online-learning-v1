@@ -21,5 +21,6 @@ export interface UserDataProps {
     dateOfBirth: any;
     phoneNumber: string;
     gender: string;
+    profileImage?: string;
   };
 }

@@ -5,6 +5,7 @@ import {
   userLoginAction,
   userSignupAction,
   updateUserProfile,
+  updateUserFCMToken,
 } from '../actions/user.action';
 import {courseDetailsProps, MyCourseInterface} from '../types/course.types';
 import {UserDataProps, UserBookMarksProps} from '../types/user.types';
@@ -32,6 +33,18 @@ const userSlice = createSlice({
     signOut: () => initialState,
   },
   extraReducers: builder => {
+    // @@@@@@@@@@@@@@ UPDATE FCM TOKEN @@@@@@@@@@@@@@
+
+    builder.addCase(updateUserFCMToken.pending, state => {
+      state.loading = true;
+    });
+    builder.addCase(updateUserFCMToken.fulfilled, state => {
+      state.loading = false;
+    });
+    builder.addCase(updateUserFCMToken.rejected, (state, {payload}) => {
+      state.loading = false;
+      state.error = payload;
+    });
     // @@@@@@@@@@@@@@ SHOW MY COURSE @@@@@@@@@@@@@@
     builder.addCase(showMyCourseAction.pending, state => {
       state.loading = true;

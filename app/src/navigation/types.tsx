@@ -19,13 +19,15 @@ export enum Type {
   Payment = 'Payment',
   AuthorProfile = 'AuthorProfile',
   MyCourseDetails = 'MyCourseDetails',
+  Notification = 'Notification',
+  NewContact = 'NewContact',
 }
 
 export type RootStackParamList = {
   Login: undefined;
   Signup: undefined;
   LoginWithPassword: undefined;
-
+  Notification: undefined;
   Home: undefined;
   Course: undefined;
   Inbox: undefined;
@@ -38,7 +40,8 @@ export type RootStackParamList = {
   Search: undefined;
   ProfileUpdate: undefined;
   CourseDetails: {id: string};
-  Chat: undefined;
+  Chat: {id: string; nickName: string; profileImage: any};
+  NewContact: undefined;
   Payment: {price: number};
   AuthorProfile: {id: string};
   MyCourseDetails: {id: string};

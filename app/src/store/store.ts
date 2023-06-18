@@ -14,11 +14,12 @@ import userReducer from './reducers/user.reducer';
 import creatorReducer from './reducers/creator.reducer';
 import courseReducer from './reducers/course.reducer';
 import orderReducers from './reducers/order.reducers';
+import chatReducer from './reducers/chat.reducer';
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['user'],
+  whitelist: ['user', 'chat'],
 };
 
 const rootReducer = combineReducers({
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   creator: creatorReducer,
   course: courseReducer,
   order: orderReducers,
+  chat: chatReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
