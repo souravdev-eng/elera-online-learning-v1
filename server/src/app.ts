@@ -15,11 +15,11 @@ import { errorHandling } from './middleware/errorHandling';
 
 const app = express();
 const client = createClient({
-  socket: {
-    host: process.env.REDIS_HOST,
-    port: process.env.REDIS_PORT as unknown as number,
-  },
-  password: process.env.REDIS_PASSWORD,
+      password: process.env.REDIS_PASSWORD! as any,
+    socket: {
+        host: process.env.REDIS_HOST! as any,
+        port: process.env.REDIS_PORT as any
+    }
 });
 
 app.use(express.json());

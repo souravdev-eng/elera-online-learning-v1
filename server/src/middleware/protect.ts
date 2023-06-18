@@ -24,12 +24,12 @@ export const protect = async (req: Request, res: Response, next: NextFunction) =
       token = req.headers.authorization.split(' ')[1];
     }
     if (!token) {
-      throw new BadRequestError('You are not logged in! Please login first');
+      return next (new BadRequestError('You are not logged in! Please login first'));
     }
     const payload = jwt.verify(token, process.env.JWT_SECRET!) as UserPayload;
 
     if (!payload) {
-      throw new BadRequestError('There is no user with this id');
+      return next (new BadRequestError('There is no user with this id'));
     }
 
     req.user = payload;

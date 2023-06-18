@@ -46,8 +46,8 @@ it('should return 400 if the user role is not creator before creating new course
 });
 
 it('should return 400 if creator did not login first', async () => {
-  const { creator } = await global.creatorSignIn();
-  await request(app)
+  // const { creator } = await global.creatorSignIn();
+  const res=  await request(app)
     .post('/api/v1/course')
     .send({
       title: 'Test course',
@@ -60,9 +60,8 @@ it('should return 400 if creator did not login first', async () => {
       category: 'Programing',
       introVideo: 'http://dummy',
       image: 'http://dummy',
-      creatorId: creator.id,
-    })
-    .expect(400);
+      creatorId: null,
+    }).expect(400)
 });
 
 it('should return 400 if creator did not provide required property for a new course', async () => {

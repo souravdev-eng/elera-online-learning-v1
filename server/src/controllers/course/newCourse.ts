@@ -1,8 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
-import { BadRequestError } from '../../errors';
+import { BadRequestError, NotFoundError } from '../../errors';
 import { Course } from '../../models';
 
 export const newCourse = async (req: Request, res: Response, next: NextFunction) => {
+
+
   const {
     title,
     aboutCourse,
@@ -20,19 +22,21 @@ export const newCourse = async (req: Request, res: Response, next: NextFunction)
     return next(new BadRequestError('Offer price must be less than original price!'));
   }
 
+
   const course = Course.build({
     title,
     price,
     image,
     lessons,
     category,
-    creatorId: req.user!.id,
+    creatorId: req?.user!.id,
     introVideo,
     aboutCourse,
     preRequisite,
     durationHours,
     originalPrice,
   });
+
 
   await course.save();
 
