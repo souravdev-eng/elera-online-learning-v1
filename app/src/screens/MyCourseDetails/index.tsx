@@ -1,4 +1,4 @@
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View} from 'react-native';
 import React, {useEffect} from 'react';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {
@@ -7,11 +7,11 @@ import {
   MyCourseDetailsList,
   VirtualizedScrollView,
 } from '../../components';
-import {Icons, width, colors} from '../../theme';
+import {Icons} from '../../theme';
+import {useUserSelector} from '../../store/select/user.select';
 import {useAppDispatch, useAppSelector} from '../../hooks/useRedux';
 import {getCourseDetailsById} from '../../store/actions/course.action';
 import {RootStackParamList} from '../../navigation/types';
-// import {courseDetails} from './data';
 import styles from './styles';
 
 type MyCourseDetailsScreenRouteProp = RouteProp<
@@ -23,10 +23,10 @@ const MyCourseDetails = () => {
   let dispatch = useAppDispatch();
   const {params} = useRoute<MyCourseDetailsScreenRouteProp>();
   const {courseDetails, loading} = useAppSelector(state => state.course);
-  const {data} = useAppSelector(state => state.user);
+  const {userToken} = useUserSelector();
 
   useEffect(() => {
-    dispatch(getCourseDetailsById({id: params.id, token: data?.token!}));
+    dispatch(getCourseDetailsById({id: params.id, token: userToken!}));
   }, []);
 
   return (

@@ -13,4 +13,7 @@ module.exports = {
       },
     },
   ],
+  globals: {
+    '@env': true,
+  },
 };

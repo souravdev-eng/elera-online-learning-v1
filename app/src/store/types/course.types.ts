@@ -21,7 +21,7 @@ export interface courseDetailsProps {
   price: number;
   creatorId: any;
   durationHours: number;
-  lessons: {title: string; videos: [{title: string; videoUrl: string}]}[];
+  lessons: { title: string; videos: [{ title: string; videoUrl: string }] }[];
   aboutCourse: string;
   preRequisite: string[];
   image: string;
@@ -36,7 +36,7 @@ export interface MyCourseInterface {
     durationHours: number;
     lessons: {
       title: string;
-      videos: {title: string; videoUrl: string}[];
+      videos: { title: string; videoUrl: string }[];
     }[];
 
     image: string;

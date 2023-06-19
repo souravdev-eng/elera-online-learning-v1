@@ -1,6 +1,6 @@
-import {createSlice} from '@reduxjs/toolkit';
-import {getCourseDetailsById, getCourseList} from '../actions/course.action';
-import {courseDetailsProps} from '../types/course.types';
+import { createSlice } from '@reduxjs/toolkit';
+import { getCourseDetailsById, getCourseList } from '../actions/course.action';
+import { courseDetailsProps } from '../types/course.types';
 
 interface CourseProp {
   title: string;
@@ -14,7 +14,7 @@ interface CourseProp {
   totalStudent: number;
 }
 
-interface CourseStateProp {
+export interface CourseStateProp {
   courseList: CourseProp[];
   loading: boolean;
   error: any;

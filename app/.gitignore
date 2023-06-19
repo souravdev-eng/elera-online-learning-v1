@@ -62,3 +62,4 @@ demo/
 # Ruby / CocoaPods
 /ios/Pods/
 /vendor/bundle/
+.env

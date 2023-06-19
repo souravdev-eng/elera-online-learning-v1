@@ -16,6 +16,7 @@ import {
   requestUserPermission,
 } from './src/utils/notificationConfig';
 import {useFCMToken} from './src/hooks/useFCMToken';
+import {STRIPE_PUBLIC_KEY} from '@env';
 
 const App = () => {
   const {updateFCMToken, getTokens, fcmToken, isFCMToken} = useFCMToken();
@@ -30,7 +31,7 @@ const App = () => {
   }, [fcmToken, isFCMToken]);
 
   return (
-    <StripeProvider publishableKey="pk_test_51JOBJnSA4EPPqs66VxVusJrEerUnYWuDGHkzasE78kNncq9UgLx4PwQdU8XPpn41qwz1vhNsxcY14rSQ7fC0c0gt00lNQYG9wa">
+    <StripeProvider publishableKey={STRIPE_PUBLIC_KEY}>
       <PersistGate loading={null} persistor={persistor}>
         <MainNavigation />
       </PersistGate>

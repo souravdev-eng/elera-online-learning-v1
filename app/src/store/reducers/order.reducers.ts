@@ -1,8 +1,8 @@
-import {createSlice} from '@reduxjs/toolkit';
-import {newOrderAction} from '../actions/order.action';
-import {paymentComplete, paymentSheetParams} from '../actions/payment.actions';
+import { createSlice } from '@reduxjs/toolkit';
+import { newOrderAction } from '../actions/order.action';
+import { paymentComplete, paymentSheetParams } from '../actions/payment.actions';
 
-interface OrderStateProp {
+export interface OrderStateProp {
   loading: boolean;
   error: any;
   order: any;
