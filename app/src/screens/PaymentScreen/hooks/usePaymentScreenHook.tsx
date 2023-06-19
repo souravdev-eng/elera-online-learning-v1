@@ -26,10 +26,13 @@ export const usePaymentHook = () => {
   const dispatch = useAppDispatch();
   const {data} = useAppSelector(state => state.user);
   const {payment, order} = useAppSelector(state => state.order);
+  const token = data?.token!;
 
   useEffect(() => {
-    fetchPaymentSheetParams();
-  }, []);
+    if (token && order?.id) {
+      fetchPaymentSheetParams();
+    }
+  }, [order?.id, token]);
 
   useEffect(() => {
     if (clientSecret) {
@@ -38,15 +41,9 @@ export const usePaymentHook = () => {
   }, [clientSecret]);
 
   const fetchPaymentSheetParams = async () => {
-    if (data?.token) {
-      dispatch(
-        paymentSheetParams({
-          token: data.token,
-          orderId: order?.id,
-        }),
-      );
-    }
-    setClientSecret(payment?.clientSecret);
+    dispatch(paymentSheetParams({token, orderId: order?.id})).then(res => {
+      setClientSecret(payment?.clientSecret);
+    });
   };
 
   const initializePaymentSheet = async () => {

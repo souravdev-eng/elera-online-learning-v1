@@ -4,7 +4,8 @@ import { Payment, Order } from '../../models';
 import { OrderStatus, stripe } from '../../utils';
 
 export const newPayment = async (req: Request, res: Response, next: NextFunction) => {
-  const orderId = req.params.orderId;
+  const orderId = req?.params?.orderId;
+
   const order = await Order.findById(orderId);
 
   if (!order) {

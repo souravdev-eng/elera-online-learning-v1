@@ -5,7 +5,7 @@ import { OrderStatus } from '../../utils';
 // const EXPIRATION_WINDOW_SECONDS = 10 * 60 * 1000;
 
 export const newOrder = async (req: Request, res: Response, next: NextFunction) => {
-  const course = await Course.findById(req.params.courseId);
+  const course = await Course.findById(req?.params?.courseId);
 
   if (!course) {
     return next(new BadRequestError('Course not found'));

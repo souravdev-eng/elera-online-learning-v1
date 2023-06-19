@@ -2,7 +2,7 @@ import {View, FlatList} from 'react-native';
 import React from 'react';
 import CourseCard from '../../components/CourseCard';
 import GoBack from '../../components/GoBack';
-import {Tags} from '../../assets/data/tagData';
+import {Tags} from '../../assets/data/tagdata';
 import FilterCard from '../../components/FilterCard';
 import {useAppSelector} from '../../hooks/useRedux';
 
