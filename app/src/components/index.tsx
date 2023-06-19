@@ -19,3 +19,4 @@ export {default as ReviewCard} from './ReviewCard';
 export {default as PaymentCard} from './PaymentCard';
 export {default as MentorsList} from './MentorsList';
 export {default as EmptyMessage} from './EmptyMessage';
+export {default as MyCourseDetailsList} from './MyCourseDetailsList';

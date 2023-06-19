@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts_Family.UrbanistBold,
     color: colors.light.darkGrey,
     marginLeft: 14,
+    width: '85%',
   },
   icon: {
     width: 25,
