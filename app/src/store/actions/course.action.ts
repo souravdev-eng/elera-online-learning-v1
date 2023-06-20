@@ -63,3 +63,23 @@ export const getCourseDetailsById = createAsyncThunk(
     }
   },
 );
+
+export const showAllCourseByCreatorId = createAsyncThunk(
+  "get/courseByCreatorID", async (params: any, { rejectWithValue }) => {
+    const { token, creatorId } = params;
+
+    try {
+      const { data } = await axios.get(`${BASE_URL}/course/?creatorId=${creatorId}`, {
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      return data?.course;
+    } catch (error: any) {
+      throw rejectWithValue(error.response.data.errors);
+    }
+  },
+
+)

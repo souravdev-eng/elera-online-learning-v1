@@ -1,29 +1,32 @@
-import React, {useEffect} from 'react';
-import {View, Text, ScrollView, Image, TouchableOpacity} from 'react-native';
-import {useRoute} from '@react-navigation/native';
+import React, { useEffect } from 'react';
+import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 
-import {CourseCard, GoBack, Loading} from '../../components';
-import {Icons} from '../../theme';
+import { CourseCard, GoBack, Loading } from '../../components';
+import { Icons } from '../../theme';
 import styles from './styles';
-import {useAppDispatch, useAppSelector} from '../../hooks/useRedux';
-import {getCreatorById} from '../../store/actions/creator.action';
+import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
+import { getCreatorById } from '../../store/actions/creator.action';
+import { useCourseSelector, useUserSelector } from '../../store';
+import { showAllCourseByCreatorId } from '../../store/actions/course.action';
 
 const AuthorProfileScreen = () => {
   const dispatch = useAppDispatch();
-  const {params} = useRoute();
+  const { params } = useRoute<any>();
 
-  const {creatorDetails, loading} = useAppSelector(state => state.creator);
-  const {courseList} = useAppSelector(state => state.course);
-  const {data} = useAppSelector(state => state.user);
+  const { creatorDetails, loading } = useAppSelector(state => state.creator);
+  const { userToken } = useUserSelector();
+  const { creatorCourseList, creatorCourseLoading } = useCourseSelector()
 
   useEffect(() => {
-    // @ts-ignore
-    dispatch(getCreatorById({token: data?.token!, id: params?.id}));
-    // @ts-ignore
+    if (params?.id && userToken) {
+      dispatch(getCreatorById({ token: userToken, id: params?.id }));
+      dispatch(showAllCourseByCreatorId({ token: userToken, creatorId: params?.id }));
+    }
   }, [params?.id]);
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={{flexGrow: 1}}>
+    <ScrollView style={styles.container} contentContainerStyle={{ flexGrow: 1 }}>
       {loading ? (
         <Loading />
       ) : (
@@ -31,7 +34,7 @@ const AuthorProfileScreen = () => {
           <GoBack iconName={Icons.More} />
           <View style={styles.flex}>
             <Image
-              source={{uri: creatorDetails?.profileImage}}
+              source={{ uri: creatorDetails?.profileImage }}
               style={styles.userImage}
             />
             <Text style={styles.title}>{creatorDetails?.nickName}</Text>
@@ -65,7 +68,7 @@ const AuthorProfileScreen = () => {
             </TouchableOpacity>
           </View>
           <ScrollView>
-            {courseList.map((item: any) => (
+            {creatorCourseList.map((item: any) => (
               <CourseCard {...item} key={item.id} />
             ))}
           </ScrollView>

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { BadRequestError, NotFoundError } from '../../errors';
-import { Course } from '../../models';
+import { Course, Creator } from '../../models';
 
 export const newCourse = async (req: Request, res: Response, next: NextFunction) => {
 
@@ -36,6 +36,11 @@ export const newCourse = async (req: Request, res: Response, next: NextFunction)
     durationHours,
     originalPrice,
   });
+
+  if (course?.id) {
+    let id = course?.creatorId;
+    await Creator.findByIdAndUpdate(id, { $inc: { totalCourse: 1 } }, { new: true })
+  }
 
 
   await course.save();

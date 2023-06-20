@@ -35,7 +35,7 @@ const isLoading = createSelector(
     (loading) => loading.loading
 );
 
-export const useUserSelector = () => {
+export default () => {
     const userData = useSelector(selectUserData);
     const userToken = useSelector(selectUserToken);
     const myCourses = useSelector(selectMyCourses);

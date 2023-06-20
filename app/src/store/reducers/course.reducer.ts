@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getCourseDetailsById, getCourseList } from '../actions/course.action';
+import { getCourseDetailsById, getCourseList, showAllCourseByCreatorId } from '../actions/course.action';
 import { courseDetailsProps } from '../types/course.types';
 
 interface CourseProp {
@@ -19,6 +19,13 @@ export interface CourseStateProp {
   loading: boolean;
   error: any;
   courseDetails: courseDetailsProps | null;
+  creatorCourseList: CreatorCourseProps
+}
+
+interface CreatorCourseProps {
+  loading: boolean,
+  creatorCourseList: CourseProp[]
+  error: any
 }
 
 const initialState = {
@@ -26,6 +33,11 @@ const initialState = {
   courseList: [],
   error: null,
   courseDetails: null,
+  creatorCourseList: {
+    loading: false,
+    creatorCourseList: [],
+    error: null
+  }
 } as CourseStateProp;
 
 const courseSlice = createSlice({
@@ -46,6 +58,21 @@ const courseSlice = createSlice({
     builder.addCase(getCourseList.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
+    });
+
+    // ------------ SHOW COURSE BY CREATOR ID ------------
+
+    builder.addCase(showAllCourseByCreatorId.pending, (state, action) => {
+      state.creatorCourseList.loading = true;
+      state.error = action.payload;
+    });
+    builder.addCase(showAllCourseByCreatorId.fulfilled, (state, action) => {
+      state.creatorCourseList.loading = false;
+      state.creatorCourseList.creatorCourseList = action.payload;
+    });
+    builder.addCase(showAllCourseByCreatorId.rejected, (state, action) => {
+      state.creatorCourseList.loading = false;
+      state.creatorCourseList.error = action.payload;
     });
 
     // ------------ COURSE DETAILS ------------

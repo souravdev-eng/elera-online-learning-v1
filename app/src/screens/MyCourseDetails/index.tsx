@@ -1,17 +1,17 @@
-import {View} from 'react-native';
-import React, {useEffect} from 'react';
-import {RouteProp, useRoute} from '@react-navigation/native';
+import { View } from 'react-native';
+import React, { useEffect } from 'react';
+import { RouteProp, useRoute } from '@react-navigation/native';
 import {
   GoBack,
   Loading,
   MyCourseDetailsList,
   VirtualizedScrollView,
 } from '../../components';
-import {Icons} from '../../theme';
-import {useUserSelector} from '../../store/select/user.select';
-import {useAppDispatch, useAppSelector} from '../../hooks/useRedux';
-import {getCourseDetailsById} from '../../store/actions/course.action';
-import {RootStackParamList} from '../../navigation/types';
+import { Icons } from '../../theme';
+import { useUserSelector } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
+import { getCourseDetailsById } from '../../store/actions/course.action';
+import { RootStackParamList } from '../../navigation/types';
 import styles from './styles';
 
 type MyCourseDetailsScreenRouteProp = RouteProp<
@@ -21,12 +21,12 @@ type MyCourseDetailsScreenRouteProp = RouteProp<
 
 const MyCourseDetails = () => {
   let dispatch = useAppDispatch();
-  const {params} = useRoute<MyCourseDetailsScreenRouteProp>();
-  const {courseDetails, loading} = useAppSelector(state => state.course);
-  const {userToken} = useUserSelector();
+  const { params } = useRoute<MyCourseDetailsScreenRouteProp>();
+  const { courseDetails, loading } = useAppSelector(state => state.course);
+  const { userToken } = useUserSelector();
 
   useEffect(() => {
-    dispatch(getCourseDetailsById({id: params.id, token: userToken!}));
+    dispatch(getCourseDetailsById({ id: params.id, token: userToken! }));
   }, []);
 
   return (
