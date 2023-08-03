@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, Image, FlatList, ScrollView} from 'react-native';
 import {ViewAll, CourseCard, FilterCard, MentorsList} from '../../components';
-import {Tags} from '../../assets/data/tagdata';
+import {Tags} from '../../assets/data/tagData';
 
 import {useHomeHook} from './hooks/useHomeHooks';
 import {useHomeLayout} from './useHomeLayout';

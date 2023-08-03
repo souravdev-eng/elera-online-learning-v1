@@ -7,7 +7,7 @@ import {Icons} from '../../theme';
 import CourseCard from '../../components/CourseCard';
 import FilterCard from '../../components/FilterCard';
 import GoBack from '../../components/GoBack';
-import {Tags} from '../../assets/data/tagdata';
+import {Tags} from '../../assets/data/tagData';
 
 const MyBookMarksScreen = () => {
   const {courseList} = useAppSelector(state => state.course);
