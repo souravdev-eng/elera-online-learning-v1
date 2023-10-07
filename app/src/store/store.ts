@@ -1,4 +1,4 @@
-import {combineReducers, configureStore} from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -15,6 +15,7 @@ import creatorReducer from './reducers/creator.reducer';
 import courseReducer from './reducers/course.reducer';
 import orderReducers from './reducers/order.reducers';
 import chatReducer from './reducers/chat.reducer';
+import bookMarkReducer from './reducers/bookMark.reducer';
 
 const persistConfig = {
   key: 'root',
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   course: courseReducer,
   order: orderReducers,
   chat: chatReducer,
+  bookMarked: bookMarkReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

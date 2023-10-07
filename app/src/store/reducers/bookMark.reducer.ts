@@ -12,7 +12,6 @@ interface Props {
 const initialState = {
     loading: false,
     bookMarks: [],
-    bookMarkMessage: "",
     error: null
 } as Props;
 
@@ -24,15 +23,14 @@ const bookMarkSlice = createSlice({
         builder.addCase(addBookMarkAction.pending, (state, action) => {
             state.loading = true;
         });
-        builder.addCase(addBookMarkAction.fulfilled, (state, action) => {
+        builder.addCase(addBookMarkAction.fulfilled, (state, { payload }) => {
             state.loading = false;
-            state.bookMarkMessage = action.payload;
+            state.bookMarks = payload
             state.error = null;
         });
-        builder.addCase(addBookMarkAction.rejected, (state, action) => {
+        builder.addCase(addBookMarkAction.rejected, (state, { payload }) => {
             state.loading = false;
-            state.bookMarkMessage = "";
-            state.error = action.payload;
+            state.error = payload;
         });
     }
 });

@@ -111,10 +111,6 @@ const courseSchema = new mongoose.Schema(
     preRequisite: {
       type: Array,
       default: [],
-    },
-    bookMarked: {
-      type: Boolean,
-      default: false,
     }
   },
   {

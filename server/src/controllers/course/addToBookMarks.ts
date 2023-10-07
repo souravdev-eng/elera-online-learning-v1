@@ -20,10 +20,10 @@ export const addToBookMarks = async (req: Request, res: Response, next: NextFunc
   if (user.bookMarks.includes(course.id)) {
     user.bookMarks = user.bookMarks.filter((courseId) => courseId !== course.id);
     await user.save();
-    res.status(200).json({ message: 'Course removed to bookmarks' });
+    res.status(200).json({ bookMark: user.bookMarks });
   } else {
     user.bookMarks.push(course.id);
     await user.save();
-    res.status(200).json({ message: 'Course added to bookmarks' });
+    res.status(200).json({ bookMark: user.bookMarks });
   }
 };

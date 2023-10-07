@@ -8,12 +8,15 @@ import { useHomeLayout } from './useHomeLayout';
 
 import { Icons } from '../../theme';
 import styles from './styles';
+import { useAppSelector } from '../../hooks/useRedux';
+
 
 const HomeScreen: React.FC = () => {
-  const { data, courseList, navigation, creatorList, navigateToCourseDetail } =
+  const { data, courseList, navigation, creatorList, navigateToCourseDetail, handleBookMarkPress } =
     useHomeHook();
   const { renderNotification, renderBookMark, renderSearchBar } = useHomeLayout();
-  const [activeFilter, setActiveFilter] = useState("All")
+  const [activeFilter, setActiveFilter] = useState("All");
+  const { bookMarks } = useAppSelector((state) => state.bookMarked)
 
 
   return (
@@ -65,10 +68,11 @@ const HomeScreen: React.FC = () => {
           <View style={{ alignItems: 'center' }}>
             {courseList.map((el, index) => (
               <CourseCard
+                bookMarked={bookMarks && bookMarks?.includes(el?.id) ? true : false}
                 {...el}
                 key={index}
                 onPress={() => navigateToCourseDetail(el?.id)}
-                onBookmarkPress={() => { }}
+                onBookmarkPress={() => handleBookMarkPress(el?.id)}
               />
             ))}
           </View>

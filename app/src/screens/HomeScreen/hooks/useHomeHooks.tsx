@@ -7,6 +7,7 @@ import {
 } from '../../../store/actions/course.action';
 import { getCreatorList } from '../../../store/actions/creator.action';
 import { useUserSelector } from '../../../store';
+import { addBookMarkAction } from '../../../store/actions/bookMarks.action';
 
 export const useHomeHook = () => {
   const { navigation } = useAppNavigation();
@@ -32,6 +33,11 @@ export const useHomeHook = () => {
     navigation.navigate('AuthorProfile', { id });
   };
 
+  const handleBookMarkPress = (courseId: string) => {
+    console.log('============', courseId)
+    dispatch(addBookMarkAction({ token: userToken!, courseId: courseId }))
+  }
+
   return {
     data,
     navigation,
@@ -39,5 +45,6 @@ export const useHomeHook = () => {
     courseList,
     navigateToCourseDetail,
     navigateToCreatorProfile,
+    handleBookMarkPress
   };
 };
