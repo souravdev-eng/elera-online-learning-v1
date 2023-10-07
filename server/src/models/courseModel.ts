@@ -112,6 +112,10 @@ const courseSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
+    bookMarked: {
+      type: Boolean,
+      default: false,
+    }
   },
   {
     timestamps: true,

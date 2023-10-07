@@ -1,12 +1,12 @@
 import axios from 'axios';
-import {BASE_URL} from '@env';
-import {createAsyncThunk} from '@reduxjs/toolkit';
+import { BASE_URL } from '@env';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const showMyCourseAction = createAsyncThunk(
   'get/myCourse',
-  async (Data: {token: string}, {rejectWithValue}) => {
+  async (Data: { token: string }, { rejectWithValue }) => {
     try {
-      const {data} = await axios.get(`${BASE_URL}/course/mycourse`, {
+      const { data } = await axios.get(`${BASE_URL}/course/mycourse`, {
         headers: {
           'Content-type': 'application/json',
           Authorization: `Bearer ${Data.token}`,
@@ -20,9 +20,9 @@ export const showMyCourseAction = createAsyncThunk(
 );
 export const getCourseList = createAsyncThunk(
   'get/courseList',
-  async (Data: {token: string}, {rejectWithValue}) => {
+  async (Data: { token: string }, { rejectWithValue }) => {
     try {
-      const {data} = await axios.get(
+      const { data } = await axios.get(
         `${BASE_URL}/course?fields=title,price,originalPrice,totalReview,ratingAvg,category,image,totalStudent`,
         {
           headers: {
@@ -45,11 +45,11 @@ interface CourseDetails {
 
 export const getCourseDetailsById = createAsyncThunk(
   'get/courseDetailsById',
-  async (data: CourseDetails, {rejectWithValue}) => {
-    const {token, id} = data;
+  async (data: CourseDetails, { rejectWithValue }) => {
+    const { token, id } = data;
 
     try {
-      const {data} = await axios.get(`${BASE_URL}/course/${id}`, {
+      const { data } = await axios.get(`${BASE_URL}/course/${id}`, {
         headers: {
           'Content-type': 'application/json',
           Authorization: `Bearer ${token}`,
@@ -65,11 +65,11 @@ export const getCourseDetailsById = createAsyncThunk(
 
 export const showAllCourseByCreatorId = createAsyncThunk(
   'get/courseByCreatorID',
-  async (params: any, {rejectWithValue}) => {
-    const {token, creatorId} = params;
+  async (params: any, { rejectWithValue }) => {
+    const { token, creatorId } = params;
 
     try {
-      const {data} = await axios.get(
+      const { data } = await axios.get(
         `${BASE_URL}/course/?creatorId=${creatorId}`,
         {
           headers: {
@@ -85,3 +85,5 @@ export const showAllCourseByCreatorId = createAsyncThunk(
     }
   },
 );
+
+
