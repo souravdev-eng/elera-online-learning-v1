@@ -10,5 +10,5 @@ export interface CourseCardProps {
   totalStudent: number;
   onPress?: () => void;
   onBookmarkPress?: () => void;
-  bookMarked: Boolean
+  bookMarked?: Boolean
 }

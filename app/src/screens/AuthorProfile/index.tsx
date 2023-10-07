@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
 import { getCreatorById } from '../../store/actions/creator.action';
 import { useCourseSelector, useUserSelector } from '../../store';
 import { showAllCourseByCreatorId } from '../../store/actions/course.action';
+import { useBookMarkHook } from '../../hooks/common/useBookMarked';
 
 const AuthorProfileScreen = () => {
   const dispatch = useAppDispatch();
@@ -16,7 +17,8 @@ const AuthorProfileScreen = () => {
 
   const { creatorDetails, loading } = useAppSelector(state => state.creator);
   const { userToken } = useUserSelector();
-  const { creatorCourseList, creatorCourseLoading } = useCourseSelector()
+  const { checkIsBookedMark, handleAddAndRemoveBookMarkPress } = useBookMarkHook()
+  const { creatorCourseList } = useCourseSelector()
 
   useEffect(() => {
     if (params?.id && userToken) {
@@ -69,7 +71,10 @@ const AuthorProfileScreen = () => {
           </View>
           <ScrollView>
             {creatorCourseList.map((item: any) => (
-              <CourseCard {...item} key={item.id} />
+              <CourseCard {...item} key={item.id}
+                bookMarked={checkIsBookedMark(item)}
+                onBookmarkPress={() => handleAddAndRemoveBookMarkPress(item?.id)}
+              />
             ))}
           </ScrollView>
         </>

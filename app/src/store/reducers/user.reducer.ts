@@ -1,28 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { showMyCourseAction } from '../actions/course.action';
 import {
-  showMyBookMarks,
   userLoginAction,
   userSignupAction,
   updateUserProfile,
   updateUserFCMToken,
 } from '../actions/user.action';
-import { courseDetailsProps, MyCourseInterface } from '../types/course.types';
-import { UserDataProps, UserBookMarksProps } from '../types/user.types';
+import { MyCourseInterface } from '../types/course.types';
+import { UserDataProps } from '../types/user.types';
 
 export interface UserProps {
   loading: boolean;
   data: UserDataProps | null;
   myCourse: MyCourseInterface[];
   error: any;
-  myBookMarks: UserBookMarksProps[];
 }
 
 const initialState = {
   loading: false,
   data: null,
   myCourse: [],
-  myBookMarks: [],
   error: null,
 } as UserProps;
 
@@ -88,21 +85,6 @@ const userSlice = createSlice({
     });
 
     builder.addCase(userSignupAction.rejected, (state, { payload }) => {
-      state.loading = false;
-      state.error = payload;
-    });
-    // @@@@@@@@@@@@@@ SHOW MY BOOK MARKS @@@@@@@@@@@@@@
-    builder.addCase(showMyBookMarks.pending, state => {
-      state.loading = true;
-    });
-
-    builder.addCase(showMyBookMarks.fulfilled, (state, { payload }) => {
-      state.loading = false;
-      state.myBookMarks = payload;
-      state.error = null;
-    });
-
-    builder.addCase(showMyBookMarks.rejected, (state, { payload }) => {
       state.loading = false;
       state.error = payload;
     });

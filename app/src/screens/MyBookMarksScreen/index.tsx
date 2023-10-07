@@ -1,7 +1,7 @@
 import { View, FlatList } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { useAppSelector } from '../../hooks/useRedux';
+import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
 import { Icons } from '../../theme';
 
 import CourseCard from '../../components/CourseCard';
@@ -9,8 +9,30 @@ import FilterCard from '../../components/FilterCard';
 import GoBack from '../../components/GoBack';
 import { Tags } from '../../assets/data/tagdata';
 
+import { showMyBookMarks } from '../../store/actions/bookMarks.action';
+import { useAppNavigation } from '../../hooks/useAppNavigation';
+import { useBookMarkHook } from '../../hooks/common/useBookMarked';
+import { useUserSelector } from '../../store';
+
 const MyBookMarksScreen = () => {
-  const { courseList } = useAppSelector(state => state.course);
+  const { myBookMarks, bookMarks } = useAppSelector(state => state.bookMarked);
+  const { checkIsBookedMark, handleAddAndRemoveBookMarkPress } = useBookMarkHook()
+  const { navigation } = useAppNavigation();
+  const { userToken } = useUserSelector();
+  const dispatch = useAppDispatch()
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const filterCourse = activeFilter === "All" ? myBookMarks : myBookMarks.filter((el) => el.category.toLocaleUpperCase() === activeFilter.toLocaleUpperCase())
+
+
+  useEffect(() => {
+    dispatch(showMyBookMarks({ token: userToken! }))
+  }, [bookMarks?.length])
+
+  const navigateToCourseDetail = (id: string) => {
+    navigation.navigate('CourseDetails', { id });
+  };
+
   return (
     <>
       <FlatList
@@ -29,17 +51,22 @@ const MyBookMarksScreen = () => {
               renderItem={({ item }) => (
                 <FilterCard
                   title={item}
-                  isActive={item === 'All' ? true : false}
+                  isActive={item === activeFilter ? true : false}
+                  onPress={() => setActiveFilter(item)}
                 />
               )}
               keyExtractor={(_, idx) => idx.toString()}
             />
           </>
         }
-        data={courseList}
+        data={filterCourse}
         renderItem={({ item }) => (
           <View style={{ alignItems: 'center' }}>
-            <CourseCard {...item} />
+            <CourseCard {...item}
+              bookMarked={checkIsBookedMark(item)}
+              onPress={() => navigateToCourseDetail(item?.id)}
+              onBookmarkPress={() => handleAddAndRemoveBookMarkPress(item?.id)}
+            />
           </View>
         )}
       />

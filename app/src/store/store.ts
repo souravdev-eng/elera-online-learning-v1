@@ -20,7 +20,7 @@ import bookMarkReducer from './reducers/bookMark.reducer';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['user', 'chat'],
+  whitelist: ['user', 'chat', 'bookMarked'],
 };
 
 const rootReducer = combineReducers({

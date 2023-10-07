@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image, FlatList, ScrollView } from 'react-native';
-import { ViewAll, CourseCard, FilterCard, MentorsList } from '../../components';
+import { ViewAll, CourseCard, FilterCard, MentorsList, EmptyMessage } from '../../components';
 import { Tags } from '../../assets/data/tagdata';
 
 import { useHomeHook } from './hooks/useHomeHooks';
@@ -8,15 +8,16 @@ import { useHomeLayout } from './useHomeLayout';
 
 import { Icons } from '../../theme';
 import styles from './styles';
-import { useAppSelector } from '../../hooks/useRedux';
+import { useBookMarkHook } from '../../hooks/common/useBookMarked';
 
 
 const HomeScreen: React.FC = () => {
-  const { data, courseList, navigation, creatorList, navigateToCourseDetail, handleBookMarkPress } =
+  const { data, courseList, navigation, creatorList, navigateToCourseDetail } =
     useHomeHook();
+  const { checkIsBookedMark, handleAddAndRemoveBookMarkPress } = useBookMarkHook()
   const { renderNotification, renderBookMark, renderSearchBar } = useHomeLayout();
   const [activeFilter, setActiveFilter] = useState("All");
-  const { bookMarks } = useAppSelector((state) => state.bookMarked)
+  const filterCourse = activeFilter === "All" ? courseList : courseList.filter((el) => el.category.toLocaleUpperCase() === activeFilter.toLocaleUpperCase())
 
 
   return (
@@ -66,15 +67,15 @@ const HomeScreen: React.FC = () => {
             keyExtractor={(_, idx) => idx.toString()}
           />
           <View style={{ alignItems: 'center' }}>
-            {courseList.map((el, index) => (
+            {filterCourse.length ? filterCourse.map((el, index) => (
               <CourseCard
-                bookMarked={bookMarks && bookMarks?.includes(el?.id) ? true : false}
+                bookMarked={checkIsBookedMark(el)}
                 {...el}
                 key={index}
                 onPress={() => navigateToCourseDetail(el?.id)}
-                onBookmarkPress={() => handleBookMarkPress(el?.id)}
+                onBookmarkPress={() => handleAddAndRemoveBookMarkPress(el?.id)}
               />
-            ))}
+            )) : <EmptyMessage message={`Oops! There is no ${activeFilter} course found`} />}
           </View>
         </View>
       </View>

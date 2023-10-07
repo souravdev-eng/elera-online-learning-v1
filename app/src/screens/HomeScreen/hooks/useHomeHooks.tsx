@@ -11,7 +11,7 @@ import { addBookMarkAction } from '../../../store/actions/bookMarks.action';
 
 export const useHomeHook = () => {
   const { navigation } = useAppNavigation();
-  const { userToken } = useUserSelector()
+  const { userToken } = useUserSelector();
   const { data } = useAppSelector(state => state.user);
   const { creatorList } = useAppSelector(state => state.creator);
   const { courseList } = useAppSelector(state => state.course);
@@ -34,7 +34,6 @@ export const useHomeHook = () => {
   };
 
   const handleBookMarkPress = (courseId: string) => {
-    console.log('============', courseId)
     dispatch(addBookMarkAction({ token: userToken!, courseId: courseId }))
   }
 
