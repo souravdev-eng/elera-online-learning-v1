@@ -1,7 +1,7 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, { FC } from 'react';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import React, {FC, useState} from 'react';
-import {colors, fonts_Family, fonts_Size} from '../../theme';
+import { colors, fonts_Family, fonts_Size } from '../../theme';
 
 interface Props {
   title: string;
@@ -11,7 +11,7 @@ interface Props {
   style?: any;
 }
 
-const FilterCard: FC<Props> = ({title, onPress, isActive, star, style}) => {
+const FilterCard: FC<Props> = ({ title, onPress, isActive, star, style }) => {
   return (
     <TouchableOpacity
       activeOpacity={0.7}
@@ -25,7 +25,7 @@ const FilterCard: FC<Props> = ({title, onPress, isActive, star, style}) => {
         <Ionicons
           name="star"
           size={14}
-          style={{marginRight: 2}}
+          style={{ marginRight: 2 }}
           color={isActive ? colors.light.white : colors.light.primary}
         />
       )}
