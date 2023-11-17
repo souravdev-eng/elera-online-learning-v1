@@ -16,6 +16,7 @@ import { requestValidation } from '../middleware/requestValidation';
 import { reviewRoute } from './review.routes';
 import { updateCoursePrice } from '../controllers/course/priceUpdate';
 import { updateCourse } from '../controllers/course/updateCourse';
+import { searchCourse } from '../controllers/course/searchCourse';
 
 const router = Router();
 
@@ -24,6 +25,7 @@ router.use('/:courseId/reviews', reviewRoute);
 router.post('/bookmarks/:id', protect, addToBookMarks);
 router.get('/bookmarks', protect, showAllBookMarks);
 router.get('/mycourse', protect, showMyCourse);
+router.get('/search', protect, searchCourse);
 
 router
   .route('/')

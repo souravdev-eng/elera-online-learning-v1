@@ -2,13 +2,13 @@
  * @format
  */
 
-import {AppRegistry} from 'react-native';
+import { AppRegistry } from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 
 import App from './App';
-import {name as appName} from './app.json';
-import {Provider} from 'react-redux';
-import {store} from './src/store/store';
+import { name as appName } from './app.json';
+import { Provider } from 'react-redux';
+import { store } from './src/store/store';
 // Register background handler
 
 messaging().setBackgroundMessageHandler(async remoteMessage => {
@@ -17,7 +17,7 @@ messaging().setBackgroundMessageHandler(async remoteMessage => {
 
 const AppProvider = () => {
   return (
-    <Provider store={store}>
+    <Provider store={ store }>
       <App />
     </Provider>
   );

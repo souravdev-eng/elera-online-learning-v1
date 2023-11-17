@@ -6,10 +6,10 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styles from './styles';
-import {Icons} from '../../theme';
-import {ViewAll} from '../../components';
+import { Icons } from '../../theme';
+import { ViewAll } from '../../components';
 
 const SearchScreen = () => {
   const [search, setSearch] = useState<string>('');
@@ -30,9 +30,9 @@ const SearchScreen = () => {
   };
 
   return (
-    <ScrollView contentContainerStyle={{flexGrow: 1, backgroundColor: '#fff'}}>
+    <ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: '#fff' }}>
       <View style={styles.searchContainer}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <TouchableOpacity>
             <Image style={styles.icon} source={Icons.Search} />
           </TouchableOpacity>
@@ -50,7 +50,7 @@ const SearchScreen = () => {
           <Image style={styles.filterIcon} source={Icons.FilterOutline} />
         </TouchableOpacity>
       </View>
-      <View style={{width: '90%', alignSelf: 'center'}}>
+      <View style={{ width: '90%', alignSelf: 'center' }}>
         <ViewAll title="Recent" subtitle="Clear All" onPress={handleClear} />
 
         <View style={styles.line} />
