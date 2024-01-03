@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -15,26 +15,26 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import ReceiveMessage from '../../components/ReceiveMessage';
 import SendMessage from '../../components/SendMessage';
-import {useAppNavigation} from '../../hooks/useAppNavigation';
-import {colors, Icons} from '../../theme';
+import { useAppNavigation } from '../../hooks/useAppNavigation';
+import { colors, Icons } from '../../theme';
 import styles from './styles';
-import io from 'socket.io-client';
-import {RouteProp, useRoute} from '@react-navigation/native';
-import {useAppDispatch, useAppSelector} from '../../hooks/useRedux';
-import {RootStackParamList} from '../../navigation/types';
-import {addMessage} from '../../store/reducers/chat.reducer';
+// import io from 'socket.io-client';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
+import { RootStackParamList } from '../../navigation/types';
+import { addMessage } from '../../store/reducers/chat.reducer';
 
-const socket = io('http://192.168.0.104:4000');
+// const socket = io('http://192.168.0.104:4000');
 
 type ChatScreenRouteProp = RouteProp<RootStackParamList, 'Chat'>;
 
 const ChatScreen = () => {
   const dispatch = useAppDispatch();
   const [text, setText] = useState('');
-  const {data} = useAppSelector(state => state.user);
-  const {chatList} = useAppSelector(state => state.chat);
-  const {handleGoBack} = useAppNavigation();
-  const {params} = useRoute<ChatScreenRouteProp>();
+  const { data } = useAppSelector(state => state.user);
+  const { chatList } = useAppSelector(state => state.chat);
+  const { handleGoBack } = useAppNavigation();
+  const { params } = useRoute<ChatScreenRouteProp>();
 
   const handleSend = () => {
     const payload = {
@@ -54,7 +54,7 @@ const ChatScreen = () => {
       createdAt: Date.now(),
     };
 
-    socket.emit('chat', payload);
+    // socket.emit('chat', payload);
     dispatch(addMessage(payload));
     setText('');
   };
@@ -75,7 +75,7 @@ const ChatScreen = () => {
                 </TouchableWithoutFeedback>
                 <Image
                   style={styles.userImage}
-                  source={{uri: params?.profileImage}}
+                  source={{ uri: params?.profileImage }}
                 />
                 <View>
                   <Text style={styles.userName}>{params?.nickName}</Text>
@@ -92,7 +92,7 @@ const ChatScreen = () => {
                   <Text style={styles.messageDateText}>Today</Text>
                 </View>
               }
-              renderItem={({item}) => (
+              renderItem={({ item }) => (
                 <>
                   <ReceiveMessage />
                   <SendMessage />
@@ -102,7 +102,7 @@ const ChatScreen = () => {
           </View>
         </>
       </TouchableWithoutFeedback>
-      <View style={{backgroundColor: '#fff', height: 84, opacity: 0.2}} />
+      <View style={{ backgroundColor: '#fff', height: 84, opacity: 0.2 }} />
       <View style={styles.textInputContainer}>
         <View style={styles.textInput}>
           <TextInput
