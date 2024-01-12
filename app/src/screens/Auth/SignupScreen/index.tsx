@@ -6,21 +6,21 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Loading from '../../../components/Loading';
-import {colors, Icons} from '../../../theme';
+import { colors, Icons } from '../../../theme';
 import styles from './styles';
 
-import {useAppNavigation} from '../../../hooks/useAppNavigation';
-import {userSignupAction} from '../../../store/actions/user.action';
-import {useAppDispatch, useAppSelector} from '../../../hooks/useRedux';
+import { useAppNavigation } from '../../../hooks/useAppNavigation';
+import { userSignupAction } from '../../../store/actions/user.action';
+import { useAppDispatch, useAppSelector } from '../../../hooks/useRedux';
 
 const SignupScreen = () => {
-  const {handleGoBack, navigation} = useAppNavigation();
-  const {loading} = useAppSelector(state => state.user);
+  const { handleGoBack, navigation } = useAppNavigation();
+  const { loading } = useAppSelector(state => state.user);
   const dispatch = useAppDispatch();
 
   const [name, setName] = useState('');
@@ -31,7 +31,7 @@ const SignupScreen = () => {
   const [isPasswordActive, setIsPasswordActive] = useState(false);
 
   const handleSignup = () => {
-    dispatch(userSignupAction({email, password, fullName: name}));
+    dispatch(userSignupAction({ email, password, fullName: name }));
   };
 
   return (
@@ -41,7 +41,7 @@ const SignupScreen = () => {
       ) : (
         <View style={styles.container}>
           <TouchableOpacity
-            style={{marginTop: 10, marginBottom: 30}}
+            style={{ marginTop: 10, marginBottom: 30 }}
             onPress={handleGoBack}>
             <AntDesign name="arrowleft" size={24} color={colors.light.grey} />
           </TouchableOpacity>
@@ -89,7 +89,7 @@ const SignupScreen = () => {
               isPasswordActive && styles.textInputActive,
             ]}>
             <Ionicons
-              name="md-lock-closed"
+              name="lock-closed"
               size={18}
               color={
                 isPasswordActive ? colors.light.primary : colors.light.grey1
@@ -111,9 +111,9 @@ const SignupScreen = () => {
           </TouchableOpacity>
           <View style={styles.footerContainer}>
             <View style={styles.divider}>
-              <View style={{borderBottomWidth: 0.5, width: '32%'}} />
+              <View style={{ borderBottomWidth: 0.5, width: '32%' }} />
               <Text style={styles.orText}>or continue with</Text>
-              <View style={{borderBottomWidth: 0.5, width: '32%'}} />
+              <View style={{ borderBottomWidth: 0.5, width: '32%' }} />
             </View>
 
             <View style={styles.socialContainer}>
@@ -131,7 +131,7 @@ const SignupScreen = () => {
             <Text style={styles.text}>
               Already have an account?
               <TouchableWithoutFeedback
-                style={{marginTop: 25, width: '20%'}}
+                style={{ marginTop: 25, width: '20%' }}
                 onPress={() => navigation.navigate('Login')}>
                 <Text style={styles.signinText}> Sign In</Text>
               </TouchableWithoutFeedback>

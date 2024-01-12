@@ -6,22 +6,22 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Loading from '../../../components/Loading';
 
-import {colors, Icons} from '../../../theme';
+import { colors, Icons } from '../../../theme';
 import styles from './styles';
 
-import {useAppDispatch, useAppSelector} from '../../../hooks/useRedux';
-import {userLoginAction} from '../../../store/actions/user.action';
-import {useAppNavigation} from '../../../hooks/useAppNavigation';
+import { useAppDispatch, useAppSelector } from '../../../hooks/useRedux';
+import { userLoginAction } from '../../../store/actions/user.action';
+import { useAppNavigation } from '../../../hooks/useAppNavigation';
 
 const LoginWithPassword = () => {
-  const {handleGoBack, navigation} = useAppNavigation();
+  const { handleGoBack, navigation } = useAppNavigation();
   let dispatch = useAppDispatch();
-  const {loading} = useAppSelector(state => state.user);
+  const { loading } = useAppSelector(state => state.user);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,7 +29,7 @@ const LoginWithPassword = () => {
   const [isPasswordActive, setIsPasswordActive] = useState(false);
 
   const handelLogin = async () => {
-    dispatch(userLoginAction({email, password}));
+    dispatch(userLoginAction({ email, password }));
   };
 
   return (
@@ -39,7 +39,7 @@ const LoginWithPassword = () => {
       ) : (
         <View style={styles.container}>
           <TouchableOpacity
-            style={{marginTop: 10, marginBottom: 30}}
+            style={{ marginTop: 10, marginBottom: 30 }}
             onPress={handleGoBack}>
             <AntDesign name="arrowleft" size={24} color={colors.light.grey} />
           </TouchableOpacity>
@@ -69,7 +69,7 @@ const LoginWithPassword = () => {
               isPasswordActive && styles.textInputActive,
             ]}>
             <Ionicons
-              name="md-lock-closed"
+              name="lock-closed"
               size={18}
               color={
                 isPasswordActive ? colors.light.primary : colors.light.grey1
@@ -91,9 +91,9 @@ const LoginWithPassword = () => {
           </TouchableOpacity>
           <View style={styles.footerContainer}>
             <View style={styles.divider}>
-              <View style={{borderBottomWidth: 0.5, width: '32%'}} />
+              <View style={{ borderBottomWidth: 0.5, width: '32%' }} />
               <Text style={styles.orText}>or continue with</Text>
-              <View style={{borderBottomWidth: 0.5, width: '32%'}} />
+              <View style={{ borderBottomWidth: 0.5, width: '32%' }} />
             </View>
 
             <View style={styles.socialContainer}>
@@ -111,7 +111,7 @@ const LoginWithPassword = () => {
             <Text style={styles.text}>
               Don't have an account?
               <TouchableWithoutFeedback
-                style={{marginTop: 25, width: '20%'}}
+                style={{ marginTop: 25, width: '20%' }}
                 onPress={() => navigation.navigate('Signup')}>
                 <Text style={styles.signinText}> Sign Up</Text>
               </TouchableWithoutFeedback>

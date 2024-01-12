@@ -1,5 +1,6 @@
-import React, {FC} from 'react';
-import FastImage from 'react-native-fast-image';
+import React, { FC } from 'react';
+import { Image } from 'react-native'
+// import FastImage from 'react-native-fast-image';
 
 interface Props {
   imageUri: string;
@@ -9,16 +10,13 @@ interface Props {
 
 const AppImage: FC<Props> = ({
   imageUri,
-  style,
-  resizeMode = FastImage.resizeMode.contain,
+  style
 }) => (
-  <FastImage
-    style={style}
+  <Image
+    style={[style, { resizeMode: "contain" }]}
     source={{
       uri: imageUri,
-      priority: FastImage.priority.normal,
     }}
-    resizeMode={resizeMode}
   />
 );
 
