@@ -1,14 +1,14 @@
-import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
-import React, {useCallback, useEffect, useRef, useState} from 'react';
-import {useRoute, RouteProp} from '@react-navigation/native';
+import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useRoute, RouteProp } from '@react-navigation/native';
 // @ts-ignore
 import VideoPlayer from 'react-native-video-controls';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {getCourseDetailsById} from '../../store/actions/course.action';
-import {useAppDispatch, useAppSelector} from '../../hooks/useRedux';
-import {RootStackParamList} from '../../navigation/types';
+import { getCourseDetailsById } from '../../store/actions/course.action';
+import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
+import { RootStackParamList } from '../../navigation/types';
 import {
   CourseLesson,
   AboutCourse,
@@ -18,10 +18,10 @@ import {
   VirtualizedScrollView,
 } from '../../components';
 
-import {colors, Icons} from '../../theme';
+import { colors, Icons } from '../../theme';
 import styles from './styles';
-import {useAppNavigation} from '../../hooks/useAppNavigation';
-import {newOrderAction} from '../../store/actions/order.action';
+import { useAppNavigation } from '../../hooks/useAppNavigation';
+import { newOrderAction } from '../../store/actions/order.action';
 
 type CourseDetailScreenRouteProp = RouteProp<
   RootStackParamList,
@@ -29,10 +29,10 @@ type CourseDetailScreenRouteProp = RouteProp<
 >;
 
 const CourseDetailScreen = () => {
-  const {params} = useRoute<CourseDetailScreenRouteProp>();
-  const {navigation} = useAppNavigation();
-  const {data} = useAppSelector(state => state.user);
-  const {courseDetails, loading} = useAppSelector(state => state.course);
+  const { params } = useRoute<CourseDetailScreenRouteProp>();
+  const { navigation } = useAppNavigation();
+  const { data } = useAppSelector(state => state.user);
+  const { courseDetails, loading } = useAppSelector(state => state.course);
   const videoRef = useRef(null);
   const dispatch = useAppDispatch();
 
@@ -47,7 +47,7 @@ const CourseDetailScreen = () => {
 
   const handleBuy = (price: number) => {
     if (courseDetails) {
-      dispatch(newOrderAction({courseId: courseDetails.id, token})).then(() => {
+      dispatch(newOrderAction({ courseId: courseDetails.id, token })).then(() => {
         navigation.navigate('Payment', {
           price: price,
         });
@@ -56,7 +56,7 @@ const CourseDetailScreen = () => {
   };
 
   useEffect(() => {
-    dispatch(getCourseDetailsById({id: params.id, token}));
+    dispatch(getCourseDetailsById({ id: params.id, token }));
   }, []);
 
   return (
@@ -75,7 +75,7 @@ const CourseDetailScreen = () => {
               <View style={styles.container}>
                 <VideoPlayer
                   ref={videoRef}
-                  source={{uri: courseDetails?.introVideo}}
+                  source={{ uri: courseDetails?.introVideo }}
                   poster={courseDetails?.image}
                   style={styles.videoPlayer}
                   showOnStart={false}
@@ -92,7 +92,7 @@ const CourseDetailScreen = () => {
                     onPress={handlePlay}
                     style={styles.playIconContainer}>
                     <Ionicons
-                      name="ios-play-circle"
+                      name="play-circle"
                       size={40}
                       color={colors.light.PrimaryLight}
                       style={{
@@ -104,7 +104,7 @@ const CourseDetailScreen = () => {
                   </TouchableOpacity>
                 )}
               </View>
-              <View style={{paddingHorizontal: 12}}>
+              <View style={{ paddingHorizontal: 12 }}>
                 <View style={styles.titleWrapper}>
                   <Text style={styles.title}>{courseDetails?.title}</Text>
                 </View>
@@ -121,7 +121,7 @@ const CourseDetailScreen = () => {
                     {courseDetails?.totalStudent} students)
                   </Text>
                 </View>
-                <View style={[styles.row, {marginVertical: 12}]}>
+                <View style={[styles.row, { marginVertical: 12 }]}>
                   <Text style={styles.price}>₹{courseDetails?.price}</Text>
                   <Text style={styles.originalPrice}>
                     ₹{courseDetails?.originalPrice}
@@ -133,7 +133,7 @@ const CourseDetailScreen = () => {
                       name="account-group"
                       size={20}
                       color={colors.light.PrimaryLight}
-                      style={{marginRight: 4}}
+                      style={{ marginRight: 4 }}
                     />
                     <Text style={styles.ratingText}>
                       {courseDetails?.totalStudent} Students
@@ -144,7 +144,7 @@ const CourseDetailScreen = () => {
                       name="clock"
                       size={20}
                       color={colors.light.PrimaryLight}
-                      style={{marginRight: 4}}
+                      style={{ marginRight: 4 }}
                     />
                     <Text style={styles.ratingText}>
                       {courseDetails?.durationHours} Hours
@@ -173,8 +173,8 @@ const CourseDetailScreen = () => {
               <Text style={styles.mentorHeading}>Curriculum</Text>
               <CourseLesson
                 data={courseDetails}
-                // isActive={isActive}
-                // onActivePress={() => setIsActive(!isActive)}
+              // isActive={isActive}
+              // onActivePress={() => setIsActive(!isActive)}
               />
 
               <AboutCourse

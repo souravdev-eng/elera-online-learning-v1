@@ -23,30 +23,30 @@ useEffect(() => {
   */
 
 import axios from 'axios';
-import { BASE_URL } from '@env';
+import { BASE_URL } from '../../api/baseUrl';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const showMyCourseAction = createAsyncThunk(
-    'get/myCourse',
-    async (Data: { token: string }, { rejectWithValue }) => {
-        try {
-            const CancelToken = axios.CancelToken
-            const cancelTokenSource = CancelToken.source()
+  'get/myCourse',
+  async (Data: { token: string }, { rejectWithValue }) => {
+    try {
+      const CancelToken = axios.CancelToken
+      const cancelTokenSource = CancelToken.source()
 
-            const { data } = await axios.get(`${BASE_URL}/course/mycourse`, {
-                cancelToken: cancelTokenSource.token,
-                headers: {
-                    'Content-type': 'application/json',
-                    Authorization: `Bearer ${Data.token}`,
-                },
-            });
-            return data;
-        } catch (error: any) {
-            if (axios.isCancel(error)) {
-                console.error(error.message);
-            } else {
-                throw rejectWithValue(error.response.data.errors);
-            }
-        }
-    },
+      const { data } = await axios.get(`${BASE_URL}/course/mycourse`, {
+        cancelToken: cancelTokenSource.token,
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${Data.token}`,
+        },
+      });
+      return data;
+    } catch (error: any) {
+      if (axios.isCancel(error)) {
+        console.error(error.message);
+      } else {
+        throw rejectWithValue(error.response.data.errors);
+      }
+    }
+  },
 );
