@@ -27,13 +27,17 @@ const CourseCard: FC<CourseCardProps> = ({
         onPress={onBookmarkPress}>
         <Image style={styles.bookMark} source={bookMarked ? Icons.BookMark : Icons.BookmarkOutline} />
       </TouchableOpacity>
-      <View style={{ overflow: 'hidden' }}>
-        <Image
-          source={{ uri: image }}
-          resizeMode="cover"
-          style={styles.courseImage}
-        />
-      </View>
+      {
+        image ?
+          <View style={{ overflow: 'hidden' }}>
+            <Image
+              source={{ uri: image }}
+              resizeMode="cover"
+              style={styles.courseImage}
+            />
+          </View> : null
+      }
+
       <View style={{ width: '60%' }}>
         <View style={styles.tagContainer}>
           <Text style={styles.tagText} numberOfLines={1}>

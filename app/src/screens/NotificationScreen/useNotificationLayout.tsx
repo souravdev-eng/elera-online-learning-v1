@@ -1,18 +1,18 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {colors} from '../../theme';
+import { colors } from '../../theme';
 import styles from './styles';
 
 type NotificationType = 'new-offer' | 'payment' | 'account';
 
 export const useNotificationLayout = () => {
-  const {light} = colors;
+  const { light } = colors;
 
   const IconType = {
     GridIcon: (
-      <View style={[styles.iconContainer, {backgroundColor: light.green}]}>
-        <Ionicons name="md-grid" size={20} color={light.white} />
+      <View style={[styles.iconContainer, { backgroundColor: light.green }]}>
+        <Ionicons name="grid" size={20} color={light.white} />
       </View>
     ),
     WalletIcon: (
@@ -21,7 +21,7 @@ export const useNotificationLayout = () => {
       </View>
     ),
     PersonIcon: (
-      <View style={[styles.iconContainer, {backgroundColor: light.red}]}>
+      <View style={[styles.iconContainer, { backgroundColor: light.red }]}>
         <Ionicons name="person" size={20} color={light.white} />
       </View>
     ),
@@ -37,5 +37,5 @@ export const useNotificationLayout = () => {
     }
   };
 
-  return {renderIcon};
+  return { renderIcon };
 };

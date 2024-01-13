@@ -70,7 +70,7 @@ const AuthorProfileScreen = () => {
             </TouchableOpacity>
           </View>
           <ScrollView>
-            {creatorCourseList.map((item: any) => (
+            {creatorCourseList?.map((item: any) => (
               <CourseCard {...item} key={item.id}
                 bookMarked={checkIsBookedMark(item)}
                 onBookmarkPress={() => handleAddAndRemoveBookMarkPress(item?.id)}

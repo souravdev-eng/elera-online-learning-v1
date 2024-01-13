@@ -1,7 +1,7 @@
-import {StyleSheet, Dimensions} from 'react-native';
-import {fonts_Size, fonts_Family, colors} from '../../theme';
+import { StyleSheet, Dimensions } from 'react-native';
+import { fonts_Size, fonts_Family, colors } from '../../theme';
 
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.light.white,
   },
   icon: {
-    width: 24,
-    height: 24,
+    width: 30,
+    height: 30,
     tintColor: colors.light.grey1,
   },
   filterIcon: {
@@ -20,16 +20,16 @@ const styles = StyleSheet.create({
   },
   userHeaderWrapper: {
     flexDirection: 'row',
-    paddingLeft: 16,
-    paddingRight: 8,
     justifyContent: 'space-between',
     alignItems: 'center',
     marginVertical: 20,
+    width: '95%',
+    marginHorizontal: 10,
+    alignSelf: 'center'
   },
   iconWrapper: {
     flexDirection: 'row',
-    width: '18%',
-    justifyContent: 'space-between',
+    gap: 12,
   },
   userImage: {
     width: 50,

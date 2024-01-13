@@ -43,7 +43,17 @@ const initialState = {
 const courseSlice = createSlice({
   name: 'course',
   initialState,
-  reducers: {},
+  reducers: {
+    setCourseList: (state, action) => {
+      state.courseList = action.payload;
+    },
+    setCourseDetails: (state, action) => {
+      state.courseDetails = action.payload;
+    },
+    setCreatorCourseList: (state, action) => {
+      state.creatorCourseList = action.payload;
+    }
+  },
   extraReducers: builder => {
     builder.addCase(getCourseList.pending, (state, action) => {
       state.loading = true;

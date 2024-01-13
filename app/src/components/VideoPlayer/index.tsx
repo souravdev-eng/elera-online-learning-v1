@@ -40,7 +40,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ poster, videoUrl }) => {
                     onPress={handlePlay}
                     style={styles.playIconContainer}>
                     <Ionicons
-                        name="ios-play-circle"
+                        name="play-circle"
                         size={40}
                         color={colors.light.PrimaryLight}
                         style={{

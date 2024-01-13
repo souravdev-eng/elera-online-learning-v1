@@ -26,6 +26,7 @@ export interface courseDetailsProps {
   preRequisite: string[];
   image: string;
   id: any;
+  isCarted?: boolean;
 }
 
 export interface MyCourseInterface {
